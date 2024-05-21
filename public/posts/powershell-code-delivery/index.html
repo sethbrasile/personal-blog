@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Powershell Code Delivery | byteMyCache</title>
+<meta name="keywords" content="powershell, windows, scripting, IT">
+<meta name="description" content="In todays blog we&rsquo;re going to dive into the realm of delivering and managing Powershell code. The IT sector has often overlooked the standards for code management and delivery that the developer community has established, opting instead for outdated methodologies. These practices are not only challenging to manage, but also prove ineffective in most modern situations. Worse, these methods leave room for exploit via local code storage. We&rsquo;re going to get into what some of those antiquated methods look like that you may be using, why they&rsquo;re &ldquo;bad&rdquo;, then present scalable and easier to manage solutions, and talk through how to implement these practices in your organization.">
+<meta name="author" content="Matthew Weir">
+<link rel="canonical" href="http://localhost:1313/posts/powershell-code-delivery/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f1844d2a9d716a65318cb689699ddaf2e40c6d5631a94d12d42cb9213af585b5.css" integrity="sha256-8YRNKp1xamUxjLaJaZ3a8uQMbVYxqU0S1Cy5ITr1hbU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/powershell-code-delivery/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="byteMyCache (Alt + H)">byteMyCache</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="posts">
+                    <span>posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="about">
+                    <span>about</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/authors/" title="authors">
+                    <span>authors</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="contact">
+                    <span>contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Powershell Code Delivery
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2023-07-18 09:23:57 -0500 CDT'>July 18, 2023</span>&nbsp;·&nbsp;Matthew Weir
+
+</div>
+  </header> 
+  <div class="post-content"><p>In todays blog we&rsquo;re going to dive into the realm of delivering and managing Powershell code. The IT sector has often overlooked the standards for code management and delivery that the developer community has established, opting instead for outdated methodologies. These practices are not only challenging to manage, but also prove ineffective in most modern situations. Worse, these methods leave room for exploit via local code storage. We&rsquo;re going to get into what some of those antiquated methods look like that you may be using, why they&rsquo;re &ldquo;bad&rdquo;, then present scalable and easier to manage solutions, and talk through how to implement these practices in your organization.</p>
+<h2 id="lets-get-into-it-stop-storing-code-locally-use-github">Lets get into it: Stop storing code locally, use Github<a hidden class="anchor" aria-hidden="true" href="#lets-get-into-it-stop-storing-code-locally-use-github">#</a></h2>
+<p>This entire solution we&rsquo;re going to discuss today revolves around managing and delivering all code through Github repositories&hellip;and by all code, I mean literally ALL CODE. This takes some restructuring and a new way of thinking about script / code delivery. All delivery mechanisms I list below are designed for you to store all of your code locally on that system, and in turn in various ways the endpoints it&rsquo;s delivered to stores that code locally. Local code storage is a terrible idea not only for security, but for management later. Lets go through some scenarios of how locally storing code can kill your organization.</p>
+<ul>
+<li>
+<h4 id="areas-of-concern">Areas of concern<a hidden class="anchor" aria-hidden="true" href="#areas-of-concern">#</a></h4>
+<ul>
+<li>Powershell Delivery &amp; Management</li>
+<li>Code Creation &amp; Change Review</li>
+<li>Security</li>
+</ul>
+</li>
+<li>
+<h4 id="traditional-delivery-methods">Traditional delivery methods<a hidden class="anchor" aria-hidden="true" href="#traditional-delivery-methods">#</a></h4>
+<ul>
+<li>GPOs</li>
+<li>Scheduled Tasks (sometimes also by GPO)</li>
+<li>SCCM</li>
+<li>Remote Powershell on local network</li>
+<li>Intune</li>
+<li>RMM</li>
+</ul>
+</li>
+<li>
+<h4 id="scenario">Scenario<a hidden class="anchor" aria-hidden="true" href="#scenario">#</a></h4>
+<ul>
+<li>You write a powershell script and deploy it via one of the methods above set to deploy once every two weeks. Lets say this is a disk cleanup script and the save destination on local disk is <code>C:\IT\diskCleanup.ps1</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="delivery--management">Delivery &amp; Management<a hidden class="anchor" aria-hidden="true" href="#delivery--management">#</a></h3>
+<ul>
+<li><strong>The Problem</strong>
+<ul>
+<li>When you create a script in any of the above platforms, that script lives in that tool. Using the scenario above, you later decide you need to edit the script. You make your edits, test them, then update your script in your selected platform. About a week in, you notice a folder is being deleted that was unexpected. Luckily, this script only runs once every two weeks so it hasn&rsquo;t effected all endpoints yet, but if you don&rsquo;t stop it soon you could have a real problem on your hands. You open the script to revert it to the previous version but&hellip;oh no, your script has been overwritten with the changes! There&rsquo;s no revision control and there&rsquo;s no backups of single scripts, so you find yourself scrambling to find the previous version of the script that worked properly without rewriting it yet again and risking another mistake. While searching for an old version, you check back and find someone else has already updated the script and removed the lines of code they thought was causing the issue&hellip;but somehow they&rsquo;ve made it worse and now it&rsquo;s deleting several folders. You stop the script all together&hellip;but you get reports that your previous version is still running on some machines, how?! Well it turns out most of these platforms store that script locally in some capacity, and there&rsquo;s a delay from change to propagation at the endpoint (varies by platform).</li>
+</ul>
+</li>
+<li><strong>The Fix</strong>
+<ul>
+<li>Lets rewind that story, and this time instead of our script being stored in one of those platforms above, we put the actual code in Github, and only use the platform to call that script from Github.</li>
+<li>First, we would put our disk cleanup script in Github, then we would call that disk cleanup script from the delivery method we chose from above by only putting the below code in that delivery platform:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Powershell" data-lang="Powershell"><span style="display:flex;"><span><span style="color:#66d9ef">Function</span> Get-GithubScript {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;#
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  .</span><span style="color:#e6db74">DESCRIPTION</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    This will call the remote script you specify and launch the script in memory.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  #&gt;</span>
+</span></span><span style="display:flex;"><span>  [CmdletBinding()]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">Param</span>(
+</span></span><span style="display:flex;"><span>        [Parameter(
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Mandatory</span> = $true,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">HelpMessage</span> = <span style="color:#e6db74">&#34;Enter a read-only API key to your Git repo&#34;</span>
+</span></span><span style="display:flex;"><span>        )]
+</span></span><span style="display:flex;"><span>        $apiKey,
+</span></span><span style="display:flex;"><span>        [Parameter(
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Mandatory</span> = $true,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">HelpMessage</span> = <span style="color:#e6db74">&#34;Enter the raw git script URL such as https://raw.githubusercontent.com/[yourorg]/script.ps1&#34;</span>
+</span></span><span style="display:flex;"><span>        )]
+</span></span><span style="display:flex;"><span>        $scriptUrl
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  [<span style="color:#66d9ef">Net.ServicePointManager</span>]::SecurityProtocol = [<span style="color:#66d9ef">Enum</span>]::ToObject([<span style="color:#66d9ef">Net.SecurityProtocolType</span>], <span style="color:#ae81ff">3072</span>)
+</span></span><span style="display:flex;"><span>  $WebClient = New-Object -TypeName System.Net.WebClient
+</span></span><span style="display:flex;"><span>  $WebClient.Headers.Add(<span style="color:#e6db74">&#39;Authorization&#39;</span>,<span style="color:#e6db74">&#39;token $apiKey&#39;</span>)
+</span></span><span style="display:flex;"><span>  $WebClient.Headers.Add(<span style="color:#e6db74">&#39;Accept&#39;</span>,<span style="color:#e6db74">&#39;application/vnd.github.v3.raw&#39;</span>)
+</span></span><span style="display:flex;"><span>  ($WebClient).DownloadString(<span style="color:#e6db74">&#39;$scriptURL&#39;</span>) | iex;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>Get-GithubScript -apiKey <span style="color:#e6db74">&#39;xxxxx-xxxxxxxxxxxx&#39;</span> -scriptUrl <span style="color:#e6db74">&#39;https://raw.githubusercontent.com/[yourorg]/script.ps1&#39;</span>
+</span></span></code></pre></div><pre><code>- Okay, so now the script is in Github, and we're calling it to the endpoint with the above code snippet, great! Lets go through the scenario again.
+- You make your edits, test them, then update your script in your selected platform. About a week in, you notice a folder is being deleted that was unexpected. This time, we head to Github and we can see all previous revisions of the script, when it was changed, exactly what was changed, and we can revert back to any one of these points. You opt to revert it back to a previous version. While you're doing this, you get a Pull Request from another tech-- it looks like they're trying to revert changes too. Github allows you to require review/approval before changes to production branches so no one can make quick rogue changes without your approval. Furthermore, the changes, once promoted to production (main branch) take effect immediately to all endpoints. Even if the script was being stored locally, the script is just calling our `https://raw.githubusercontent.com/[yourorg]/script.ps1` script so boom, update Github, instant update all future runs of our script.
+</code></pre>
+<h3 id="security">Security<a hidden class="anchor" aria-hidden="true" href="#security">#</a></h3>
+<ul>
+<li><strong>Execution</strong>
+To ensure this script runs without errors or issues, the delivery method you use either executes this script on demand through an agent or maybe a scheduled task or startup item. Traditionally, to ensure these scripts execute without issue, these scripts would be launched as <code>System</code> context which is &ldquo;God mode&rdquo; on that endpoint. <code>System</code> execution context is not only admin, but it&rsquo;s admin without concern of UAC since UAC is <code>User Access Control</code> and <code>System</code> isn&rsquo;t a user&ndash; it&rsquo;s literally the machine as the identity.</li>
+<li><strong>Exploit</strong>
+A bad actor gains access to your machine. They just have standard user rights but are looking for a way in to an elevated account or context. They find a scheduled task to execute a script in <code>C:\IT\diskCleanup.ps1</code> that runs on every system reboot. They go find the script, edit the script and add lines to create a new hidden local admin user, then they either trigger the scheduled task, or just wait for the next scheduled execution. Note that here the only permissions they needed was access to make edits in the folder the script lives in. They would have needed admin to edit scheduled tasks, they would have needed admin to get by UAC, and they of course would have needed admin to gain an elevated shell. Thanks to your local code storage however, they were able to edit a powershell script on disk and use your own maintenance schedule against you to execute whatever they needed as <code>System</code>.</li>
+</ul>
+<h3 id="recap">Recap<a hidden class="anchor" aria-hidden="true" href="#recap">#</a></h3>
+<p>All of this means whether that script was in a scheduled task, a GPO, an RMM, Intune, whatever it doesn&rsquo;t matter, updating Github with new changes automatically makes that new version the production execution for all endpoints without ever touching any of those platforms. Even better, the script never hits disk&ndash; it executes in memory, so a would-be attacker has no way to just edit a text file the way we outlined above.</p>
+<p>Don&rsquo;t forget, when we factor in that no one can make production changes in code without a formal code review and approval process, and even if they do we have a log of all changes with dates for forever, we&rsquo;ve taken our code game from amateur hour to a modern well oiled machine designed to scale.</p>
+<p>Whoever is writing code for your organization has a massive amount of risk and responsibility on their shoulders, and this risk/responsibility is often over looked and/or under estimated due to lack of understanding from leadership, or just lack of knowledge on better ways to safeguard this power and risk. This kind of structure we&rsquo;ve outlined today isn&rsquo;t just important, it&rsquo;s required, and I would go as far as to say it&rsquo;s irresponsible to continue without changing your code storage to Github.</p>
+<p>Stay tuned for more blogs on Github best practices!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/powershell/">Powershell</a></li>
+      <li><a href="http://localhost:1313/tags/windows/">Windows</a></li>
+      <li><a href="http://localhost:1313/tags/scripting/">Scripting</a></li>
+      <li><a href="http://localhost:1313/tags/it/">IT</a></li>
+    </ul>
+  </footer>(comments go here)
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">byteMyCache</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+baseURL: https://sethbrasile.com/
+languageCode: en-us
+title: byteMyCache
+theme: ["PaperMod"]
+
+params:
+  author: "Seth Brasile"
+  comments: true
+  profileMode:
+    enabled: true
+    title: byteMyCache
+    subtitle: Web, Infrastructure, Devops, Automation, Homelab
+    keywords: Web, Infrastructure, Devops, Automation, Homelab
+    imageUrl: "bytemycachelogo.svg"
+    imageTitle: "Byte My Cache Logo"
+    imageWidth: 256
+    imageHeight: 258
+    defaultTheme: dark
+    buttons:
+      - name: Posts
+        url: "/posts"
+      - name: Categories
+        url: "/categories"
+      - name: Tags
+        url: "/tags"
+
+  socialIcons:
+    - name: "Github"
+      url: "https://github.com/sethbrasile"
+
+  assets:
+    theme_color: #172F3E
+    msapplication_TileColor: #172F3E
+
+menu:
+  main:
+    - identifier: posts
+      name: posts
+      url: /posts/
+      weight: 1
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+    - identifier: about
+      name: about
+      url: /about/
+      weight: 30
+    - identifier: contact
+      name: contact
+      url: /contact/
+      weight: 40
+    - identifier: authors
+      name: authors
+      url: /authors/
+      weight: 40
+    # - identifier: example
+    #   name: example.org
+    #   url: https://example.org
+    #   weight: 30

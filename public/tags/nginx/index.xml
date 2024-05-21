@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Nginx on byteMyCache</title>
+    <link>http://localhost:1313/tags/nginx/</link>
+    <description>Recent content in Nginx on byteMyCache</description>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 22 Apr 2024 11:38:01 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Protect Your Services with an Immutable Reverse Proxy, Fail2Ban, and Cloudflare (Part 1)</title>
+      <link>http://localhost:1313/posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-1/</link>
+      <pubDate>Mon, 22 Apr 2024 11:38:01 -0500</pubDate>
+      <guid>http://localhost:1313/posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-1/</guid>
+      <description>If you want to skip the intro and disclaimers and get right to the meat of part 1, you can skip to that here.
+If you&amp;rsquo;re looking for the tl;dr step-by-step guide, you can skip to part 2 here (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we&amp;rsquo;ll be using).
+If you&amp;rsquo;re looking for a guide on how to set up an enterprise-grade firewall with pfSense, you can skip to part 3 here.</description>
+    </item>
+    <item>
+      <title>Protect Your Services with an Immutable Reverse Proxy, Fail2Ban, and Cloudflare (Part 2)</title>
+      <link>http://localhost:1313/posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/</link>
+      <pubDate>Mon, 22 Apr 2024 11:38:01 -0500</pubDate>
+      <guid>http://localhost:1313/posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/</guid>
+      <description>If you missed part 1, I highly recommend reading through it first to understand the concepts and theory behind the tools we&amp;rsquo;ll be using. You can jump back to part 1 here.
+Step-by-Step Guide Prerequisites Free Cloudflare account Public IP address Domain name Hopefully from Cloudflare.. It will make your life easier but it&amp;rsquo;s not necessary, you can use any domain registrar as long as you change your nameservers to Cloudflare.</description>
+    </item>
+    <item>
+      <title>Protect Your Services with an Immutable Reverse Proxy, Fail2Ban, and Cloudflare (Part 3)</title>
+      <link>http://localhost:1313/posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/</link>
+      <pubDate>Mon, 22 Apr 2024 11:38:01 -0500</pubDate>
+      <guid>http://localhost:1313/posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/</guid>
+      <description>If you missed part 1, I highly recommend reading through it first to understand the concepts and theory behind the tools we&amp;rsquo;ll be using, and this part doesn&amp;rsquo;t make a lot of sense without part 2. Jump back to part 1 or part 2.
+Bonus Topic: Setting up an enterprise-grade firewall with pfSense I won&amp;rsquo;t be going into too much detail here, there is loads of information about this already on the internet, but I wanted to give you a brief overview of how to set up a pfSense firewall, and provide some resources to get you started.</description>
+    </item>
+  </channel>
+</rss>

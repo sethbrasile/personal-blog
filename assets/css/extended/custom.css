@@ -1,0 +1,16 @@
+.dark, body.dark, body.list.dark {
+  background-color: #172f3e;
+}
+
+.dark .post-entry, .dark .terms-tags a {
+  background-color: #2B2629;
+  border: none;
+}
+
+.terms-tags a {
+  padding: 3px 16px 10px;
+}
+
+.entry-content {
+  color: var(--primary)
+}

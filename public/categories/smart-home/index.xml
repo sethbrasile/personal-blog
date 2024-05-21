@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Smart Home on byteMyCache</title>
+    <link>http://localhost:1313/categories/smart-home/</link>
+    <description>Recent content in Smart Home on byteMyCache</description>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Jul 2023 12:57:56 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/smart-home/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fix a Homepod Mini That Wont Turn On</title>
+      <link>http://localhost:1313/posts/fix-a-homepod-mini-that-wont-turn-on/</link>
+      <pubDate>Wed, 12 Jul 2023 12:57:56 -0500</pubDate>
+      <guid>http://localhost:1313/posts/fix-a-homepod-mini-that-wont-turn-on/</guid>
+      <description>I recently faced 3 broken homepod minis, all bought at different times (so different ages), all with the same problem: they would not turn on.
+I tried everything I could find online, and nothing worked. I was about to give up and throw them away, but just as I was carrying the first to the trash can, I decided to try one more thing that I&amp;rsquo;ve seen generally work for various electronic devices (like laptops), but not suggested anywhere for these.</description>
+    </item>
+  </channel>
+</rss>

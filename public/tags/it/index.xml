@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>IT on byteMyCache</title>
+    <link>http://localhost:1313/tags/it/</link>
+    <description>Recent content in IT on byteMyCache</description>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 18 Jul 2023 09:23:57 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/it/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Powershell Code Delivery</title>
+      <link>http://localhost:1313/posts/powershell-code-delivery/</link>
+      <pubDate>Tue, 18 Jul 2023 09:23:57 -0500</pubDate>
+      <guid>http://localhost:1313/posts/powershell-code-delivery/</guid>
+      <description>In todays blog we&amp;rsquo;re going to dive into the realm of delivering and managing Powershell code. The IT sector has often overlooked the standards for code management and delivery that the developer community has established, opting instead for outdated methodologies. These practices are not only challenging to manage, but also prove ineffective in most modern situations. Worse, these methods leave room for exploit via local code storage. We&amp;rsquo;re going to get into what some of those antiquated methods look like that you may be using, why they&amp;rsquo;re &amp;ldquo;bad&amp;rdquo;, then present scalable and easier to manage solutions, and talk through how to implement these practices in your organization.</description>
+    </item>
+    <item>
+      <title>Fixing Throw in Powershell</title>
+      <link>http://localhost:1313/posts/fixing-throw-in-powershell/</link>
+      <pubDate>Fri, 03 Feb 2023 12:09:50 -0600</pubDate>
+      <guid>http://localhost:1313/posts/fixing-throw-in-powershell/</guid>
+      <description>This is going to be a short post because I&amp;rsquo;m only reiterating what another blogger has already written. I&amp;rsquo;m reiterating here because more people should understand this.
+If you&amp;rsquo;ve written any amount of powershell, you probably know that Throw does not behave the way that one would expect. James&amp;rsquo; post has finally clarified something that has gotten me many times, and I always figured out a way around it, but never understood exactly what was happening.</description>
+    </item>
+    <item>
+      <title>Avoiding Escape Hell in Powershell</title>
+      <link>http://localhost:1313/posts/avoiding-escape-hell-in-powershell/</link>
+      <pubDate>Mon, 19 Dec 2022 15:59:56 -0600</pubDate>
+      <guid>http://localhost:1313/posts/avoiding-escape-hell-in-powershell/</guid>
+      <description>I&amp;rsquo;ve got a question for you: When working on efficiently managing consistency and security across any more than a small handful of Windows machines, how often do you end your day feeling like you&amp;rsquo;ve been dragged through the very bowels of hell?
+As an IT professional working daily on writing scalable powershell code, one of the most painful parts of the job is developing code that switches context. For example, if you&amp;rsquo;re writing a powershell script that needs to be passed into a powershell session through CMD for one reason or another.</description>
+    </item>
+  </channel>
+</rss>
