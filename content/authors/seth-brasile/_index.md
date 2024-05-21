@@ -1,8 +1,9 @@
 ---
 name: Seth Brasile
-photo: '/images/sethbrasile_profile.webp'
 comments: false
 author: " "
+# cover:
+#   image: '/images/SethBrasileCaricature.png'
 ---
 
 # Seth Brasile

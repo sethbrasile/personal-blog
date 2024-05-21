@@ -8,6 +8,6 @@ comments = false
 
 I don't use _any_ social media, but you can find me on GitHub or send me an email:
 
-seth@sethbrasile.com
+seth@bytemycache.com
 
 https://github.com/sethbrasile

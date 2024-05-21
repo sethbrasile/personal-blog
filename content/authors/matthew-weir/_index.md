@@ -1,6 +1,7 @@
 ---
 name: Matthew Weir
 photo: '/images/matthewweir_profile.webp'
+draft: true
 comments: false
 author: " "
 ---
