@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     src: "https://giscus.app/client.js",
     "data-repo": "sethbrasile/personal-blog",
     "data-repo-id": "R_kgDOL-1KBg",
-    "data-category-id": "misc",
+    "data-category-id": "General",
     "data-mapping": "pathname",
     "data-strict": "1",
     "data-reactions-enabled": "1",
@@ -53,24 +53,23 @@ document.addEventListener('DOMContentLoaded', function () {
 	let divToAdd = document.querySelector('.giscus-comments')
 
 	// Inject script when user clicks the `details` element
-	let
-		detailsGiscus = document.getElementById('data-comments'),
-		commentsLegend = document.getElementById('legend-comments')
+	let detailsGiscus = document.getElementById('data-comments')
+		// commentsLegend = document.getElementById('legend-comments')
 	detailsGiscus.addEventListener("toggle", toggleDetails)
 	function toggleDetails() {
 		divToAdd.appendChild(giscusScript)
-		// There is no concept of hiding the comments after showing them right now
-    // if (commentsLegend.innerHTML === 'View comments') {
-		// 	commentsLegend.innerHTML = 'Hide comments'
-		// } else {
-		// 	commentsLegend.innerHTML = 'View comments'
-		// }
+	// 	// There is no concept of hiding the comments after showing them right now
+  //   // if (commentsLegend.innerHTML === 'View comments') {
+	// 	// 	commentsLegend.innerHTML = 'Hide comments'
+	// 	// } else {
+	// 	// 	commentsLegend.innerHTML = 'View comments'
+	// 	// }
 	}
 	// Update giscus theme when theme switcher is clicked
-	const buttonLight = document.getElementById("lightMode")
-	const buttonAuto = document.getElementById("autoMode")
-	const buttonDark = document.getElementById("darkMode")
-	buttonLight.addEventListener('click', setGiscusTheme)
-	buttonAuto.addEventListener('click', setGiscusTheme)
-	buttonDark.addEventListener('click', setGiscusTheme)
+	// const buttonLight = document.getElementById("sun")
+	// // const buttonAuto = document.getElementById("autoMode")
+	// const buttonDark = document.getElementById("moon")
+	// buttonLight.addEventListener('click', setGiscusTheme)
+	// // buttonAuto.addEventListener('click', setGiscusTheme)
+	// buttonDark.addEventListener('click', setGiscusTheme)
 })
