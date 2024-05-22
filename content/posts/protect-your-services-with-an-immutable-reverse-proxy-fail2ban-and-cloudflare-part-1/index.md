@@ -1,6 +1,6 @@
 ---
 title: Protect Your Services with an Immutable Reverse Proxy, Fail2Ban, and Cloudflare (Part 1)
-date: 2024-04-22T11:38:01-05:00
+date: 2024-05-21T21:38:00-05:00
 author: [Seth Brasile]
 tags: [coreos, nginx, containers, immutable infrastructure, homelab, cybersecurity, cloudflare]
 categories: [Web Services, cybersecurity]
@@ -142,7 +142,7 @@ Cloudflare is a cloud-based security service that provides protection against [D
 
 I'm not sure if I can even describe this operating system in a way that does it any justice.. I'll try, but you should go search around and watch some videos on how this stuff works, it's incredible.
 
-Fedora CoreOS is designed to be an absolutely minimal containerized-workloads-only operating system with an immutable file system and the ability to configure it so that not only is it impossible to log in, but it's impossible to even _become_ a user. This removes basically all known attack surface from the operating system itself. It's technically possible for a skilled attacker to break out of a web process and into the container that's hosting it, but the host OS does not provide any login capability, so the most the attacker can gain access to is some config files and some logs, along with the ability to send http requests from the container. They haven't gained _any_ privilege by breaking into the web server. This is a _huge_ improvement over a traditional OS where an attacker could potentially gain root access to the host OS and then have access to _everything_ that server has access to.
+Fedora CoreOS is designed to be an absolutely minimal containerized-workloads-only operating system with an immutable file system and the ability to configure it so that not only is it impossible to log in, but it's impossible to even _become_ a user. This removes basically all known attack surface from the operating system itself. It's technically possible for a skilled attacker to break out of a web process and into the container that's hosting it, but the host OS does not provide any login capability, so the most the attacker can gain access to is reading some nginx config files and logs, along with the ability to send http requests from the container. They haven't gained _any_ privilege by breaking into the web server. This is a _huge_ improvement over a traditional OS where an attacker could potentially gain root access to the host OS and then have access to _everything_ that server has access to.
 
 Now say we're wrong and that an attacker does break out of the container and into the host OS. The host OS' file system is immutable, so they can't make any changes. They can't edit config files, they can't install new software, they can't even change the time on the server. They still haven't gained any privilege.
 
@@ -162,8 +162,7 @@ Now on to the guide in [part 2]!
 
 --> Head to [part 3] to learn how to set up an enterprise-grade firewall with pfSense.
 
-<!-- [part 2]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/
-[part 3]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/ -->
+[part 2]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/
+<!-- [part 3]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/ -->
 
-[part 2]: /coming-soon
 [part 3]: /coming-soon
