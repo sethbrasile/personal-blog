@@ -14,3 +14,10 @@
 .entry-content {
   color: var(--primary)
 }
+
+
+@media screen and (max-width: 768px) {
+  .profile img {
+    height: auto;
+  }
+}

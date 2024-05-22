@@ -13,8 +13,8 @@ params:
     keywords: Web, Infrastructure, Devops, Automation, Homelab
     imageUrl: "bytemycachelogo.svg"
     imageTitle: "Byte My Cache Logo"
-    imageWidth: 256
-    imageHeight: 258
+    imageWidth: 512
+    imageHeight: 512
     defaultTheme: dark
     buttons:
       - name: Posts
