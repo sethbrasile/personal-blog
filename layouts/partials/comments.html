@@ -1,1 +1,14 @@
-(comments not implemented yet)
+<details class="comments nScrHidden" id="data-comments" style="padding-top: 2em;">
+	<summary aria-label="Toggle for viewing or hiding comments">
+  <span>Show Comments (may not work, currently testing)</span>
+	<div class="giscus-comments" id="giscus-comments">
+		{{- $jsComments := resources.Get "js/comments-giscus.js" | resources.Minify | fingerprint -}}
+		<script
+			src="{{ $jsComments.RelPermalink }}"
+			integrity="{{ $jsComments.Data.Integrity }}"
+			defer
+		>
+		</script>
+	</div>
+</details>
+<noscript><p class="ctr legal">Commenting feature requires activation of JavaScript.</p></noscript>
