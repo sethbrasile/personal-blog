@@ -163,7 +163,8 @@ Now on to the guide in [part 2]!
 
 --> Head to [part 3] to learn how to set up an enterprise-grade firewall with pfSense.
 
-[part 2]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/
+<!-- [part 2]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/ -->
 <!-- [part 3]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/ -->
 
+[part 2]: /coming-soon
 [part 3]: /coming-soon
