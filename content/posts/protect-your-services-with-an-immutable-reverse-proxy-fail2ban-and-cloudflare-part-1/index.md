@@ -61,7 +61,7 @@ There are "dark web" marketplaces filled with information about vulnerabilities,
 
 ## DDoS Attacks
 
-A Distributed Denial of Service (DDoS) attack is a type of cyber attack that aims to overwhelm a web service with a flood of traffic, rendering it unavailable to legitimate users. DDoS attacks can be launched by botnets, which are networks of compromised devices controlled by a single attacker. To protect against DDoS attacks, organizations can use a cloud-based security service like [Cloudflare](#cloudflare-ddos-protection-waf-cdn-ssltls), which can absorb the load of a DDoS attack and filter out malicious traffic before it reaches the web service, ensuring that legitimate users can access the site. If a service like [Cloudflare](#cloudflare-ddos-protection-waf-cdn-ssltls) is doing its job, you won't even know that a DDoS attack is happening.
+A Distributed Denial of Service (DDoS) attack is a type of cyber attack that aims to overwhelm a web service with a flood of traffic, rendering it unavailable to legitimate users. DDoS attacks can be launched by botnets, which are networks of compromised devices controlled by a single attacker. To protect against DDoS attacks, organizations can use a cloud-based security service like [Cloudflare](#cloudflare-ddos-protection-waf-cdn-ssltls), which can absorb the load of a DDoS attack and filter out malicious traffic before it reaches the web service, ensuring that legitimate users can access the site. If a service like [Cloudflare](#cloudflare-ddos-protection-waf-cdn-ssltls) is doing its job, you won't even know that a DDoS attack is happening (this is a good thing).
 
 # Understanding the Tools at our Disposal
 
