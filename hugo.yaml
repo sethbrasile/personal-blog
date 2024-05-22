@@ -27,6 +27,8 @@ params:
   socialIcons:
     - name: "Github"
       url: "https://github.com/sethbrasile"
+    - name: "Youtube"
+      url: "https://youtube.com/@byteMyCache"
 
   assets:
     theme_color: #172F3E
