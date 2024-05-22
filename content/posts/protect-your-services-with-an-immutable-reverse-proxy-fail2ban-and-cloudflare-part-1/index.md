@@ -81,7 +81,7 @@ Or maybe we're talking about a new vulnerability that was just discovered in a b
 
 The way we protect against this is by not ending up on any lists by hiding as much information about our stack as possible, by keeping our software as up to date as we can, by running IDS/IPS software on our [Firewall](#enterprise-grade-firewall) and by employing [Cloudfare's WAF](#cloudflare-ddos-protection-waf-cdn-ssltls). If for some reason we can't just be up-to-date, these stacked layers are our best shot at protecting against this type of attack.
 
-Don't discredit the leg-up that we gain just by hiding information about our servers. While it's true that security through obscurity is no security at all; the more we can slow down the attacker, the better chance we have of fixing the situation before the attacker finds us.
+Don't discredit the leg-up that we gain just by hiding information about our servers. While it's true that security through obscurity is no security at all; the more hidden we are, the better chance we have of fixing the situation before the attacker finds us. We should gladly accept any chance we have at slowing down or staying hidden the attacker.
 
 # Understanding the Tools at our Disposal
 
