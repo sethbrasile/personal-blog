@@ -53,7 +53,7 @@ The way we mitigate this attacker is first and foremost by avoiding [ending up o
 
 ## The Attacker's Tools
 
-New vulnerabilities are discovered every day and attackers are constantly scanning the internet for vulnerable systems. They use automated tools to scan for open ports, identify services running on those ports, and exploit known vulnerabilities in those services or the servers they're hosted on. They also use brute-force attacks to guess passwords, launch DDoS attacks to overwhelm servers, and deploy malware to compromise systems.
+New vulnerabilities are discovered every day and attackers are constantly scanning the internet for vulnerable systems. They use automated tools to scan for open ports, identify services running on those ports, and exploit known vulnerabilities in those services or the servers they're hosted on. They also use brute-force attacks to guess passwords, launch [DDoS](#ddos-attacks) attacks to overwhelm servers, and deploy malware to compromise systems.
 
 There are "dark web" marketplaces filled with information about vulnerabilities, exploits, and tools that attackers can use to compromise systems. These tools are often sold or rented to attackers, making it easier for them to launch attacks without having to develop their own tools.
 
@@ -61,7 +61,7 @@ There are "dark web" marketplaces filled with information about vulnerabilities,
 
 ## DDoS Attacks
 
-A Distributed Denial of Service (DDoS) attack is a type of cyber attack that aims to overwhelm a web service with a flood of traffic, rendering it unavailable to legitimate users. DDoS attacks can be launched by botnets, which are networks of compromised devices controlled by a single attacker. To protect against DDoS attacks, organizations can use a cloud-based security service like Cloudflare, which can absorb the load of a DDos attack and filter out malicious traffic before it reaches the web service, ensuring that legitimate users can access the site. If a service like Cloudflare is doing its job, you won't even know that a DDoS attack is happening.
+A Distributed Denial of Service (DDoS) attack is a type of cyber attack that aims to overwhelm a web service with a flood of traffic, rendering it unavailable to legitimate users. DDoS attacks can be launched by botnets, which are networks of compromised devices controlled by a single attacker. To protect against DDoS attacks, organizations can use a cloud-based security service like [Cloudflare](#cloudflare-ddos-protection-waf-cdn-ssltls), which can absorb the load of a DDoS attack and filter out malicious traffic before it reaches the web service, ensuring that legitimate users can access the site. If a service like [Cloudflare](#cloudflare-ddos-protection-waf-cdn-ssltls) is doing its job, you won't even know that a DDoS attack is happening.
 
 # Understanding the Tools at our Disposal
 
@@ -91,9 +91,9 @@ By leveraging "LetsEncrypt" or "ZeroSSL" and handling SSL/TLS encryption at the 
 
 ### Load Balancing and Traffic Control
 
-It may seem at first that load balancing and traffic control are not security features, but they are. It has been proven that [DDoS attacks are commonly coupled with other types of attacks](https://www.corero.com/theft-and-ddos-attacks-go-hand-in-hand/) that actually do result in a data breach. Basically, while you're busy reacting to the DDoS attack, you're ignoring other alerts or not receiving them b/c critical infrastructure is down, and the attacker is happy-as-a-clam working to get into your network. The more robust your stack is, the more likely you are to be able to handle a DDoS attack and still be able to respond to other alerts.
+It may seem at first that load balancing and traffic control are not security features, but they are. It has been proven that [DDoS attacks are commonly coupled with other types of attacks](https://www.corero.com/theft-and-ddos-attacks-go-hand-in-hand/) that actually do result in a data breach. Basically, while you're busy reacting to the [DDoS](#ddos-attacks) attack, you're ignoring other alerts or not receiving them b/c critical infrastructure is down, and the attacker is happy-as-a-clam working to get into your network. The more robust your stack is, the more likely you are to be able to handle a [DDoS](#ddos-attacks) attack and still be able to respond to other alerts.
 
-A reverse proxy can absorb a huge amount of garbage requests (a common DDos tactic) and distribute seemingly-legitimate incoming traffic across multiple application servers, ensuring that no single server is overwhelmed and that no Single-Point-of-Failure exists (in the app stack.. the reverse proxy is still a SPoF but we will have moved the moniker of "SPoF" to a much more robust device with a smaller responsibility, which reduces the chances that a failure occurs). This is crucial for maintaining availability during DDoS attacks or other high-traffic events. By spreading the load across multiple servers, a reverse proxy can ensure that the web service remains responsive and available to legitimate users and reduce the likelihood that an attacker achieves their goal.
+A reverse proxy can absorb a huge amount of garbage requests (a common [DDoS](#ddos-attacks) tactic) and distribute seemingly-legitimate incoming traffic across multiple application servers, ensuring that no single server is overwhelmed and that no Single-Point-of-Failure exists (in the app stack.. the reverse proxy is still a SPoF but we will have moved the moniker of "SPoF" to a much more robust device with a smaller responsibility, which reduces the chances that a failure occurs). This is crucial for maintaining availability during [DDoS](#ddos-attacks) attacks or other high-traffic events. By spreading the load across multiple servers, a reverse proxy can ensure that the web service remains responsive and available to legitimate users and reduce the likelihood that an attacker achieves their goal.
 
 We won't be discussing load balancing in this post specifically, but it's worth mentioning, and it's also worth mentioning that a reverse proxy can also help with caching and optimizing content delivery, further reducing the load and response time from your backend servers.
 
@@ -110,10 +110,10 @@ Read more about Fail2Ban [here](https://en.wikipedia.org/wiki/Fail2ban)
 
 ## Cloudflare (DDoS Protection, WAF, CDN, SSL/TLS)
 
-Cloudflare is a cloud-based security service that provides protection against DDoS attacks, malware, and other online threats. By routing web traffic through Cloudflare’s global network, organizations can benefit from:
+Cloudflare is a cloud-based security service that provides protection against [DDoS](#ddos-attacks) attacks, malware, and other online threats. By routing web traffic through Cloudflare’s global network, organizations can benefit from:
 
 1. **Obscured Origin IP**: Cloudflare acts as an additional reverse proxy, concealing the origin IP address of the web services and preventing attackers from directly targeting the servers, enhancing security and privacy.
-2. **DDoS Mitigation**: Cloudflare’s network absorbs and filters out malicious traffic, preventing DDoS attacks from overwhelming the web services and ensuring that legitimate users can access the site.
+2. **DDoS Mitigation**: Cloudflare’s network absorbs and filters out malicious traffic, preventing [DDoS](#ddos-attacks) attacks from overwhelming the web services and ensuring that legitimate users can access the site.
 3. **Web Application Firewall (WAF)**: Cloudflare’s WAF protects against common web application vulnerabilities, such as SQL injection and cross-site scripting, by inspecting incoming traffic and blocking malicious requests.
 4. **Content Delivery Network (CDN)**: Cloudflare’s CDN caches static content and optimizes delivery, reducing latency and improving performance for users, and further reducing the load from your application server and internal reverse proxy.
 5. **SSL/TLS Encryption**: Cloudflare offers free SSL/TLS certificates and enforces secure connections between clients and the web services, enhancing data security and privacy. We will be setting up automated cert provisioning with ZeroSSL, but it's worth mentioning that we will end up with full encryption from the client to Cloudflare, and then from Cloudflare to your reverse proxy.
