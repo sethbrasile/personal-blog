@@ -3,6 +3,7 @@ title = 'About'
 date = 2024-04-22T12:22:27-05:00
 draft = false
 comments = false
+searchHidden = true
 +++
 
 To some extent, this is just my ([Seth Brasile](/authors/seth-brasile)) personal blog. I write about software development, programming languages, and computer science. I also write about things that generally interest me such as general technology, science, music production, and making stuff.

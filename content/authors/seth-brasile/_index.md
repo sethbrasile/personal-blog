@@ -1,6 +1,8 @@
 ---
 name: Seth Brasile
 comments: false
+draft: false
+searchHidden: true
 author: " "
 # cover:
 #   image: '/images/SethBrasileCaricature.png'

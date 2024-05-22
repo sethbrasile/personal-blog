@@ -16,6 +16,7 @@ params:
     imageWidth: 512
     imageHeight: 512
     defaultTheme: dark
+    showShareButtons: true
     buttons:
       - name: Posts
         url: "/posts"
@@ -29,6 +30,10 @@ params:
       url: "https://github.com/sethbrasile"
     - name: "Youtube"
       url: "https://youtube.com/@byteMyCache"
+    - name: "Phone"
+      url: "/contact"
+    - name: "123rf"
+      url: "/authors/seth-brasile"
 
   assets:
     theme_color: #172F3E
@@ -52,15 +57,25 @@ menu:
       name: about
       url: /about/
       weight: 30
-    - identifier: contact
-      name: contact
-      url: /contact/
-      weight: 40
-    - identifier: authors
-      name: authors
-      url: /authors/
+    # - identifier: contact
+    #   name: contact
+    #   url: /contact/
+    #   weight: 40
+    # - identifier: authors
+    #   name: authors
+    #   url: /authors/
+    #   weight: 40
+    - identifier: search
+      name: search
+      url: /search/
       weight: 40
     # - identifier: example
     #   name: example.org
     #   url: https://example.org
     #   weight: 30
+
+outputs:
+  home:
+  - HTML
+  - RSS
+  - JSON

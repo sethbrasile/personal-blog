@@ -1,7 +1,8 @@
 ---
 name: Noah Weir
 comments: false
-draft: true
+draft: false
+searchHidden: true
 author: " "
 ---
 
