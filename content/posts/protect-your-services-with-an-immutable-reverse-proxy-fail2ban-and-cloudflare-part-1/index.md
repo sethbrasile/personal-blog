@@ -5,7 +5,7 @@ author: [Seth Brasile]
 tags: [coreos, nginx, containers, immutable infrastructure, homelab, cybersecurity, cloudflare]
 categories: [Web Services, cybersecurity]
 showToc: true
-draft: true
+draft: false
 ---
 
 >If you're looking for the tl;dr step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).
@@ -142,5 +142,8 @@ Now on to the guide in [part 2]!
 
 --> Head to [part 3] to learn how to set up an enterprise-grade firewall with pfSense.
 
-[part 2]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/
-[part 3]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/
+<!-- [part 2]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/
+[part 3]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/ -->
+
+[part 2]: /coming-soon
+[part 3]: /coming-soon
