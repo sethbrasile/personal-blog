@@ -4,6 +4,7 @@ date: 2024-04-22T11:38:01-05:00
 author: [Seth Brasile]
 tags: [coreos, nginx, containers, immutable infrastructure, homelab, cybersecurity, cloudflare]
 categories: [Web Services, cybersecurity]
+showToc: true
 draft: true
 ---
 
@@ -30,6 +31,8 @@ draft: true
 
 ## Let's do it!
 
+
+The basic gist of how we install Fedora CoreOS is by creating a config file that describes the containerized services we want to run, then we pxe boot into the CoreOS installer which reads the config, downloads the latest OS image, applies our config, then boots.
 
 ## Conclusion
 

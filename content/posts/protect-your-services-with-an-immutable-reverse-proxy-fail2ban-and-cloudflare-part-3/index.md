@@ -4,6 +4,7 @@ date: 2024-04-22T11:38:01-05:00
 author: [Seth Brasile]
 tags: [coreos, nginx, containers, immutable infrastructure, homelab, cybersecurity, cloudflare]
 categories: [Web Services, cybersecurity]
+showToc: true
 draft: true
 ---
 

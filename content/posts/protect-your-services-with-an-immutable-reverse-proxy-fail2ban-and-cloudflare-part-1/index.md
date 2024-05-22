@@ -4,16 +4,13 @@ date: 2024-04-22T11:38:01-05:00
 author: [Seth Brasile]
 tags: [coreos, nginx, containers, immutable infrastructure, homelab, cybersecurity, cloudflare]
 categories: [Web Services, cybersecurity]
+showToc: true
 draft: true
 ---
 
----
+>If you're looking for the tl;dr step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).
 
-If you want to skip the intro and disclaimers and get right to the meat of part 1, you can [skip to that here](#understanding-the-threat).
-
-If you're looking for the tl;dr step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).
-
-If you're looking for a guide on how to set up an enterprise-grade firewall with pfSense, you can [skip to part 3 here][part 3].
+>If you're looking for a guide on how to set up an enterprise-grade firewall with pfSense, you can [skip to part 3 here][part 3].
 
 ---
 
@@ -34,7 +31,7 @@ _Disclaimer for the cybersecurity expert: I'm not one of you and I don't have yo
 
 # Understanding the Threat
 
-When we're thinking about securing our web services, we need to think about the types of attackers that we're trying to protect against. There are many different types of attackers, but for the purposes of this post, we'll be focusing on two main types: the random attacker and the targeted attacker. We'll also be discussing the tools that these attackers use to compromise systems and the ways in which we can protect against them.
+When we're thinking about securing our web services, we need to think about the types of attackers that we're trying to protect against. There are many different types of attackers, but for the purposes of this post, we'll be generalizing them into two categories: the **random** attacker and the **targeted** attacker. We'll also be discussing the tools that these attackers use to compromise systems and the ways in which we can protect against them.
 
 It's important that we think through the types of attackers that we're trying to protect against. Think through their perspective, what information they have available to them, what tools they might have at their disposal, and what their motivations might be.
 
@@ -42,7 +39,7 @@ It's important that we think through the types of attackers that we're trying to
 
 Generally speaking, just like irl thieves, attackers are looking for _easy_ targets, so the more difficult you make it for them, the more likely they are to move on to the next target.
 
-Let's work through this scenario: An attacker has found that your IP address has some ports opened. They may have found your IP address by probing DNS records and found that GoDaddy URL that you pointed at your IP address last year, or maybe they did a scan across a public IP range and found that you're responding in some way on a port or two (remember that "hanging" or "not responding" is just as good as a response for these purposes). Or maybe they found your IP address in a data breach or in [Shodan](https://www.shodan.io) and are just trying to see if you're still vulnerable.
+Let's work through this scenario: An attacker has found that your IP address has some ports opened. They may have found your IP address by probing DNS records and found that GoDaddy URL that you pointed at your IP address last year, or maybe they did a scan across a public IP range and found that you're responding in some way on a port or two (remember that depending on the methods available to this specific attacker, "hanging" or "not responding" can be just as good as a response, so we need to be careful in the _way_ in which we don't respond). Or maybe they found your IP address in a data breach or in [Shodan](https://www.shodan.io) and are just trying to see if you're still vulnerable.
 
 This attacker is likely to be using automated tools to scan for open ports, identify services running on those ports, and exploit known vulnerabilities in those services or the servers they're hosted on. They're not specifically targeting you, they're just looking for easy targets. They're likely to move on to the next target if they encounter any resistance or if they find that you're not an easy target. They run a few scripts against your IP, they don't work, they move on.
 
@@ -68,21 +65,27 @@ A Distributed Denial of Service (DDoS) attack is a type of cyber attack that aim
 
 # Understanding the Tools at our Disposal
 
+## Enterprise Grade Firewall
+
+We will dive much deeper on this topic in [part 3] of this series, but it's worth mentioning here: We cannot secure our web services without a real enterprise grade firewall. The good news here is that this is likely _free_ or _very cheap_!
+
+I previously mentioned that it's important that we _don't respond_ in very specific ways in order to ward off the random scans that bad actors all over the internet use. By _only even considering connections from cloudflare_, we look just like any old completely closed and NATed IP address that's not worth a 2nd look. This is only possible with an Enterprise grade firewall.
+
 ## Reverse Proxy
 
 A reverse proxy acts as a middleman between the internet and your web server, forwarding client requests to the server and concealing the server's existence and characteristics (and therefore, concealing information about potential vulnerabilities). This setup provides several security benefits, including anonymity and obscurity, load balancing and traffic control, ability to inject additional tooling into the web stack (even on legacy applications) and centralized SSL/TLS management. Let's break these down:
 
 ### Anonymity and Obscurity
 
-By concealing the existence and characteristics of the backend servers, a reverse proxy makes it harder for attackers to exploit specific server vulnerabilities. This is because the reverse proxy acts as a shield, preventing attackers from directly interacting with the backend servers. This is especially important when it comes to protecting against zero-day vulnerabilities or other unknown exploits.
+By concealing the existence and characteristics of the backend servers, a reverse proxy makes it harder for attackers to exploit specific server vulnerabilities. This is because the reverse proxy acts as a shield, preventing attackers from directly interacting with the backend servers. This is especially important when it comes to protecting against zero-day vulnerabilities or other unknown exploits that could be present on the backend system.
 
 ### Ability to Inject Additional Tooling
 
 A reverse proxy can be used to inject additional security tooling into the web stack, such as Web Application Firewalls (WAFs), Intrusion Detection Systems (IDS), and other security mechanisms. This allows you to add an extra layer of protection to your web services without modifying the underlying applications, making it easier to secure legacy applications or third-party services. This is especially useful when you're hosting a web service that you don't have control over, or when you're hosting a web service that you don't have the ability to modify (like a third-party service).
 
-We will be discussing Fail2Ban and WAF in this post, but it's worth mentioning that you could also use IDS, or other security mechanisms in this layer. IDS should really be integrated into your (hopefully enterprise-grade) firewall (if you don't have an enterprise grade firewall, don't worry, we'll discuss how you can have your own enterprise-grade firewall in [part 3]).
+We will be discussing Fail2Ban and WAF in this post, but it's worth mentioning that you could also use IDS, or other security mechanisms in this layer. IDS should really be integrated into your firewall.
 
-### Centralized SSL/TLS Management
+### Centralized and Automated SSL/TLS (free automated certs!)
 
 By leveraging "LetsEncrypt" or "ZeroSSL" and handling SSL/TLS encryption at the reverse proxy level, you can simplify and automate certificate management for all of your domains and subdomains at once and ensure encrypted connections between clients and the web server without any interaction from you (beyond initial config) and without spending a dollar. This enhances data security during transmission and helps protect sensitive information from eavesdropping or interception. Centralized SSL/TLS management also allows you to ensure consistently rotated certificates exist across all your services. Gone are the days of "Hey, I'm getting a security warning when I visit your site!" and "I swear, I swapped out that certificate last month!"
 
@@ -98,10 +101,12 @@ We won't be discussing load balancing in this post specifically, but it's worth 
 
 Fail2Ban is an intrusion prevention software that monitors log files for suspicious activity and automatically adjusts firewall rules to block potentially malicious IP addresses. When deployed alongside a reverse proxy, Fail2Ban offers several advantages:
 
-1. **Automated Response to Threats**: Fail2Ban swiftly detects and blocks brute-force attempts, SSH attacks, and other common threats, significantly reducing the window of opportunity for attackers.
+1. **Automated Response to Threats**: Fail2Ban swiftly detects and blocks all known brute-force methods, sql injection attacks, SSH attacks, and other common threats, significantly reducing the window of opportunity for attackers.
 2. **Customizable Security Policies**: Administrators can tailor Fail2Ban’s rules to suit their specific security needs, allowing for a dynamic defense mechanism that evolves with the threat landscape.
 3. **Resource Efficiency**: By preventing repeated access attempts from known malicious sources, Fail2Ban reduces unnecessary load on the web services, ensuring that resources are available for legitimate users.
 4. **Reduced Chance of False Positive**: When Fail2Ban blocks an IP address, it only does so temporarily, allowing legitimate users to regain access after a specified period, minimizing the risk of false positives permanently affecting user experience. This may seem like a negative, but a temporary block is actually good enough to thwart any attacker because they're likely to move on to the next target after a few failed attempts. Even if this is a targeted attack and they don't move on, _just slowing them down_ actually makes it impossible for success to ever be possible.
+
+Read more about Fail2Ban [here](https://en.wikipedia.org/wiki/Fail2ban)
 
 ## Cloudflare: A Shield Against DDoS Attacks
 
@@ -115,7 +120,15 @@ Cloudflare is a cloud-based security service that provides protection against DD
 
 ## Containers on Fedora CoreOS: The Foundation of a Secure Environment
 
-Fedora CoreOS is designed for containerized workloads, offering an immutable, updateable, and secure operating system that's optimized for running containers. Deploying reverse proxies and Fail2Ban within containers on Fedora CoreOS provides several security and operational benefits:
+I'm not sure if I can even describe this operating system in a way that does it any justice.. I'll try, but you should go search around and watch some videos on how this stuff works, it's incredible.
+
+Fedora CoreOS is designed to be an absolutely minimal containerized-workloads-only operating system with an immutable file system and the ability to configure it so that not only is it impossible to log in, but it's impossible to even _become_ a user. This removes basically all known attack surface from the operating system itself. It's technically possible for a skilled attacker to break out of a web process and into the container that's hosting it, but the host OS does not provide any login capability, so the most the attacker can gain access to is some config files and some logs, along with the ability to send http requests from the container. They haven't gained _any_ privilege by breaking into the web server. This is a _huge_ improvement over a traditional OS where an attacker could potentially gain root access to the host OS and then have access to _everything_ that server has access to.
+
+Now say we're wrong and that an attacker does break out of the container and into the host OS. The host OS' file system is immutable, so they can't make any changes. They can't edit config files, they can't install new software, they can't even change the time on the server. They still haven't gained any privilege.
+
+Fedora CoreOS also has automatic updates, so you can be sure that your OS is always up-to-date with the latest security patches and bug fixes. This is obviously crucial for maintaining a secure environment. The way these security updates work is completely bananas. They download a static "image" just like updating a container, then layer your configuration on top of that image and boot into it. If the anything fails, we can easily boot back into the previous image.
+
+Summing up the benefits of using containers on Fedora CoreOS for securing web services:
 
 1. **Isolation and Containment**: Containers encapsulate applications and their dependencies, limiting the potential impact of a security breach to the contained environment, thereby enhancing the overall security posture.
 2. **Rapid Deployment and Scalability**: Containers can be quickly deployed, replicated, and scaled, allowing for flexible response to varying traffic and threat levels without compromising security.
