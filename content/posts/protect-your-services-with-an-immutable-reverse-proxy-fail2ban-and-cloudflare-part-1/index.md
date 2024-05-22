@@ -126,7 +126,7 @@ Fedora CoreOS is designed to be an absolutely minimal containerized-workloads-on
 
 Now say we're wrong and that an attacker does break out of the container and into the host OS. The host OS' file system is immutable, so they can't make any changes. They can't edit config files, they can't install new software, they can't even change the time on the server. They still haven't gained any privilege.
 
-Fedora CoreOS also has automatic updates, so you can be sure that your OS is always up-to-date with the latest security patches and bug fixes. This is obviously crucial for maintaining a secure environment. The way these security updates work is completely bananas. They download a static "image" just like updating a container, then layer your configuration on top of that image and boot into it. If the anything fails, we can easily boot back into the previous image.
+Fedora CoreOS also has automatic updates, so you can be sure that your OS is always up-to-date with the latest security patches and bug fixes. This is obviously crucial for maintaining a secure environment. The way these security updates work is completely bananas. They download a static "image" just like updating a container, then layer your configuration on top of that image and boot into it. If anything fails, we can easily boot back into the previous image.
 
 Summing up the benefits of using containers on Fedora CoreOS for securing web services:
 
