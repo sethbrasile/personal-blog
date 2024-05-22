@@ -14,7 +14,7 @@ draft: false
 
 ---
 
-The idea of hosting a web service in your own home can be simultaneously exciting and absolutely horrifying... On the one hand, you'd like to learn more about web technologies and devops, learn how to create robust services, and learn how to secure them. On the other hand though, you're worried about the security implications of hosting a web service on your home network. What happens if you do this incorrectly? What happens if an attacker gets into your network due to some mistake you made?" This is where some planning and multiple layers of reverse proxy (with some baked-in security-focused tools) comes in.
+The idea of hosting a web service in your own home can be simultaneously exciting and absolutely horrifying... On the one hand, you'd like to learn more about web technologies and devops, learn how to create robust services, and learn how to secure them. On the other hand though, you're worried about the security implications of hosting a web service on your home network. What happens if you do this incorrectly? What happens if an attacker gets into your network due to some mistake you made? This is where some planning and multiple layers of reverse proxy (with some baked-in security-focused tools) comes in.
 
 We'll be discussing these topics from the perspective of a homelab, but the same principles apply to a production environment. The only difference is that in a production environment, you'd likely have more resources to throw at the problem, and you'd likely have more people to help you manage the problem. In a homelab, you're likely on your own. Learn these concepts at home and then point out to everyone at work how your home web service is much more secure than the one your employer pays for!
 
@@ -62,6 +62,26 @@ There are "dark web" marketplaces filled with information about vulnerabilities,
 ## DDoS Attacks
 
 A Distributed Denial of Service (DDoS) attack is a type of cyber attack that aims to overwhelm a web service with a flood of traffic, rendering it unavailable to legitimate users. DDoS attacks can be launched by botnets, which are networks of compromised devices controlled by a single attacker. To protect against DDoS attacks, organizations can use a cloud-based security service like [Cloudflare](#cloudflare-ddos-protection-waf-cdn-ssltls), which can absorb the load of a DDoS attack and filter out malicious traffic before it reaches the web service, ensuring that legitimate users can access the site. If a service like [Cloudflare](#cloudflare-ddos-protection-waf-cdn-ssltls) is doing its job, you won't even know that a DDoS attack is happening (this is a good thing).
+
+## Brute Force Attacks
+
+A brute force attack is basically exactly what it sounds like, though there are technically quite a few _types_ of brute force attack, but they all have one thing in common: they're trying _over and over and over_ to do the same thing, hoping to eventually get lucky.
+
+They might be trying to guess a password, or they might be trying every known SQL injection attack, or they might be trying every known exploit for a specific service.
+
+The way we protect against these attacks is by limiting the number of attempts that can be made in a specific time frame. This is where [Fail2Ban](#fail2ban-brute-force-protection) comes in. Fail2Ban notices when someone is attempting an attack like this and simply bans their IP address for a specific amount of time. Generally these types of attacks are relying on a fast CPU and a fast network connection to try as many times as possible in a short amount of time, so even a 5 minute ban is enough to make this type of attack take in the realm of thousands of years, and therefore impossible.
+
+## Known Vulnerability Attacks
+
+Attacking a known vulnerability in a specific type of web server of web application is potentially the most dangerous type of attack because it's the most likely to result in a data breach and is most likely to be targeted to some extent.
+
+You might be hosting some legacy application that must be hosted on a specific version of a specific web server, and that web server has a known vulnerability that's been known for years. This is a very dangerous situation to be in, and it's one that's very difficult to protect against.
+
+Or maybe we're talking about a new vulnerability that was just discovered in a backend application or web server that we're hosting and a patch hasn't been released yet.
+
+The way we protect against this is by not ending up on any lists by hiding as much information about our stack as possible, by keeping our software as up to date as we can, by running IDS/IPS software on our [Firewall](#enterprise-grade-firewall) and by employing [Cloudfare's WAF](#cloudflare-ddos-protection-waf-cdn-ssltls). If for some reason we can't just be up-to-date, these stacked layers are our best shot at protecting against this type of attack.
+
+Don't discredit the leg-up that we gain just by hiding information about our servers. While it's true that security through obscurity is no security at all; the more we can slow down the attacker, the better chance we have of fixing the situation before the attacker finds us.
 
 # Understanding the Tools at our Disposal
 
