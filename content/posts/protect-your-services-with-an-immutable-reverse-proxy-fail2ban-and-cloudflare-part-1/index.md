@@ -133,7 +133,7 @@ Read more about Fail2Ban [here](https://en.wikipedia.org/wiki/Fail2ban)
 
 Cloudflare is a cloud-based security service that provides protection against [DDoS](#ddos-attacks) attacks, malware, and other online threats. By routing web traffic through Cloudflare’s global network, organizations can benefit from:
 
-1. **Obscured Origin IP**: Cloudflare acts as an additional reverse proxy, concealing the origin IP address of the web services and preventing attackers from directly targeting the servers, enhancing security and privacy.
+1. **Obscured Origin IP**: Cloudflare acts as an additional reverse proxy, concealing the origin IP address of your web services and preventing attackers from directly interacting with your servers. This obscures details of your stack and hides your location.
 2. **DDoS Mitigation**: Cloudflare’s network absorbs and filters out malicious traffic, preventing [DDoS](#ddos-attacks) attacks from overwhelming the web services and ensuring that legitimate users can access the site.
 3. **Web Application Firewall (WAF)**: Cloudflare’s WAF protects against common web application vulnerabilities, such as SQL injection and cross-site scripting, by inspecting incoming traffic and blocking malicious requests.
 4. **Content Delivery Network (CDN)**: Cloudflare’s CDN caches static content and optimizes delivery, reducing latency and improving performance for users, and further reducing the load from your application server and internal reverse proxy.
