@@ -97,7 +97,7 @@ A reverse proxy can absorb a huge amount of garbage requests (a common DDos tact
 
 We won't be discussing load balancing in this post specifically, but it's worth mentioning, and it's also worth mentioning that a reverse proxy can also help with caching and optimizing content delivery, further reducing the load and response time from your backend servers.
 
-## Fail2Ban: A Guardian Against Brute-Force Attacks
+## Fail2Ban (Brute Force Protection)
 
 Fail2Ban is an intrusion prevention software that monitors log files for suspicious activity and automatically adjusts firewall rules to block potentially malicious IP addresses. When deployed alongside a reverse proxy, Fail2Ban offers several advantages:
 
@@ -108,7 +108,7 @@ Fail2Ban is an intrusion prevention software that monitors log files for suspici
 
 Read more about Fail2Ban [here](https://en.wikipedia.org/wiki/Fail2ban)
 
-## Cloudflare: A Shield Against DDoS Attacks
+## Cloudflare (DDoS Protection, WAF, CDN, SSL/TLS)
 
 Cloudflare is a cloud-based security service that provides protection against DDoS attacks, malware, and other online threats. By routing web traffic through Cloudflare’s global network, organizations can benefit from:
 
@@ -116,9 +116,9 @@ Cloudflare is a cloud-based security service that provides protection against DD
 2. **DDoS Mitigation**: Cloudflare’s network absorbs and filters out malicious traffic, preventing DDoS attacks from overwhelming the web services and ensuring that legitimate users can access the site.
 3. **Web Application Firewall (WAF)**: Cloudflare’s WAF protects against common web application vulnerabilities, such as SQL injection and cross-site scripting, by inspecting incoming traffic and blocking malicious requests.
 4. **Content Delivery Network (CDN)**: Cloudflare’s CDN caches static content and optimizes delivery, reducing latency and improving performance for users, and further reducing the load from your application server and internal reverse proxy.
-5. **SSL/TLS Encryption**: Cloudflare offers free SSL/TLS certificates and enforces secure connections between clients and the web services, enhancing data security and privacy.
+5. **SSL/TLS Encryption**: Cloudflare offers free SSL/TLS certificates and enforces secure connections between clients and the web services, enhancing data security and privacy. We will be setting up automated cert provisioning with ZeroSSL, but it's worth mentioning that we will end up with full encryption from the client to Cloudflare, and then from Cloudflare to your reverse proxy.
 
-## Containers on Fedora CoreOS: The Foundation of a Secure Environment
+## Fedora CoreOS (Immutable Host for your Containers)
 
 I'm not sure if I can even describe this operating system in a way that does it any justice.. I'll try, but you should go search around and watch some videos on how this stuff works, it's incredible.
 
