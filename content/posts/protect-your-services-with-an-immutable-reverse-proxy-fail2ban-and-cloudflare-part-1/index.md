@@ -6,6 +6,7 @@ tags: [coreos, nginx, containers, immutable infrastructure, homelab, cybersecuri
 categories: [Web Services, cybersecurity]
 showToc: true
 draft: false
+comments: false
 ---
 
 >If you're looking for the tl;dr step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).
