@@ -9,6 +9,8 @@ draft: false
 comments: false
 ---
 
+>This article is live but it is currently undergoing peer review on [reddit].
+
 >If you're looking for the tl;dr step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).
 
 >If you're looking for a guide on how to set up an enterprise-grade firewall with pfSense, you can [skip to part 3 here][part 3].
@@ -20,15 +22,6 @@ The idea of hosting a web service in your own home can be simultaneously excitin
 We'll be discussing these topics from the perspective of a homelab, but the same principles apply to a production environment. The only difference is that in a production environment, you'd likely have more resources to throw at the problem, and you'd likely have more people to help you manage the problem. In a homelab, you're likely on your own. Learn these concepts at home and then point out to everyone at work how your home web service is much more secure than the one your employer pays for!
 
 First, we'll be discussing [some theory on threats and attack vectors](#understanding-the-threat) so that we understand _why_ each of these tools matters and so that we can make intelligent decisions in their configuration. Then we'll be discussing the [specifics of the tools themselves](#understanding-the-tools-at-our-disposal) and how they can be used to secure your web services. Finally [in part 2][part 2], we'll be discussing how to deploy these tools in a homelab environment.
-
-<!--
-### A Couple of important Disclaimers
-
-_Disclaimer for the non-cybersecurity expert: The following disclaimer containing some amount of showboating is the language these cybersecurity people speak lol, you can safely ignore it. It's intended to pull the "security person" into a mindset of "let's all figure this out together" instead of their default "none of these people know what they're talking about!"_
-
-_Disclaimer for the cybersecurity expert: I'm not one of you and I don't have your vocabulary. I'm just very nerdy and very into these subjects. I have only been to (gasp) **one** cybersecurity conference! I did work in a cybersecurity-heavy position at a mid size MSP for a few years, and though my title didn't have the word "security" in it, I did make most of the implementation decisions and advised our security team on a lot more than I would have imagined given their supposed pedigrees. My work (this specific work) has been reviewed highly by "ex-NSA" consultants and I believe I have things to teach that could be valuable to your average homelabber and even to many in IT spaces. I will be describing things in my own words and in a way that I think is more accessible to the average person than the standard "security" vocabulary. If you're a cybersecurity expert you will likely roll your eyes at this section, but I hope you'll still find the rest useful. If you see any serious misinformation here or if you jump over to part 2 and see a security issue with my setup, please point it out!! I (and anyone else reading this) would love to learn more!_
-
---- -->
 
 # Understanding the Threat
 
@@ -168,3 +161,4 @@ Now on to the guide in [part 2]!
 
 [part 2]: /coming-soon
 [part 3]: /coming-soon
+[reddit]: https://www.reddit.com/r/selfhosted/comments/1cy5da9/im_writing_a_series_of_articles_on_protecting/
