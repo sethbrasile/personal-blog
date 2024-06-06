@@ -9,18 +9,18 @@
     I chose it because it respects your privacy.
   </p>
   <p>Would you please consider "lowering shields" or otherwise unblocking it? It helps me decide what content people find valuable.</p>
-  <button id="dismissPlausibleFaileBanner">Dismiss</button>
+  <button id="dismissPlausibleFailedBanner">Dismiss</button>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('plausibleFailed', function() {
     const dismissed = localStorage.getItem('plausibleDismissed');
     if (!dismissed) {
       document.querySelector('.error-banner-analytics').classList.remove('hidden');
     }
   });
 
-  document.getElementById('dismissPlausibleFaileBanner').addEventListener('click', function() {
+  document.getElementById('dismissPlausibleFailedBanner').addEventListener('click', function() {
     localStorage.setItem('plausibleDismissed', true);
     const banner = document.querySelector('.error-banner-analytics')
     banner.classList.add('hiding');
