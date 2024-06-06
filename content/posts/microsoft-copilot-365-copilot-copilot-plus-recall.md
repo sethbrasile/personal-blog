@@ -1,6 +1,8 @@
 +++
 title = 'Microsoft Copilot 365 Copilot Copilot Plus Recall'
 date = 2024-06-06T09:51:25-05:00
+tags = ['cybersecurity', 'privacy', 'Microsoft', 'Windows', 'dystopian current']
+categories = ['cybersecurity', 'privacy']
 draft = false
 +++
 
@@ -46,7 +48,7 @@ I have a friend who has decided to get a faraday cage and start keeping his fami
 
 I do feel like we need to come together and take back some control or something.. I'm not sure how though. The legislation I linked above is a step in the right direction, but I don't think we should rely completely on our lawmakers since we don't know how many of them actually have our best interests in mind.
 
-## Closing Thoughts
+## Closing thoughts
 
 I'm on the fence about the faraday cage lol, but at least this whole "Recall" situation to some extent further validates my decision many years ago to remove Microsoft from my life. If only I could remove them from my work. They own github and vscode so it's tough. I try to replace those a few times a year and I always go back.
 
