@@ -2,9 +2,10 @@
   background-color: #172f3e;
 }
 
-.dark .post-entry, .dark .terms-tags a {
+.dark .post-entry, .dark .terms-tags a, .dark .post-tags a {
   background-color: #2B2629;
   border: none;
+  color: var(--primary);
 }
 
 .terms-tags a {
@@ -35,7 +36,7 @@
 }
 
 .error-banner-analytics button {
-  color: #fff;
+  color: var(--primary);
   background-color: #172f3e;
   border-radius: 0.25rem;
   padding: 0.375rem 0.75rem;
