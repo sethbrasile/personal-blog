@@ -1,0 +1,31 @@
+{{- /* Footer custom content area start */ -}}
+{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
+{{- /* Footer custom content area end */ -}}
+<div class="error-banner-analytics hidden">
+  <p>
+    I use a privacy focused traffic analytics platform called
+    <a href="https://plausible.io" target="_blank" rel="noopener noreferrer">
+    Plausible</a>.
+    I chose it because it respects your privacy.
+  </p>
+  <p>Would you please consider "lowering shields" or otherwise unblocking it? It helps me decide what content people find valuable.</p>
+  <button id="dismissPlausibleFaileBanner">Dismiss</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const dismissed = localStorage.getItem('plausibleDismissed');
+    if (!dismissed) {
+      document.querySelector('.error-banner-analytics').classList.remove('hidden');
+    }
+  });
+
+  document.getElementById('dismissPlausibleFaileBanner').addEventListener('click', function() {
+    localStorage.setItem('plausibleDismissed', true);
+    const banner = document.querySelector('.error-banner-analytics')
+    banner.classList.add('hiding');
+    setTimeout(() => {
+      banner.classList.add('hidden');
+    }, 400);
+  });
+</script>
