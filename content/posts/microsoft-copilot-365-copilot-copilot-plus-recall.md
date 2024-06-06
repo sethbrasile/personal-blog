@@ -1,6 +1,6 @@
 +++
 title = 'Microsoft Copilot 365 Copilot Copilot Plus Recall'
-date = 2024-06-06T09:51:25-05:00
+date = 2024-06-05T09:51:25-05:00
 tags = ['cybersecurity', 'privacy', 'Microsoft', 'Windows', 'dystopian current']
 categories = ['cybersecurity', 'privacy']
 draft = false
