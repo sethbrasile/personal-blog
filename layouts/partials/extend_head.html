@@ -4,5 +4,16 @@
 {{- /* Head custom content area end */ -}}
 
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
-<script defer data-domain="bytemycache.com" src="https://plausible.io/js/script.js"></script>
+{{/* <script defer data-domain="bytemycache.com" src="https://plausible.io/js/script.js"></script> */}}
+<script>
+  const script = document.createElement('script');
+  script.src = 'https://plausible.io/js/script.js';
+  script.async = true;
+  script.defer = true;
+  script.dataset.domain = 'bytemycache.com';
+  script.onerror = function() {
+    console.log('Failed to load Plausible script');
+  };
+  document.head.appendChild(script);
+</script>
 {{- end -}}
