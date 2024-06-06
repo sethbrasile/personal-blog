@@ -38,6 +38,6 @@ Ask yourself: Who could possibly want this feature? Do you recall ever wishing y
 
 This is where my actual inner "conspiracy theorist" comes out. If you didn't want this feature, and I didn't want this feature... Who... Who did want this feature?
 
-I'm going to take a stab and say it's whoever also decided this database should be stored in plain text. I guarantee even if they "fix" this aspect, they will leave some other door open.
+I'm going to take a stab and say it's whoever also decided this database should be stored in plain text. I guarantee even if they "fix" this and encrypt this database in the future, they will still leave the door cracked open in some way.
 
 [privacy]: https://www.commerce.senate.gov/2023/7/smart-devices-appliances-with-hidden-microphones-cameras-must-be-disclosed-to-consumers
