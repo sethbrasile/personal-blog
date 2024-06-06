@@ -50,6 +50,8 @@ I do feel like we need to come together and take back some control or something.
 
 ## Closing thoughts
 
-I'm on the fence about the faraday cage lol, but at least this whole "Recall" situation to some extent further validates my decision many years ago to remove Microsoft from my life. If only I could remove them from my work. They own github and vscode so it's tough. I try to replace those a few times a year and I always go back.
+I'm on the fence about the faraday cage lol, but at least this whole "Recall" situation to some extent further validates my decision many years ago to remove Microsoft from my life. If only I could remove them from my work. They own github and vscode so it's tough. I try to replace those a few times a year and I always go back. If you click "Show Comments" below, you'll notice that comments on this blog are hosted at github... So any discussion that arises on this article is on a platform owned by Microsoft! Sheeeit! There might be some comments system building in my future 😞
+
+If anyone knows another free/cheap/easy comments system (that handles bots) that could work well with Hugo, let me know!
 
 [privacy]: https://www.commerce.senate.gov/2023/7/smart-devices-appliances-with-hidden-microphones-cameras-must-be-disclosed-to-consumers
