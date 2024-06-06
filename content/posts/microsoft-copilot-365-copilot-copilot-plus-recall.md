@@ -38,6 +38,16 @@ Ask yourself: Who could possibly want this feature? Do you recall ever wishing y
 
 This is where my actual inner "conspiracy theorist" comes out. If you didn't want this feature, and I didn't want this feature... Who... Who did want this feature?
 
-I'm going to take a stab and say it's whoever also decided this database should be stored in plain text. I guarantee even if they "fix" this and encrypt this database in the future, they will still leave the door cracked open in some way.
+I'm going to take a stab and say it's whoever also decided this database should be stored in plain text. I guarantee even if they "fix" this and encrypt this database in the future, they will still leave the door propped open in some way.
+
+## Thoughts on improving this situation
+
+I have a friend who has decided to get a faraday cage and start keeping his family's devices in it whenever they're not in use. He's a security nut and consults on cyber security for a living, so you might argue he's prone to being overly cautious... but is he though? It's absolutely bonkers to me that this is a real thing. I've been thinking through it... On the one hand I think it's completely insane to accept this reality and put your devices inside of... a faraday cage?? How completely extra is that? But at the same time.. We're all in this very real situation where we literally NEED these devices to exist in our culture and economy, but they present the very real downside of having to be a complacent subject to constant surveillance in order to participate.. Sure, the surveillance is "opt-in" but how can a human being be an effective member of society and capable of economic output without opting in? You really can't, at least in many industries.. So unless I quit doing tech stuff and move north to become a lumberjack (I feel like there's a "logger" pun in here somewhere) I might actually have to consider it.. ?
+
+I do feel like we need to come together and take back some control or something.. I'm not sure how though. The legislation I linked above is a step in the right direction, but I don't think we should rely completely on our lawmakers since we don't know how many of them actually have our best interests in mind.
+
+## Closing Thoughts
+
+I'm on the fence about the faraday cage lol, but at least this whole "Recall" situation to some extent further validates my decision many years ago to remove Microsoft from my life. If only I could remove them from my work. They own github and vscode so it's tough. I try to replace those a few times a year and I always go back.
 
 [privacy]: https://www.commerce.senate.gov/2023/7/smart-devices-appliances-with-hidden-microphones-cameras-must-be-disclosed-to-consumers
