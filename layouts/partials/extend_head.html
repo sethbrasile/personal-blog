@@ -6,14 +6,19 @@
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 {{/* <script defer data-domain="bytemycache.com" src="https://plausible.io/js/script.js"></script> */}}
 <script>
+  const plausibleFailed = new Event('plausibleFailed');
   const script = document.createElement('script');
   script.src = 'https://plausible.io/js/script.js';
   script.async = true;
   script.defer = true;
   script.dataset.domain = 'bytemycache.com';
   script.onerror = function() {
-    console.log('Failed to load Plausible script');
+    document.dispatchEvent(plausibleFailed);
   };
   document.head.appendChild(script);
+
+  script.addEventListener('plausibleFailed', function() {
+    console.log('Plausible failed to load');
+  });
 </script>
 {{- end -}}
