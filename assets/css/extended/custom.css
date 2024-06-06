@@ -1,3 +1,7 @@
+body.dark .post-content a {
+ color: #EF6F6C;
+}
+
 .dark, body.dark, body.list.dark {
   background-color: #172f3e;
 }
