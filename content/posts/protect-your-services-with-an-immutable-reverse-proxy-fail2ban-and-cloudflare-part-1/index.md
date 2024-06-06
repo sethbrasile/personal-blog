@@ -11,9 +11,11 @@ comments: false
 
 >This article is live but it is currently undergoing peer review on [reddit].
 
->If you're looking for the tl;dr step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).
+>[This comment][reddit-comment] has influenced me to pump the brakes on finishing part 2 and part 3. I don't want to make any false claims. I'm rethinking the "immutable" claim in this setup and what it's actual purpose is, and if there's a way to do it better. You can check github for the current draft of part 2 if you'd like. If you have some ideas on how to improve the concept, please leave a comment at reddit or get in touch with me!
 
->If you're looking for a guide on how to set up an enterprise-grade firewall with pfSense, you can [skip to part 3 here][part 3].
+<!--If you're looking for the tl;dr step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).
+
+If you're looking for a guide on how to set up an enterprise-grade firewall with pfSense, you can [skip to part 3 here][part 3]. -->
 
 ---
 
@@ -162,3 +164,4 @@ Now on to the guide in [part 2]!
 [part 2]: /coming-soon
 [part 3]: /coming-soon
 [reddit]: https://www.reddit.com/r/selfhosted/comments/1cy5da9/im_writing_a_series_of_articles_on_protecting/
+[reddit-comment]: https://www.reddit.com/r/selfhosted/comments/1cy5da9/comment/l5hsrrn/
