@@ -30,7 +30,7 @@ A few years ago every time I suggested that all of our devices were listening an
 
 I see a different attitude now. They still roll their eyes, but it's for a different reason. Now it's something like "oh geez.. one of these people who _cares_ that we're under constant surveillance. I like personalized ads! They make my buying experience faster and more convenient! teehee!"
 
-This change in attitude is exactly what I'm talking about. Observing this shift in in mind, I feel like this isn't going to be the end of Microsoft, and they are not going to change their vision for this feature aside from whatever initial tweaks they come up with to squelch the current outrage, instead I'm viewing this feature as inevitable, and I think instead we're viewing the absolute end of any semblance of personal autonomy and sovereignty, at least where computing is involved...
+This change in attitude is exactly what I'm talking about. With this acceptance in mind, I feel like this isn't going to be the end of Microsoft, and they are not going to change their vision for this feature aside from whatever initial tweaks they come up with to squelch the current outrage, instead I'm viewing this feature as inevitable, and I think instead we're seeing here is the absolute end of any semblance of personal autonomy and sovereignty, at least where computing is involved...
 
 ## Who wants this feature?
 
