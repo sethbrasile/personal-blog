@@ -17,7 +17,7 @@
   };
   document.head.appendChild(script);
 
-  script.addEventListener('plausibleFailed', function() {
+  document.addEventListener('plausibleFailed', function() {
     console.log('Plausible failed to load');
   });
 </script>
