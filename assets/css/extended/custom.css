@@ -1,3 +1,7 @@
+:root {
+  text-rendering: geometricPrecision;
+}
+
 body.dark .post-content a {
  color: #f7b4b3;
 }
