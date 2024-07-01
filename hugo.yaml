@@ -22,8 +22,10 @@ params:
         url: "/posts"
       - name: Categories
         url: "/categories"
-      - name: Tags
-        url: "/tags"
+      # - name: Tags
+      #   url: "/tags"
+      - name: Store
+        url: https://store.bytemycache.com
 
   socialIcons:
     - name: "Github"
@@ -36,6 +38,8 @@ params:
       url: "/authors/seth-brasile"
     - name: "rss"
       url: "/index.xml"
+    - name: "buymeacoffee"
+      url: "https://www.buymeacoffee.com/sethbrasile"
 
   assets:
     theme_color: #172F3E
@@ -71,6 +75,10 @@ menu:
       name: search
       url: /search/
       weight: 40
+    - identifier: store
+      name: store
+      url: https://store.bytemycache.com
+      weight: 50
     # - identifier: example
     #   name: example.org
     #   url: https://example.org
