@@ -51,13 +51,13 @@ menu:
       name: posts
       url: /posts/
       weight: 1
+    - identifier: videos
+      name: videos
+      url: /videos/
+      weight: 10
     - identifier: categories
       name: categories
       url: /categories/
-      weight: 10
-    - identifier: tags
-      name: tags
-      url: /tags/
       weight: 20
     - identifier: about
       name: about
