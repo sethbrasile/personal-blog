@@ -34,11 +34,11 @@ The sensor is an ESP based microcontroller (in my case an esp8266) flashed with 
 ### Products mentioned in this video series
 _Note: the following are Amazon affiliate links. If you use these links to purchase, I get a small commission. It doesn't cost you anything extra, but it helps me out a lot. Thanks!_
 
-[TSOP4838 IR Receiver](https://amzn.to/4ci70kH)\
-[UL listed USB plug](https://amzn.to/3XHqYRE)\
-[ESP8266 D1 Mini Clone](https://amzn.to/3xLv2Wa)\
-[Nice long USB cables](https://amzn.to/45JLD9A)\
-[ESP32](https://amzn.to/3VH6BkL)\
+[TSOP4838 IR Receiver](https://amzn.to/4bv6kr2)\
+[UL listed USB plug](https://amzn.to/4eOtcop)\
+[ESP8266 D1 Mini Clone](https://amzn.to/3RYRqT2)\
+[Nice long USB cables](https://amzn.to/3WgSJ19)\
+[ESP32](https://amzn.to/3VTq5mp)\
 (Note on this ESP32: The one I tested was USB-C and it had trouble with wifi range. The amazon comments claim that this wifi problem only exists for the USB-C version, so I've linked the micro USB version, but I have not personally tested the micro USB version. It should theoretically be the same except without the wifi problem...)
 
 ### Resources
@@ -74,10 +74,10 @@ We need a few pieces of hardware, but they're all really simple:
 
 _Note: the following are Amazon affiliate links. If you use these links to purchase, I get a small commission. It doesn't cost you anything extra, but it helps me out a lot. Thanks!_
 
-- [TSOP4838 IR Receiver](https://amzn.to/4ci70kH)
-- [UL listed USB wall plug](https://amzn.to/3XHqYRE) (I recommend this one because it's UL listed, but you can use any USB power supply you have lying around. Please make sure to use a UL listed power supply, don't create a fire hazard in your home.)
-- [ESP8266 D1 Mini Clone](https://amzn.to/3xLv2Wa) (I recommend this one because it's cheap and it works. You can use any ESP8266 or ESP32 you have lying around, but you'll need to adjust the pinouts in the ESPHome configuration file. I'll show you how to do that later.)
-- [Nice long micro USB cable](https://amzn.to/45JLD9A) (I recommend these because they're nice and long and they work. You can use any micro USB cable you have lying around.)
-- [Some solder](https://amzn.to/3xLwJZL)
-- [A soldering iron](https://amzn.to/3xLwJZL)
-- [Some gekko tape or velcro](https://amzn.to/3RUb8zq) (or something to attach the sensor to some suitable casting surface. Gekko tape was suggested by a youtube comment and I have not tried it myself. Thanks [@sandpohtoNL](https://www.youtube.com/@sandphotoNL)!) -->
+- [TSOP4838 IR Receiver](https://amzn.to/4bv6kr2)
+- [UL listed USB wall plug](https://amzn.to/4eOtcop) (I recommend this one because it's UL listed, but you can use any USB power supply you have lying around. Please make sure to use a UL listed power supply, don't create a fire hazard in your home.)
+- [ESP8266 D1 Mini Clone](https://amzn.to/3RYRqT2) (I recommend this one because it's cheap and it works. You can use any ESP8266 or ESP32 you have lying around, but you'll need to adjust the pinouts in the ESPHome configuration file. I'll show you how to do that later.)
+- [Nice long micro USB cable](https://amzn.to/3WgSJ19) (I recommend these because they're nice and long and they work. You can use any micro USB cable you have lying around.)
+- [Some solder]()
+- [A soldering iron]()
+- [Some gekko tape or velcro]() (or something to attach the sensor to some suitable casting surface. Gekko tape was suggested by a youtube comment and I have not tried it myself. Thanks [@sandpohtoNL](https://www.youtube.com/@sandphotoNL)!) -->
