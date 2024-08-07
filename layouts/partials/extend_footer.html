@@ -13,12 +13,12 @@
 </div>
 
 <script>
-  document.addEventListener('plausibleFailed', function() {
+  {{/* document.addEventListener('plausibleFailed', function() {
     const dismissed = localStorage.getItem('plausibleDismissed');
     if (!dismissed) {
       document.querySelector('.error-banner-analytics').classList.remove('hidden');
     }
-  });
+  }); */}}
 
   document.getElementById('dismissPlausibleFailedBanner').addEventListener('click', function() {
     localStorage.setItem('plausibleDismissed', true);
