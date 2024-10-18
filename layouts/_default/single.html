@@ -34,6 +34,14 @@
   {{- partial "toc.html" . }}
   {{- end }}
 
+  {{- if (.Param "note") }}
+    <div class="note">
+      <i>Note: {{ .Param "note" }}</i>
+      <hr />
+      <br /><br />
+    </div>
+  {{- end }}
+
   {{- if .Content }}
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }}

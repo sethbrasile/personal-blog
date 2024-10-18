@@ -5,7 +5,7 @@
 
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 {{/* <script defer data-domain="bytemycache.com" src="https://plausible.io/js/script.js"></script> */}}
-<script>
+{{/* <script>
   const plausibleFailed = new Event('plausibleFailed');
   const script = document.createElement('script');
   script.src = 'https://plausible.io/js/script.js';
@@ -16,5 +16,5 @@
     document.dispatchEvent(plausibleFailed);
   };
   document.head.appendChild(script);
-</script>
+</script> */}}
 {{- end -}}
