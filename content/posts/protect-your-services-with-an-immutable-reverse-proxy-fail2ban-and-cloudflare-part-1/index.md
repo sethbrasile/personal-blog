@@ -9,13 +9,9 @@ draft: false
 comments: false
 ---
 
->This article is live but it is currently undergoing peer review on [reddit].
+If you're looking for the tl;dr step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).
 
->[This comment][reddit-comment] has influenced me to pump the brakes on finishing part 2 and part 3. I don't want to make any false claims. I'm rethinking the "immutable" claim in this setup and what it's actual purpose is, and if there's a way to do it better. You can check github for the current draft of part 2 if you'd like. If you have some ideas on how to improve the concept, please leave a comment at reddit or get in touch with me!
-
-<!--If you're looking for the tl;dr step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).
-
-If you're looking for a guide on how to set up an enterprise-grade firewall with pfSense, you can [skip to part 3 here][part 3]. -->
+If you're looking for a guide on how to set up an enterprise-grade firewall with pfSense, you can [skip to part 3 here.][part 3]
 
 ---
 
@@ -77,7 +73,7 @@ Or maybe we're talking about a new vulnerability that was just discovered in a b
 
 The way we protect against this is by not ending up on any lists by hiding as much information about our stack as possible, by keeping our software as up to date as we can, by running IDS/IPS software on our [Firewall](#enterprise-grade-firewall) and by employing [Cloudfare's WAF](#cloudflare-ddos-protection-waf-cdn-ssltls). If for some reason we can't just be up-to-date, these stacked layers are our best shot at protecting against this type of attack.
 
-Don't discredit the leg-up that we gain just by hiding information about our servers. While it's true that security through obscurity is no security at all; the more hidden we are, the better chance we have of fixing the situation before the attacker finds us. We should gladly accept any chance we have at slowing down or staying hidden the attacker.
+Don't discredit the leg-up that we gain just by hiding information about our servers. While it's true that security through obscurity is no security at all; the more hidden we are, the better chance we have of fixing the situation before the attacker finds us. We should gladly accept any chance we have at slowing down or staying hidden from the attacker.
 
 # Understanding the Tools at our Disposal
 
@@ -97,9 +93,9 @@ By concealing the existence and characteristics of the backend servers, a revers
 
 ### Ability to Inject Additional Tooling
 
-A reverse proxy can be used to inject additional security tooling into the web stack, such as Web Application Firewalls (WAFs), Intrusion Detection Systems (IDS), and other security mechanisms. This allows you to add an extra layer of protection to your web services without modifying the underlying applications, making it easier to secure legacy applications or third-party services. This is especially useful when you're hosting a web service that you don't have control over, or when you're hosting a web service that you don't have the ability to modify (like a third-party service).
+A reverse proxy can be used to inject additional security tooling into the web stack, such as Web Application Firewalls (WAFs), Intrusion Detection Systems (IDS), and other security mechanisms. This allows you to add an extra layer of protection to your web services without modifying the underlying applications, making it easier to secure legacy applications or third-party self-hosted applications. This is especially useful when you're hosting a web service that you don't have control over, or when you're hosting a web service that you don't have the ability to modify (like a third-party application).
 
-We will be discussing Fail2Ban and WAF in this post, but it's worth mentioning that you could also use IDS, or other security mechanisms in this layer. IDS should really be integrated into your firewall.
+We will be discussing Fail2Ban and WAF in this post, but it's worth mentioning that you could also use IDS, or other security mechanisms in this layer. IDS/IPS should really be integrated into your firewall.
 
 ### Centralized and Automated SSL/TLS (free automated certs!)
 
@@ -144,6 +140,12 @@ Now say we're wrong and that an attacker does break out of the container and int
 
 Fedora CoreOS also has automatic updates, so you can be sure that your OS is always up-to-date with the latest security patches and bug fixes. This is obviously crucial for maintaining a secure environment. The way these security updates work is completely bananas. They download a static "image" just like updating a container, then layer your configuration on top of that image and boot into it. If anything fails, we can easily boot back into the previous image.
 
+One last point, and I can't stress this enough: If you've ever been any type of sysadmin, you know how much effort it takes to update systems,
+keep them in a known good state, keep other people ("the security team" for instance...) from effin up your S... CoreOS does away with all of this by.. for
+most intents and purposes... deleting the operating system? Hopefully that makes sense. It doesn't _delete_ your operating system, but it abstracts the OS _AWAY_ from you and your team, so that you no longer have to think about it or interact with it. Your security team has to swallow the pill that they can't
+log in, because no one can log in. If you made an exception for them, they'd be creating new attack surface. Enjoy watching them squirm while you explain it
+it's fun. They won't be able to sleep for a couple of days.
+
 Summing up the benefits of using containers on Fedora CoreOS for securing web services:
 
 1. **Isolation and Containment**: Containers encapsulate applications and their dependencies, limiting the potential impact of a security breach to the contained environment, thereby enhancing the overall security posture.
@@ -158,10 +160,9 @@ Now on to the guide in [part 2]!
 
 --> Head to [part 3] to learn how to set up an enterprise-grade firewall with pfSense.
 
-<!-- [part 2]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/ -->
+[part 2]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/
 <!-- [part 3]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/ -->
 
-[part 2]: /coming-soon
 [part 3]: /coming-soon
 [reddit]: https://www.reddit.com/r/selfhosted/comments/1cy5da9/im_writing_a_series_of_articles_on_protecting/
 [reddit-comment]: https://www.reddit.com/r/selfhosted/comments/1cy5da9/comment/l5hsrrn/

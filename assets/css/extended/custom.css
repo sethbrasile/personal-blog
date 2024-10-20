@@ -1,9 +1,14 @@
 :root {
   text-rendering: geometricPrecision;
+
+  --dark-bg: #2B2629;
+  --error-bg: #EF6F6C;
+
+  --attention: #f7b4b3;
 }
 
 body.dark .post-content a {
- color: #f7b4b3;
+ color: var(--attention);
 }
 
 .dark, body.dark, body.list.dark {
@@ -11,7 +16,7 @@ body.dark .post-content a {
 }
 
 .dark .post-entry, .dark .terms-tags a, .dark .post-tags a {
-  background-color: #2B2629;
+  background-color: var(--dark-bg);
   border: none;
   color: var(--primary);
 }
@@ -30,7 +35,7 @@ body.dark .post-content a {
   width: 100%;
   padding: 0.5rem;
   bottom: 0;
-  background-color: #EF6F6C;
+  background-color: var(--error-bg);
   color: #000;
   line-height: 2;
   z-index: 999;
@@ -65,6 +70,10 @@ body.dark .post-content a {
 .hidden {
   visibility: hidden;
   opacity: 0;
+}
+
+.cta {
+
 }
 
 @media screen and (max-width: 768px) {
