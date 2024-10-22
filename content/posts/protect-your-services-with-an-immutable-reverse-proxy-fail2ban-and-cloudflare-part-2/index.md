@@ -5,15 +5,16 @@ author: [Seth Brasile]
 tags: [coreos, nginx, containers, immutable infrastructure, homelab, cybersecurity, cloudflare]
 categories: [Web Services, cybersecurity]
 showToc: true
-draft: true
-comments: false
+draft: false
+comments: true
+showCodeCopyButtons: true
 ---
 
->If you missed part 1, I highly recommend reading through it first to understand the concepts and theory behind the tools we'll be using. You can [jump back to part 1 here.][part 1]
+*If you missed part 1, I highly recommend reading through it first to understand the concepts and theory behind the tools we'll be using. Jump back to [part 1].*
 
 ---
 
-## Before we dive in, let's ask a couple of important questions:
+# Before we dive in, let's ask a couple of important questions:
 
 - **Why are you doing this?** - Why do you want to host a web service at home?
 - **Who is going to use this service?** - Is this service going to be available for the public or to friends and family? Or is this just for you?
@@ -42,7 +43,7 @@ services. That would be totally doable.
 
 ---
 
-## Introduction
+# Introduction
 
 This is going to seem daunting at first, but I promise you, it's not that bad. Once you have this all set up, it's super easy to understand and manage. The hardest part is wrapping your head around some new concepts. I'm going to do my best to make everything as digestable as possible. Unfortunately, that means this post contains a lot of words.
 
@@ -50,6 +51,7 @@ This is going to seem daunting at first, but I promise you, it's not that bad. O
 
 ## Prerequisites
 - Free Cloudflare account
+  - [A Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
 - Public IP address (this does not have to be static, it can be a dynamic IP)
 - A VM host
   - This post is going to assume you have access to a QEMU host. I will be using proxmox. Any QEMU host should be directly applicable.
@@ -60,8 +62,10 @@ This is going to seem daunting at first, but I promise you, it's not that bad. O
 - Basic understanding of DNS
   - It's really not hard..
   - Watch this [fireship video](https://www.youtube.com/watch?v=UVR9lhUGAyU)
+- Basic understand of VLANs
+  - OR the ability to use separate physical networks with layer 2 routing, and an understanding of how to do that
 - An enterprise grade firewall (this is cheap or free, explained more in [part 3]). We **need** a few features that you're not going to find on a standard consumer router:
-  - We need the ability to define an isolated network or VLAN. We don't want to haphazardly send public internet traffic into our private LAN.
+  - As mentioned above, we need the ability to define an isolated physical network or a VLAN. We don't want to haphazardly send public internet traffic into our private LAN.
   - We need the ability to pull a dynamic list of IP ranges from cloudflare and only allow connections from IPs in the list.
   - We need the ability to automatically update our DNS entries in cloudflare with our dynamic IP address.
 - Up-to-date software
@@ -128,13 +132,13 @@ storage:
           kernel.printk=4
 ```
 
-### Files? In this config file?
+### Files are defined in this config file?
 
 That's right, this CoreOS machine is going to be a standalone "black-box" and any files that we want to be present need to be defined in this config file.
 You'll see later that we will also be defining directories here. Anything more complex probably needs to be inside of a container. I'll show you that
 as well.
 
-### Wait sec... you said "container" - Does that mean CoreOS uses Docker?
+### Wait a sec... you said "container"  - Does that mean CoreOS uses Docker?
 
 Almost... CoreOS actually uses a different containerization technology called "podman" - It's basically just Docker... But designed to be more secure
 by default, and most importantly it's FREE for everyone, including enterprise.
@@ -251,7 +255,7 @@ version: 1.5.0
 # https://docs.fedoraproject.org/en-US/fedora-coreos/authentication/
 # Use this on your local machine (with docker installed) to generate your hashed password: docker run --rm -it ulikoehler/mkpasswd
 
-# Temporary user to allow troubleshooting some resource/performance issues, this should generally be commented out
+# # Temporary user to allow troubleshooting some resource/performance issues, this should generally be commented out
 # passwd:
 #  users:
 #    - name: core
@@ -267,6 +271,7 @@ version: 1.5.0
 # You can read about these service definitions by searching for "systemd service units"
 systemd:
   units:
+    # I suggest the wildcard SUBDOMAINS setting on the swag container so that your cert works for internal services too
     - name: proxy.service
       enabled: true
       contents: |
@@ -412,7 +417,8 @@ storage:
     # config file and adjust values to match your own environment. You can ignore the message at the top
     # of each file telling you to ensure you DNS has a CNAME set. You may very well need a CNAME, but that
     # message isn't directly applicable to this situation. Keep in mind that this act does not in itself
-    # make your service available to the outside world, these configs are valuable for internal services too.
+    # make your service available to the outside world as you still need to forward traffic through NAT before
+    # it can reach this machine. These configs are valuable for internal services too.
     #
     # ------- ********************************************************************************** ------- #
 
@@ -432,7 +438,7 @@ storage:
               listen 443 ssl http2;
               listen [::]:443 ssl http2;
 
-              server_name mealie.sethbrasile.com;
+              server_name mealie.yourdomain.com;
 
               include /config/nginx/ssl.conf;
 
@@ -472,20 +478,27 @@ storage:
 
 ```
 
-## Conclusion
+Just like before:
+1. use butane to transpile this config
+2. use SCP to send it to your web server
+3. go boot to netboot again and
+4. reinstall CoreOS using this new config
 
-The integration of reverse proxies with Fail2Ban, all running in containers hosted on Fedora CoreOS, creates a formidable defense strategy for web services.
-This configuration leverages the strengths of each component—reverse proxies for traffic management and encryption, Fail2Ban for automated threat mitigation,
-and Fedora CoreOS containers for secure, scalable, and isolated environments. By adopting this approach, organizations can significantly enhance the security, reliability, and performance of their web services, staying one step ahead in the ongoing battle against cyber threats.
+## Phew, that was a lot
 
+We have a working reverse proxy now that provides all of the benefits that I mentioned in [part 1], except that we haven't configured the network,
+so it's not really capable of doing anything... yet... [part 3] goes into the networking aspects and after you finish with [part 3] you'll have a
+fully functional reverse proxy!
 
 ---
 
+--> Head to [part 3] to learn to configure your firewall to safely point traffic at your reverse proxy
+
 ## Bonus!
 
---> Head to [part 3] to learn how to set up an enterprise-grade firewall with pfSense.
+--> Head to [part 4] to learn how to set up an enterprise-grade firewall with pfSense.
 
 [part 1]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-1/
-<!-- [part 3]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/ -->
-[part 3]: /coming-soon
+[part 3]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/
+[part 4]: /coming-soon
 [Known Vulnerability Attacks]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-1/#known-vulnerability-attacks

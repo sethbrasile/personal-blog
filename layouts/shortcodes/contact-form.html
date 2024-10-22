@@ -1,0 +1,17 @@
+<form action="https://api.web3forms.com/submit" method="POST">
+    <!-- Replace with your Access Key -->
+    <input type="hidden" name="access_key" value='{{ getenv "HUGO_WEB3KEY" }}'>
+
+    <!-- Form Inputs. Each input must have a name="" attribute -->
+    <input placeholder="Sally Smith" type="text" name="name" required>
+    <input placeholder="sallysmith@example.com" type="email" name="email" required>
+    <textarea placeholder="Your message here..." name="message" required></textarea>
+
+    <!-- Honeypot Spam Protection -->
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+    <!-- Custom Confirmation / Success Page -->
+    <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+
+    <button type="submit">Send me a message!</button>
+</form>

@@ -6,6 +6,7 @@ theme: ["PaperMod"]
 params:
   author: "Seth Brasile"
   comments: true
+  # WEB3_KEY:  # ecec0039-7034-4715-9eea-b0fe2a3adf7c
   profileMode:
     enabled: true
     title: byteMyCache
@@ -20,12 +21,10 @@ params:
     buttons:
       - name: Posts
         url: "/posts"
-      - name: Categories
-        url: "/categories"
-      # - name: Tags
-      #   url: "/tags"
       - name: Store
         url: https://store.bytemycache.com
+      - name: Hire Me
+        url: "/hire"
 
   socialIcons:
     - name: "Github"
@@ -55,18 +54,22 @@ menu:
       name: videos
       url: /videos/
       weight: 10
-    - identifier: categories
-      name: categories
-      url: /categories/
-      weight: 20
+    # - identifier: categories
+    #   name: categories
+    #   url: /categories/
+      # weight: 20
     - identifier: about
       name: about
       url: /about/
+      weight: 20
+    - identifier: hire
+      name: hire me
+      url: /hire/
       weight: 30
-    # - identifier: contact
-    #   name: contact
-    #   url: /contact/
-    #   weight: 40
+    - identifier: contact
+      name: contact
+      url: /contact/
+      weight: 40
     # - identifier: authors
     #   name: authors
     #   url: /authors/

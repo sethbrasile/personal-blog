@@ -32,7 +32,7 @@ We used machine learning in "R" in order to create a match making system that al
 
 I also provided code review and oversaw a group of college students building a mass video conferencing app for their Senior project. This app is intended to eventually replace BetterLife's existing video conferencing system. This system is not yet in use, but it is finished and it is incredible.
 
-I still work with BetterLife, but the bulk of the dev work is done and we're in "maintenance mode" for now which only needs me for about 5 hours per week.
+I still work with BetterLife, but the bulk of the dev work is done and we're in "maintenance mode" for now which only needs me for a few hours per week.
 
 #### BetterLife Tech Stack
 
@@ -58,8 +58,15 @@ Machine Learning - Creates matchmaking data for users to find pods that are a go
 - hetzner cloud
 - dokku / docker
 
+## Open Source
+- I am the author of [EZ Web Audio](https://github.com/sethbrasile/ez-web-audio)
+- I am the author of [Ember Remodal](https://sethbrasile.github.io/ember-remodal/)
+- I am the author or [Ember Audio](https://sethbrasile.github.io/ember-audio/)
+- I was the author of the officially recommended [Cloudinary adapter](https://github.com/sethbrasile/ghost-cloudinary-store) for Ghost Blogs, though it
+  is no longer
 
-### Writing Credits
+## Writing Credits
 
 - Of course the articles on this blog
-- I wrote an article on
+- My article on using docker to deploy [ghost blogs](/posts/how-to-run-multiple-dockerized-proxied-spdyd-and-pagespeedified-ghost-blogs-with-4-commands/)
+  was featured in the official Docker newsletter

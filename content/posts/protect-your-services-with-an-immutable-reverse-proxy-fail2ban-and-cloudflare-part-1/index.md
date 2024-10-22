@@ -6,12 +6,13 @@ tags: [coreos, nginx, containers, immutable infrastructure, homelab, cybersecuri
 categories: [Web Services, cybersecurity]
 showToc: true
 draft: false
-comments: false
+comments: true
+showCodeCopyButtons: true
 ---
 
-If you're looking for the tl;dr step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).
+*If you're looking for the step-by-step guide, you can [skip to part 2 here][part 2] (but I highly recommend reading through this post first to understand the concepts and theory behind the tools we'll be using).*
 
-If you're looking for a guide on how to set up an enterprise-grade firewall with pfSense, you can [skip to part 3 here.][part 3]
+*If you're looking for a guide on how to set up an enterprise-grade firewall with pfSense, you can [skip to part 4 here.][part 4]*
 
 ---
 
@@ -19,7 +20,7 @@ The idea of hosting a web service in your own home can be simultaneously excitin
 
 We'll be discussing these topics from the perspective of a homelab, but the same principles apply to a production environment. The only difference is that in a production environment, you'd likely have more resources to throw at the problem, and you'd likely have more people to help you manage the problem. In a homelab, you're likely on your own. Learn these concepts at home and then point out to everyone at work how your home web service is much more secure than the one your employer pays for!
 
-First, we'll be discussing [some theory on threats and attack vectors](#understanding-the-threat) so that we understand _why_ each of these tools matters and so that we can make intelligent decisions in their configuration. Then we'll be discussing the [specifics of the tools themselves](#understanding-the-tools-at-our-disposal) and how they can be used to secure your web services. Finally [in part 2][part 2], we'll be discussing how to deploy these tools in a homelab environment.
+First, we'll be discussing [some theory on threats and attack vectors](#understanding-the-threat) so that we understand _why_ each of these tools matters and so that we can make intelligent decisions in their configuration. Then we'll be discussing the [specifics of the tools themselves](#understanding-the-tools-at-our-disposal) and how they can be used to secure your web services. Finally [in part 2][part 2] and [part 3], we'll be discussing how to deploy these tools in a homelab environment.
 
 # Understanding the Threat
 
@@ -158,11 +159,12 @@ Now on to the guide in [part 2]!
 
 --> Head to [part 2] to learn how to deploy these tools in a homelab environment.
 
---> Head to [part 3] to learn how to set up an enterprise-grade firewall with pfSense.
+--> Head to [part 3] to learn to configure your firewall to safely point traffic at your reverse proxy
+
+## Bonus!
+
+--> Head to [part 4] to learn how to set up an enterprise-grade firewall with pfSense.
 
 [part 2]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/
-<!-- [part 3]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/ -->
-
-[part 3]: /coming-soon
-[reddit]: https://www.reddit.com/r/selfhosted/comments/1cy5da9/im_writing_a_series_of_articles_on_protecting/
-[reddit-comment]: https://www.reddit.com/r/selfhosted/comments/1cy5da9/comment/l5hsrrn/
+[part 3]: /posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/
+[part 4]: /coming-soon

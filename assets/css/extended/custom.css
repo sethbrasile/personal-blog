@@ -2,12 +2,13 @@
   text-rendering: geometricPrecision;
 
   --dark-bg: #2B2629;
+  --lighter-dark-bg: #332c30;
   --error-bg: #EF6F6C;
 
   --attention: #f7b4b3;
 }
 
-body.dark .post-content a {
+body.dark .post-content a:not(.cta) {
  color: var(--attention);
 }
 
@@ -89,4 +90,56 @@ body.dark .post-content a {
     right: unset;
     bottom: unset;
   }
+}
+
+input[type=text], input[type=email], textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  caret-color: var(--attention);
+  color: var(--primary);
+}
+
+button[type=submit] {
+  width: 100%;
+  background-color: var(--dark-bg);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type=submit]:hover {
+  background-color: var(--lighter-dark-bg);
+}
+
+.hidden {
+  display: none;
+}
+
+a.cta {
+  text-align: center;
+  width: 100%;
+  background-color: var(--dark-bg);
+  color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cta:hover {
+  background-color:  var(--lighter-dark-bg);
+}
+
+.copy-code {
+  display: inline-block;
 }
