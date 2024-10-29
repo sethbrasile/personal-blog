@@ -189,7 +189,7 @@ If anything is acting unexpectedly, go ahead and log back into the CoreOS box an
 firewall?
 
 Once you're confident that things are working as they should, you can go ahead and remove that pesky user by commenting out that `passwd` section of your
-CoreOS config file.
+CoreOS config file. You should also go back and make sure `STAGING` is set to `false` in your `swag` config.
 
 ## What's next?
 

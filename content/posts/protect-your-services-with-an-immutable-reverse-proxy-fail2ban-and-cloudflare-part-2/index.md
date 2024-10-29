@@ -289,9 +289,11 @@ systemd:
         Group=core
         ExecStartPre=podman pull lscr.io/linuxserver/swag
 
+        # The value for STAGING is set to `true` initially, while you're ensuring your config is correct. This avoids running into any API limits and etc..
+        # while you're still messing around. Once you're certain everything is correct, you should switch that to `false` and get a real cert
         ExecStart=podman run --name proxy -p 443:443 -p 80:80 -v /var/home/core/appdata/proxy:/config:z \
           -e TZ=America/Chicago -e SUBDOMAINS=wildcard -e URL=yourdomain.com -e VALIDATION=dns \
-          -e DNSPLUGIN=cloudflare -e EMAIL=youremail@example.com -e CERTPROVIDER=zerossl -e STAGING=false \
+          -e DNSPLUGIN=cloudflare -e EMAIL=youremail@example.com -e CERTPROVIDER=zerossl -e STAGING=true \
           lscr.io/linuxserver/swag
 
         ExecStop=podman stop proxy
