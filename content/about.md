@@ -10,10 +10,10 @@ To some extent, this is just my [(Seth Brasile)](/authors/seth-brasile) personal
 
 Sometimes some of my friends might write guest posts. I'm interested in new contributors, so if you're interested in writing a guest post, please reach out to me.
 
-## Youtube channels
+## Youtube channel
 
 byteMyCache: [@byteMyCache](https://www.youtube.com/@byteMyCache)
 
-Personal: [@SethBrasile](https://www.youtube.com/@SethBrasile)
+<!-- Personal: [@SethBrasile](https://www.youtube.com/@SethBrasile) -->
 
-Money: [@strugglebuss](https://www.youtube.com/@strugglebuss)
+<!-- Money: [@strugglebuss](https://www.youtube.com/@strugglebuss) -->
