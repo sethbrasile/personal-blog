@@ -76,7 +76,7 @@ Machine Learning - Creates matchmaking data for users to find pods that are a go
 #### DKBInnovative
 #### Jun 2021 - Mar 2023 · 1 yr 10 mos
 
-I designed and implemented systems to automate the tracking and management of cyber security and compliance for Enterprise servers and workstations in the health, manufacturing and government sectors. I built a proof-of-concept MSP code delivery + RMM platform in golang.
+I designed and implemented systems to automate the tracking and management of cyber security and compliance for Enterprise servers and workstations in the health, manufacturing and government sectors. This work was mostly in powershell, but also included linux servers and mac clients. I built a proof-of-concept MSP code delivery + RMM platform in golang. This platform included an "agent" that could be installed on linux/mac/pc and a server-side message broker service which sent commands using GRPC over mutual-TLS.
 
 ### Point of Sale Business Analyst
 #### The Chickasaw Nation
