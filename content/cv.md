@@ -24,7 +24,7 @@ BetterLife is a "mastermind" platform which allows users to form, browse, join a
 
 One of the biggest upsides of BetterLife in my opinion is the fact that they're a capitalist "for profit" corporation that is operating like it's a "non profit" and handing 100% of profits to anti-human trafficking efforts. BetterLife was profitable enough to hand $500,000 USD to the Tim Tebow Foundation in its first year!
 
-At BetterLife, I designed their entire platform from the ground up and I was responsible for the entire stack, from the frontend to the backend + machinen learning systems, from the databases to the CI/CD pipeline. I hired and led a team of 2 frontend developers, 1 backend developer, a senior frontend engineer+UI/UX designer, and a Machine Learning engineer.
+At BetterLife, I designed their entire platform from the ground up and I was responsible for the entire stack, from the frontend to the backend + machine learning systems, from the databases to the CI/CD pipeline. I hired and led a team of 2 frontend developers, 1 backend developer, a senior frontend engineer + UI/UX designer, and a Machine Learning engineer.
 
 The systems we built tie all of the mentioned tools together and provide a seamless experience for users, while giving the company visibility into how people are using the platform, health of pods and the overall health of the company.
 
@@ -38,7 +38,7 @@ I still work with BetterLife, but the bulk of the dev work is done and we're in 
 
 We chose the following stack:
 
-Private members only web app - Allows users to manage subscription, access tools, take courses, and manage their pods experience:
+Private members-only web app - Allows users to manage subscription, access tools, take courses, and manage their pods experience:
 - Nuxt (frontend and backend)
 - Vercel
 - FaunaDB
@@ -62,11 +62,47 @@ Machine Learning - Creates matchmaking data for users to find pods that are a go
 - I am the author of [EZ Web Audio](https://github.com/sethbrasile/ez-web-audio)
 - I am the author of [Ember Remodal](https://sethbrasile.github.io/ember-remodal/)
 - I am the author or [Ember Audio](https://sethbrasile.github.io/ember-audio/)
-- I was the author of the officially recommended [Cloudinary adapter](https://github.com/sethbrasile/ghost-cloudinary-store) for Ghost Blogs, though it
-  is no longer
+- I was the author of the officially recommended [Cloudinary adapter](https://github.com/sethbrasile/ghost-cloudinary-store) for Ghost Blogs, though it is no longer recommended, as I stopped maintaining it.
 
 ## Writing Credits
 
 - Of course the articles on this blog
 - My article on using docker to deploy [ghost blogs](/posts/how-to-run-multiple-dockerized-proxied-spdyd-and-pagespeedified-ghost-blogs-with-4-commands/)
   was featured in the official Docker newsletter
+
+## Past Roles
+
+### Centralized Services Automation Specialist (IT Devops)
+#### DKBInnovative
+#### Jun 2021 - Mar 2023 · 1 yr 10 mos
+
+I designed and implemented systems to automate the tracking and management of cyber security and compliance for Enterprise servers and workstations in the health, manufacturing and government sectors. I built a proof-of-concept MSP code delivery + RMM platform in golang.
+
+### Point of Sale Business Analyst
+#### The Chickasaw Nation
+#### Oct 2016 - Jun 2021 · 4 yrs 9 mos
+
+Manage enterprise point of sale and supporting systems, and manage related infrastructure. Design and implement payment device and POS device tracking systems to enable PCI Compliance. Manage and build systems for food and beverage locations and retail stores.
+
+### Web Developer
+#### Greeting Card CollectionGreeting Card Collection
+#### Jan 2016 - Jul 2016 · 7 mos
+
+Front end web development in Javascript / Ember.js. We built a suite of tools that allowed our clients to build customized white-labeled Greeting card sites.
+
+### Web Developer
+#### Deep Space Robots -> Greeting Card Collection
+#### Apr 2015 - Dec 2015 · 9 mos
+
+Front end web development in Javascript / Ember.js. We built a suite of tools that allowed our clients to build customized white-labeled Greeting card sites.
+
+### Junior Web Developer
+#### Koddi
+Sep 2014 - Apr 2015 · 8 mos
+PHP, Javascript, junior full stack. We built a lodging/booking/travel data analytics and ad management platform.
+
+### IT Client Services Technician
+#### Chickasaw Nation Division of Commerce
+#### Jun 2012 - Aug 2013 · 1 yr 3 mos
+
+Standard enterprise "IT Guy" - the guy that shows up to reboot your computer and then hear "that didn't work when I did it."

@@ -32,9 +32,15 @@ Do you need a general tech-obsessed and experienced business-focused nerd to hel
 
 Do you need help automating processes for your eCommerce venture? I do that. I can find you the simplest way to remove human labor from your processes.
 
+For instance, I recently built an eCommerce client a desktop application that scans manufacturer sites given a list of product IDs and turns that into a shopify import.
+
 ### Systems Automation
 
 Do you need help automating processes in your business, in general? I do that too. Please get in contact with me!
+
+### My CV
+
+You can find my CV [here](/cv)
 
 ___
 
