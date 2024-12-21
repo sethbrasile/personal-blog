@@ -105,4 +105,4 @@ PHP, Javascript, junior full stack. We built a lodging/booking/travel data analy
 #### Chickasaw Nation Division of Commerce
 #### Jun 2012 - Aug 2013 · 1 yr 3 mos
 
-Standard enterprise "IT Guy" - the guy that shows up to reboot your computer and then hear "that didn't work when I did it."
+Standard enterprise "IT Guy" - the guy that shows up to reboot your computer.
