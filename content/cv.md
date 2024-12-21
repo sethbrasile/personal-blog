@@ -24,7 +24,7 @@ BetterLife is a "mastermind" platform which allows users to form, browse, join a
 
 One of the biggest upsides of BetterLife in my opinion is the fact that they're a capitalist "for profit" corporation that is operating like it's a "non profit" and handing 100% of profits to anti-human trafficking efforts. BetterLife was profitable enough to hand $500,000 USD to the Tim Tebow Foundation in its first year!
 
-At BetterLife, I designed their entire platform from the ground up and I was responsible for the entire stack, from the frontend to the backend + machine learning systems, from the databases to the CI/CD pipeline. I hired and led a team of 2 frontend developers, 1 backend developer, a senior frontend engineer + UI/UX designer, and a Machine Learning engineer.
+At BetterLife, I designed their entire platform from the ground up and I am responsible for the entire stack, from the frontend to the backend + machine learning systems, from the databases to the CI/CD pipeline. I hired and led a team of 2 frontend developers, 1 backend developer, a senior frontend engineer + UI/UX designer, and a Machine Learning engineer.
 
 The systems we built tie all of the mentioned tools together and provide a seamless experience for users, while giving the company visibility into how people are using the platform, health of pods and the overall health of the company.
 
