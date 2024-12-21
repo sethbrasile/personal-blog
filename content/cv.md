@@ -85,10 +85,10 @@ I designed and implemented systems to automate the tracking and management of cy
 Manage enterprise point of sale and supporting systems, and manage related infrastructure. Design and implement payment device and POS device tracking systems to enable PCI Compliance. Manage and build systems for food and beverage locations and retail stores.
 
 ### Web Developer
-#### Greeting Card CollectionGreeting Card Collection
+#### Greeting Card Collection
 #### Jan 2016 - Jul 2016 · 7 mos
 
-Front end web development in Javascript / Ember.js. We built a suite of tools that allowed our clients to build customized white-labeled Greeting card sites.
+(The DSR client hired me to maintain and keep building.)
 
 ### Web Developer
 #### Deep Space Robots -> Greeting Card Collection
