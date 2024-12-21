@@ -1,6 +1,5 @@
 +++
 title = 'Coming Soon'
-date = 2024-05-21T21:36:51-05:00
 draft = false
 author = ["Seth Brasile"]
 searchHidden = true

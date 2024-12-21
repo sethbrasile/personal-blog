@@ -1,6 +1,5 @@
 +++
 title = 'My CV'
-date = 2024-07-26T12:22:27-05:00
 draft = false
 comments = false
 searchHidden = true
