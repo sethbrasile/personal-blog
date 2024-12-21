@@ -58,10 +58,10 @@ menu:
     #   name: categories
     #   url: /categories/
       # weight: 20
-    - identifier: about
-      name: about
-      url: /about/
-      weight: 20
+    # - identifier: about
+    #   name: about
+    #   url: /about/
+    #   weight: 20
     - identifier: hire
       name: hire me
       url: /hire/
