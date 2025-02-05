@@ -10,7 +10,7 @@ comments: true
 showCodeCopyButtons: true
 ---
 
-Hey there! I've compiled a list of handy MacOS apps that I started using recently, find very helpful, and might make your life a bit easier:
+Hey there! I've compiled a list of handy MacOS apps that I started using recently that I find very helpful, and might make your life a bit easier:
 
 **[Swish](https://highlyopinionated.co/swish/)**: This is a window manager that uses gestures to control your windows and apps. It's pretty nifty if you're using a trackpad, with about 30 different gestures for moving, resizing, and organizing windows. Not sure how useful it'd be with just a mouse though, I haven't tried it.
 
