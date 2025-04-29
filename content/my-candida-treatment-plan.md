@@ -64,7 +64,8 @@ Note: The Amazon links are affiliate links!! Please use them if you want to supp
 - https://amzn.to/42DQ0Dm - gut healing amino acid - take in the morning on an empty stomach - make sure to read up on this and make sure it's right for you
 - https://amzn.to/4lP1Wtc - or your choice of electrolytes if you already have some. If you're educated in fasting you probably already have this under control. You will likely be into and out of ketosis during this time which requires a lot of water and electrolytes going back and forth.
 - https://amzn.to/4lQuaUn - liver support - important b/c you end up detoxing hard and end up feeling sick, the detox is hard on your liver
-- https://amzn.to/4iHNxwe - this one is wild! I will write a whole section on this later, but for now, you want to mix about a tablespoon per day with some yogurt or milk kefir
+- https://amzn.to/4iHNxwe - this one is wild! I will write a whole section on this later, but for now, you want to mix about a tablespoon per day with some yogurt or milk kefir. This is a huge boost for
+the good guys in your microbiome and doesn't help the bad guys.
   - start with a teaspoon per day and work your way up to a tablespoon
   - If you experience severe bloating in response to this, you should stop, that could be a sign that you have SIBO or similar, which you may need to get under control first!
   - Some gas at first is normal, but if you feel like you have a balloon in your stomach, stop taking it and maybe try again later.
