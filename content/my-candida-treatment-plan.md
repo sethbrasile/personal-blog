@@ -12,23 +12,33 @@ showCodeCopyButtons: false
 
 After a ridiculous amount of research on Candida Overgrowth, I came up with this treatment plan.
 I wrote this just for some specific folks who have asked, but if you happen to find your way here, I hope it helps you too.
-I'm not a doctor, and this is not medical advice. This is just what I'm doing and what I've found works for me.
+I'm not a doctor, and this is not medical advice. This is just what I'm doing and what I've found works for me. Please do your own
+research on all of this!
 
 I may end up writing a more detailed post about my experience with this later, but for now, here is the list of things I'm taking and
 a summary of the diet I'm on to help with the treatment.
 
 Note that **THIS IS NOT _THE CANDIDA DIET_**.
-That diet is total BS for most people?!
+That diet appears to be total BS for most people!! I haven't read the book, so take my thoughts on it with a grain of salt. This is not that though as far as I know.
+
+## Quick note on all the hippie talk
+
+I have always seen talk of "detox" and "cleanses" as total BS. I think I was wrong and I think that people that talk about this stuff
+are actually full of loads of truth, but unfortunately there's not enough real science behind it so they end up lumped together with snake
+oil salesman. I am absolutely confident that this stuff is NOT snake oil, now that I have personally confirmed a lot of it for myself.
+
+I will be even more convinced once I am healed completely and no longer have any autoimmune symptoms.
 
 ## Goals
 
 It is important to understand out of the gate that your goal is NOT to starve the candida (more info on that throughout). Your goal is to:
-- kill it - with antifungals
-- disrupt and destroy the biofilms that have built up in your gut - with enzymes
-- encourage good microbes to take their place so that you have a resilient gut that can handle some pizza and ice cream without going hog wild - pre and pro biotics, healthy fiber, complex carbs
-- heal your gut lining from all the damage that the candida overgrowth has done
+- **kill it** with antifungals
+- **disrupt and destroy the biofilms** that have built up in your gut with enzymes
+- **encourage good microbes to take their place** so that you have a resilient gut that can handle some pizza and ice cream without going hog wild with pre and pro biotics, healthy fiber, and complex carbs
+- **heal your gut lining** from all the damage that the candida overgrowth has done. This will happen naturally as a part of this process, but we're hopefully giving
+it a boost with the amino acids and the probiotics
 
-This is a long process and you will need to be patient.
+This is a slow process and you will need to be patient.
 
 ## Supplements
 
@@ -36,23 +46,35 @@ This is a long process and you will need to be patient.
 
 Note: The Amazon links are affiliate links!! Please use them if you want to support me. I will get a small commission if you buy through these links.
 
-- https://amzn.to/4iFibGI - blend of biofilm disrupting enzymes. This is the most important thing!
-- https://amzn.to/4jSTLuf - blend of effective herbal anti-fungals
+- https://amzn.to/4iFibGI - blend of biofilm disrupting enzymes. This is the most important thing! Take on an empty stomach in the morning.
+- https://amzn.to/4jSTLuf - blend of effective herbal anti-fungals. Take with food.
 - https://amzn.to/4jXxITb - probiotic yeast that targets and kills candida without taking up residence (you can take this the whole time or you can wait until later after the biofilms are busted, I'm taking it the whole time but cycling on an off when I feel like it)
-- https://amzn.to/438c2OA - needed for the white tongue folks and also helpful for the gut folks, milder than the pills, for when you need a break from the detox
+- https://amzn.to/438c2OA - needed for the white tongue folks and also helpful for the gut folks, milder than the pills, for when you need a break from the detox. Cycle max of 14 days on and 14 days off. 3 drops mixed with a shot of water, 3x per day.
 - https://www.apohealth.de/en/collections/all/products/nystatin-acis-filmtabletten-100-st-tabletten - This is the prescription antifungal stuff from germany. This works as a team with the “candassist” and the s. boullardi to kill the bad guys but leave the good guys alone
+  - Work your way up to 2 tablets in the morning and 2 tablets in the evening, both on an empty stomach.
   - Note for my friend Anni: I actually wish I would have ordered 2 or 3 bottles of this. You end up taking 4 per day so 100 goes pretty quickly. If you want to grab an extra bottle of this I'll buy it from you later.
-  - There's probably some legal nonsense I should cover here about not buying this if you live in a place where freedom reigns and therefore it's against the law to access medicine you need.
+  - There's probably some legal nonsense I should cover here about not buying this if you live in a place where freedom reigns and therefore it's against the law to access medicine you need. Do your own research and do what you feel is right for you. I'm just telling you what I'm doing.
 
 
 ### Support (these are important too!):
 
 - https://amzn.to/4lMAFrn - anti-fungal and anti-inflammation - has to be taken away from caffeine, at least 3 hours
 - https://amzn.to/3GqH7nZ - or any binder if you have a preference, I hear good things about zeolite. I'm using just activated charcoal b/c I failed to order this
-- https://amzn.to/3YRolw4 - gut healing amino acid - take in the morning on an empty stomach
-- https://amzn.to/42DQ0Dm - gut healing amino acid - take in the morning on an empty stomach
+- https://amzn.to/3YRolw4 - gut healing amino acid - take in the morning on an empty stomach - make sure to read up on this and make sure it's right for you
+- https://amzn.to/42DQ0Dm - gut healing amino acid - take in the morning on an empty stomach - make sure to read up on this and make sure it's right for you
 - https://amzn.to/4lP1Wtc - or your choice of electrolytes if you already have some. If you're educated in fasting you probably already have this under control. You will likely be into and out of ketosis during this time which requires a lot of water and electrolytes going back and forth.
-- https://amzn.to/4lQuaUn - liver support - important b/c you end up detoxing hard and end up feeling sick, hard on your liver
+- https://amzn.to/4lQuaUn - liver support - important b/c you end up detoxing hard and end up feeling sick, the detox is hard on your liver
+
+## Stagger these supplements
+
+Don't start all of this at once. If you have a bad reaction to anything, you won't know what caused it. For example, I'm pretty sure either
+the lycine or the glutamine gave me really bad brain fog, to the point where I couldn't think or focus. That's not necessarily a bad thing, the brain fog can actually be a sign of healing due to the nature
+of the treatment, but I still stopped them temporarily and will try them again later.
+
+I suggest starting the enzymes in the morning first, and the binder an hour or two later, after a few days, add in liver support with meals, then once you feel comfortable with those (maybe a week or so), add in the antifungals.
+The rest should still be staggered, but the order is a bit more inconsequential.
+
+I waited about a month before adding in the nystatin.
 
 ## Taking breaks
 
