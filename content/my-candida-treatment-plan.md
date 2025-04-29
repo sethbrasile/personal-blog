@@ -46,11 +46,12 @@ This is a slow process and you will need to be patient.
 
 Note: The Amazon links are affiliate links!! Please use them if you want to support me. I will get a small commission if you buy through these links.
 
-- https://amzn.to/4iFibGI - blend of biofilm disrupting enzymes. This is the most important thing! Take on an empty stomach in the morning.
-- https://amzn.to/4jSTLuf - blend of effective herbal anti-fungals. Take with food.
-- https://amzn.to/4jXxITb - probiotic yeast that targets and kills candida without taking up residence (you can take this the whole time or you can wait until later after the biofilms are busted, I'm taking it the whole time but cycling on an off when I feel like it)
-- https://amzn.to/438c2OA - needed for the white tongue folks and also helpful for the gut folks, milder than the pills, for when you need a break from the detox. Cycle max of 14 days on and 14 days off. 3 drops mixed with a shot of water, 3x per day.
-- https://www.apohealth.de/en/collections/all/products/nystatin-acis-filmtabletten-100-st-tabletten - This is the prescription antifungal stuff from germany. This works as a team with the “candassist” and the s. boullardi to kill the bad guys but leave the good guys alone
+- https://amzn.to/4iFibGI - SerraDefend - blend of biofilm disrupting enzymes. This is the most important thing! Take on an empty stomach in the morning. Please do your
+research on this one! especially the nattokinase and serrapeptase. This is a pretty low dose of those, but there are technically some cardiovascular ramifications here. Usually good ramifications, but you still need to be aware of any risks.
+- https://amzn.to/4jSTLuf - CandAssist - blend of effective herbal anti-fungals. Take with food.
+- https://amzn.to/4jXxITb - S. Boullardi - probiotic yeast that targets and kills candida without taking up residence (you can take this the whole time or you can wait until later after the biofilms are busted, I'm taking it the whole time but cycling on an off when I feel like it)
+- https://amzn.to/438c2OA - Oregano Oil - needed for the white tongue folks and also helpful for the gut folks, milder than the pills, for when you need a break from the detox. Cycle max of 14 days on and 14 days off. 3 drops mixed with a shot of water, 3x per day.
+- https://www.apohealth.de/en/collections/all/products/nystatin-acis-filmtabletten-100-st-tabletten - Nystatin - This is the prescription antifungal stuff from germany. This works as a team with the “candassist” and the s. boullardi to kill the bad guys but leave the good guys alone
   - Work your way up to 2 tablets in the morning and 2 tablets in the evening, both on an empty stomach.
   - Note for my friend Anni: I actually wish I would have ordered 2 or 3 bottles of this. You end up taking 4 per day so 100 goes pretty quickly. If you want to grab an extra bottle of this I'll buy it from you later.
   - There's probably some legal nonsense I should cover here about not buying this if you live in a place where freedom reigns and therefore it's against the law to access medicine you need. Do your own research and do what you feel is right for you. I'm just telling you what I'm doing.
@@ -58,13 +59,13 @@ Note: The Amazon links are affiliate links!! Please use them if you want to supp
 
 ### Support (these are important too!):
 
-- https://amzn.to/4lMAFrn - anti-fungal and anti-inflammation - has to be taken away from caffeine, at least 3 hours
-- https://amzn.to/3GqH7nZ - or any binder if you have a preference, I hear good things about zeolite. I'm using just activated charcoal b/c I failed to order this
-- https://amzn.to/3YRolw4 - gut healing amino acid - take in the morning on an empty stomach - make sure to read up on this and make sure it's right for you
-- https://amzn.to/42DQ0Dm - gut healing amino acid - take in the morning on an empty stomach - make sure to read up on this and make sure it's right for you
-- https://amzn.to/4lP1Wtc - or your choice of electrolytes if you already have some. If you're educated in fasting you probably already have this under control. You will likely be into and out of ketosis during this time which requires a lot of water and electrolytes going back and forth.
-- https://amzn.to/4lQuaUn - liver support - important b/c you end up detoxing hard and end up feeling sick, the detox is hard on your liver
-- https://amzn.to/4iHNxwe - this one is wild! I will write a whole section on this later, but for now, you want to mix about a tablespoon per day with some yogurt or milk kefir. This is a huge boost for
+- https://amzn.to/4lMAFrn - Circumin - anti-fungal and anti-inflammation - has to be taken away from caffeine, at least 3 hours
+- https://amzn.to/3GqH7nZ - Binder - or any binder if you have a preference, I hear good things about zeolite. I'm using just activated charcoal b/c I failed to order this. Binder helps to absorb some of the heavy metals and etc.. that are released from the biofilms, to hopefully keep it from entering your blood stream.
+- https://amzn.to/3YRolw4 - L-Glutamine - gut healing amino acid - take in the morning on an empty stomach - make sure to read up on this and make sure it's right for you
+- https://amzn.to/42DQ0Dm - Lycine - gut healing amino acid - take in the morning on an empty stomach - make sure to read up on this and make sure it's right for you
+- https://amzn.to/4lP1Wtc - Electrolyte powder - or your choice of electrolytes if you already have some. If you're educated in fasting or working out you probably already have this under control. You will likely be into and out of ketosis during this time which requires a lot of water and electrolytes going back and forth.
+- https://amzn.to/4lQuaUn - Liver Support - important b/c you end up detoxing hard and end up feeling sick, the detox is hard on your liver
+- https://amzn.to/4iHNxwe - Unmodified Potato Starch - this one is wild! "Unmodified" is an important word. I will write a whole section on this later, but for now, you want to mix about a tablespoon per day with some yogurt or milk kefir. This is a huge boost for
 the good guys in your microbiome and doesn't help the bad guys.
   - start with a teaspoon per day and work your way up to a tablespoon
   - If you experience severe bloating in response to this, you should stop, that could be a sign that you have SIBO or similar, which you may need to get under control first!
