@@ -5,13 +5,13 @@ draft: false
 author: [Seth Brasile]
 tags: [candida, overgrowth, health, supplements]
 categories: []
-showToc: false
+showToc: true
 comments: true
 showCodeCopyButtons: false
 ---
 
 After a ridiculous amount of research on Candida Overgrowth, I came up with this treatment plan.
-I made this list just for a few friends, but if you happen to find your way here, I hope it helps you too.
+I wrote this just for some specific folks who have asked, but if you happen to find your way here, I hope it helps you too.
 I'm not a doctor, and this is not medical advice. This is just what I'm doing and what I've found works for me.
 
 I may end up writing a more detailed post about my experience with this later, but for now, here is the list of things I'm taking and
@@ -19,6 +19,16 @@ a summary of the diet I'm on to help with the treatment.
 
 Note that **THIS IS NOT _THE CANDIDA DIET_**.
 That diet is total BS for most people?!
+
+## Goals
+
+It is important to understand out of the gate that your goal is NOT to starve the candida (more info on that throughout). Your goal is to:
+- kill it - with antifungals
+- disrupt and destroy the biofilms that have built up in your gut - with enzymes
+- encourage good microbes to take their place so that you have a resilient gut that can handle some pizza and ice cream without going hog wild - pre and pro biotics, healthy fiber, complex carbs
+- heal your gut lining from all the damage that the candida overgrowth has done
+
+This is a long process and you will need to be patient.
 
 ## Supplements
 
@@ -58,9 +68,9 @@ and also don't feel like the progress you've made can be undone in a weekend. Th
 
 ## Diet
 
-The diet I'm on is a low-carb, low-sugar, high-protein, high-fat diet.
+The diet I'm on is a low-carb, no-sugar, high-protein, high-fat diet.
 
-The most important point is that carbs should be on the lower side but not zero, and should come from vegetables.
+The most important point is that carbs should be on the lower side but not zero, and they should come from vegetables.
 
 - NO grains!
 - NOTHING sweet (except berries are fine in moderation)
@@ -71,13 +81,18 @@ The most important point is that carbs should be on the lower side but not zero,
 - NO alcohol (alcohol is metabolized by candida!)
 - NO artificial sweeteners except stevia and monk fruit and allulose (sugar alcohols feed candida!)
   - Watch out for stevia and monk fruit 1:1 sweeteners, they often have sugar alcohols as a main ingredient
+  - https://amzn.to/4jXVDly - this is the stevia I use in my milk kefir
 
 I eat a lot of meat, eggs, and cheese. I also eat some vegetables, but I avoid starchy ones like potatoes and corn. I drink a lot of water and some green/black tea. People say to avoid coffee, but I think people just get hard on withholding things that people enjoy.
 I try to keep processed meats to a minimum but I will eat a stray piece of pepperoni or salami. I make milk kefir and drink that daily with a bit of stevia and black berries blended in. I try to eat sauerkraut and kimchi as often as I can, a little with each meal, when I have some handy.
 
+- https://amzn.to/4jxmhC3 - this is the milk kefir grains I use and have had a great experience with
+
 If you go full keto, you will experience a temporary relief of candida overgrowth symptoms, but the candida will adapt to metabolizing ketones and you will have done nothing to control the overgrowth
 
 If you go full carnivore, you might experience candida die off symptoms just like on this treatment plan, but again, the candida will adapt to metabolizing ketones and you will have done nothing to control the overgrowth.
+
+
 
 ## Timing
 
