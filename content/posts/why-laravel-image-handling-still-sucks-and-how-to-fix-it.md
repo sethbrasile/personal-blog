@@ -3,7 +3,7 @@ title: 'Why Laravel Image Handling Still Sucks and How to Fix It'
 date: 2025-03-06T10:31:55-06:00
 draft: false
 author: [Seth Brasile]
-tags: []
+tags: [Laravel, php, Cloudflare R2, s3]
 categories: []
 showToc: true
 comments: true
