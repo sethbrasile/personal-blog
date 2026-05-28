@@ -1,0 +1,144 @@
+{{- define "main" }}
+{{- partial "cv-jsonld.html" . }}
+
+{{- $alpine := "https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" }}
+{{- $lensjs := resources.Get "js/cv-lens.js" | minify | fingerprint }}
+<script src="{{ $lensjs.RelPermalink }}" integrity="{{ $lensjs.Data.Integrity }}" defer></script>
+<script src="{{ $alpine }}" defer></script>
+
+<article class="cv-root" x-data="cvLens" data-lens="full" :data-lens="lens">
+
+  {{- $b := .Params.basics }}
+  <header class="cv-header">
+    <h1 class="cv-name">{{ $b.name }}</h1>
+    <p class="cv-label">{{ $b.label }}</p>
+    <ul class="cv-contact">
+      <li>{{ $b.location }}</li>
+      <li><a href="mailto:{{ $b.email }}">{{ $b.email }}</a></li>
+      {{- range $b.profiles }}
+      <li><a href="{{ .url }}" rel="me">{{ .network }}</a></li>
+      {{- end }}
+    </ul>
+  </header>
+
+  <nav class="cv-lens-wrap" aria-label="CV focus lens">
+    {{- partial "cv-lens-toggle.html" . }}
+  </nav>
+
+  {{- with .Params.intro }}
+  <section class="cv-intro" aria-live="polite">
+    {{- with .full }}<p data-intro="full">{{ . }}</p>{{ end }}
+    {{- with .dev }}<p data-intro="dev">{{ . }}</p>{{ end }}
+    {{- with .it }}<p data-intro="it">{{ . }}</p>{{ end }}
+    {{- with .leader }}<p data-intro="leader">{{ . }}</p>{{ end }}
+  </section>
+  {{- end }}
+
+  {{- if .Content }}
+  <div class="cv-lede post-content">{{ .Content }}</div>
+  {{- end }}
+
+  {{- with .Params.highlights }}
+  <section class="cv-section cv-highlights">
+    <h2 class="cv-section-title">Selected Highlights</h2>
+    <ul class="cv-highlight-list">
+      {{- range . }}
+      {{- $w := .weight | default dict }}
+      {{- $style := printf "--w-dev:%v;--w-it:%v;--w-leader:%v" (index $w "dev" | default 0) (index $w "it" | default 0) (index $w "leader" | default 0) }}
+      <li class="cv-highlight"{{ with .lenses }} data-lenses="{{ delimit . " " }}"{{ end }} style="{{ $style }}">{{ .text }}</li>
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- with .Params.roles }}
+  <section class="cv-section cv-experience">
+    <h2 class="cv-section-title">Experience</h2>
+    <div class="cv-timeline">
+      {{- range . }}
+      {{- partial "cv-role.html" . }}
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  {{- with .Params.projects }}
+  <section class="cv-section cv-projects">
+    <h2 class="cv-section-title">Projects &amp; Open Source</h2>
+    <div class="cv-card-grid">
+      {{- range . }}
+      {{- partial "cv-project.html" . }}
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  {{- with .Params.writing }}
+  <section class="cv-section cv-writing">
+    <h2 class="cv-section-title">Writing</h2>
+    <ul class="cv-writing-list">
+      {{- range . }}
+      <li{{ with .lenses }} data-lenses="{{ delimit . " " }}"{{ end }}>
+        <a href="{{ .url }}">{{ .title }}</a>
+        {{- with .note }} <span class="cv-writing-note">— {{ . }}</span>{{ end }}
+      </li>
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- with .Params.homelab }}
+  <section class="cv-section cv-homelab">
+    <details>
+      <summary><h2 class="cv-section-title cv-inline-title">Homelab</h2></summary>
+      {{- with .blurb }}<p class="cv-homelab-blurb">{{ . }}</p>{{ end }}
+      <ul class="cv-bullets">
+        {{- range .items }}<li>{{ . }}</li>{{ end }}
+      </ul>
+    </details>
+  </section>
+  {{- end }}
+
+  {{- with .Params.skills }}
+  <section class="cv-section cv-skills-section">
+    <h2 class="cv-section-title">Skills</h2>
+    {{- partial "cv-skill-cloud.html" . }}
+  </section>
+  {{- end }}
+
+  {{- if or .Params.education .Params.certifications }}
+  <section class="cv-section cv-credentials">
+    <div class="cv-cred-cols">
+      {{- with .Params.education }}
+      <div>
+        <h2 class="cv-section-title">Education</h2>
+        <ul class="cv-cred-list">
+          {{- range . }}
+          <li><strong>{{ .institution }}</strong>{{ with .study }} — {{ . }}{{ end }}{{ with .dates }} <span class="cv-cred-dates">{{ . }}</span>{{ end }}</li>
+          {{- end }}
+        </ul>
+      </div>
+      {{- end }}
+      {{- with .Params.certifications }}
+      <div>
+        <h2 class="cv-section-title">Certifications</h2>
+        <ul class="cv-cred-list">
+          {{- range . }}
+          <li><strong>{{ .name }}</strong> — {{ .issuer }}{{ with .date }} <span class="cv-cred-dates">{{ . }}</span>{{ end }}</li>
+          {{- end }}
+        </ul>
+      </div>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  <footer class="cv-footer">
+    <a class="cv-cta cv-cta-primary" href="/cv/resume.pdf" download>Download PDF</a>
+    <a class="cv-cta" href="/cv/resume.json">JSON Resume</a>
+    <a class="cv-cta" href="/hire/">Hire me</a>
+    <a class="cv-cta" href="/contact/">Contact</a>
+  </footer>
+
+</article>
+{{- end }}

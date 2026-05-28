@@ -1,0 +1,28 @@
+{{- /* One experience role. Context: a role map from cv.md frontmatter. */ -}}
+{{- $r := . -}}
+<article class="cv-role"{{ with $r.lenses }} data-lenses="{{ delimit . " " }}"{{ end }}>
+  <div class="cv-role-head">
+    <div class="cv-role-headings">
+      <h3 class="cv-role-title">{{ $r.title }}</h3>
+      <p class="cv-role-org">{{ $r.org }}{{ with $r.location }} <span class="cv-role-loc">· {{ . }}</span>{{ end }}</p>
+    </div>
+    {{- if or $r.start $r.end }}
+    <p class="cv-role-dates">{{ $r.start }}{{ if and $r.start $r.end }} – {{ end }}{{ $r.end }}</p>
+    {{- end }}
+  </div>
+  {{- with $r.summary }}
+  <p class="cv-role-summary">{{ . }}</p>
+  {{- end }}
+  {{- with $r.bullets }}
+  <ul class="cv-bullets">
+    {{- range . }}
+    <li{{ with .lenses }} data-lenses="{{ delimit . " " }}"{{ end }}>{{ .text }}</li>
+    {{- end }}
+  </ul>
+  {{- end }}
+  {{- with $r.stack }}
+  <p class="cv-role-stack">
+    {{- range . }}<span class="cv-tag">{{ . }}</span>{{ end -}}
+  </p>
+  {{- end }}
+</article>

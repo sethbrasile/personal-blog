@@ -1,0 +1,15 @@
+{{- /* One project card. Context: a project map from cv.md frontmatter. */ -}}
+{{- $p := . -}}
+{{- $w := $p.weight | default dict -}}
+{{- $style := printf "--w-dev:%v;--w-it:%v;--w-leader:%v" (index $w "dev" | default 0) (index $w "it" | default 0) (index $w "leader" | default 0) -}}
+<article class="cv-card"{{ with $p.lenses }} data-lenses="{{ delimit . " " }}"{{ end }} style="{{ $style }}">
+  <h3 class="cv-card-title">
+    {{- if $p.url }}<a href="{{ $p.url }}">{{ $p.name }}</a>{{ else }}{{ $p.name }}{{ end -}}
+  </h3>
+  <p class="cv-card-blurb">{{ $p.blurb }}</p>
+  {{- with $p.stack }}
+  <p class="cv-card-stack">
+    {{- range . }}<span class="cv-tag">{{ . }}</span>{{ end -}}
+  </p>
+  {{- end }}
+</article>

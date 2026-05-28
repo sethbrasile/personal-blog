@@ -1,0 +1,14 @@
+{{- /* Lens toggle pill bar. Buttons set the active lens; CSS does the filtering. */ -}}
+<div class="cv-lens-bar" role="group" aria-label="CV focus lens">
+  {{- $labels := dict "full" "Full" "dev" "Dev" "it" "IT / Security" "leader" "Leadership" -}}
+  {{- range $key := slice "full" "dev" "it" "leader" }}
+  <button
+    type="button"
+    class="cv-lens-btn"
+    :class="{ 'is-active': lens === '{{ $key }}' }"
+    :aria-pressed="lens === '{{ $key }}' ? 'true' : 'false'"
+    @click="set('{{ $key }}')">
+    {{ index $labels $key }}
+  </button>
+  {{- end }}
+</div>

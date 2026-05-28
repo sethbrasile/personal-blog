@@ -1,0 +1,55 @@
+{{- /* schema.org JSON-LD generated from cv.md frontmatter. Person + ProfilePage + BreadcrumbList. */ -}}
+{{- $b := .Params.basics -}}
+
+{{- /* sameAs from profiles */ -}}
+{{- $sameAs := slice -}}
+{{- range $b.profiles }}{{ $sameAs = $sameAs | append .url }}{{ end -}}
+
+{{- /* current employers (roles still ongoing) */ -}}
+{{- $worksFor := slice -}}
+{{- range .Params.roles }}{{ if eq (lower .end) "present" }}{{ $worksFor = $worksFor | append (dict "@type" "Organization" "name" .org) }}{{ end }}{{ end -}}
+
+{{- /* alumniOf from education */ -}}
+{{- $alumni := slice -}}
+{{- range .Params.education }}{{ $alumni = $alumni | append (dict "@type" "EducationalOrganization" "name" .institution) }}{{ end -}}
+
+{{- /* knowsAbout from skill chips (deduped) */ -}}
+{{- $knows := slice -}}
+{{- range .Params.skills }}{{ range .items }}{{ if not (in $knows .name) }}{{ $knows = $knows | append .name }}{{ end }}{{ end }}{{ end -}}
+
+{{- /* awards / notable credentials */ -}}
+{{- $awards := slice -}}
+{{- range .Params.certifications }}{{ $awards = $awards | append (printf "%s — %s (%s)" .name .issuer .date) }}{{ end -}}
+
+{{- $person := dict
+  "@type" "Person"
+  "@id" (printf "%s#person" .Permalink)
+  "name" $b.name
+  "url" $b.url
+  "email" (printf "mailto:%s" $b.email)
+  "jobTitle" $b.label
+  "address" (dict "@type" "PostalAddress" "addressLocality" $b.location)
+  "sameAs" $sameAs
+  "worksFor" $worksFor
+  "alumniOf" $alumni
+  "knowsAbout" $knows
+  "award" $awards
+-}}
+
+{{- $profilePage := dict
+  "@type" "ProfilePage"
+  "@id" .Permalink
+  "url" .Permalink
+  "name" .Title
+  "mainEntity" (dict "@id" (printf "%s#person" .Permalink))
+-}}
+
+{{- $crumbs := dict
+  "@type" "BreadcrumbList"
+  "itemListElement" (slice
+    (dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.BaseURL)
+    (dict "@type" "ListItem" "position" 2 "name" "CV" "item" .Permalink))
+-}}
+
+{{- $graph := dict "@context" "https://schema.org" "@graph" (slice $person $profilePage $crumbs) -}}
+<script type="application/ld+json">{{ $graph | jsonify (dict "indent" "  ") | safeJS }}</script>

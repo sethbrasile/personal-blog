@@ -1,0 +1,15 @@
+{{- /* Skill cloud. Context: .skills slice of {group, items[]} from frontmatter. */ -}}
+<div class="cv-skills">
+  {{- range . }}
+  {{- $group := . -}}
+  {{- /* group is visible if any of its items match (CSS hides empty groups via :has) */ -}}
+  <div class="cv-skill-group"{{ with $group.lenses }} data-lenses="{{ delimit . " " }}"{{ end }}>
+    <h4 class="cv-skill-group-title">{{ $group.group }}</h4>
+    <ul class="cv-chips">
+      {{- range $group.items }}
+      <li class="cv-chip"{{ with .lenses }} data-lenses="{{ delimit . " " }}"{{ end }}>{{ .name }}</li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+</div>
