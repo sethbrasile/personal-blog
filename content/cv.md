@@ -48,7 +48,7 @@ intro:
     audit-certified — and I will tell you exactly which.
   leader: >-
     I have managed 75+ direct reports on a casino floor (real HR-side ownership,
-    discipline included) and hired and technically led a team of 6 engineers at a
+    discipline included) and hired and led a team of 6 engineers at a
     startup that turned profitable in year one. I co-own two businesses and a
     real-estate partnership, so P&L is not an abstraction to me.
 
@@ -59,7 +59,7 @@ highlights:
   - text: "Led the PrintNightmare response across a regulated MSP client base — escalated from PowerShell/GPO mitigations to eliminating traditional print servers entirely."
     lenses: [it, leader]
     weight: { it: 10, leader: 7 }
-  - text: "Hired and technically led a team of 6 engineers (frontend, backend, ML, UI/UX) — interviews, hiring decisions, technical direction, code review."
+  - text: "Hired and led a team of 6 engineers (frontend, backend, ML, UI/UX) — interviews, hiring decisions, technical direction, code review."
     lenses: [dev, leader]
     weight: { dev: 6, leader: 10 }
   - text: "Managed 75+ direct reports at peak on the floor of the world's largest casino — scheduling, performance management, discipline, and Title 31 / IRS compliance enforcement."
@@ -122,7 +122,7 @@ roles:
         lenses: [dev]
       - text: "Built the entire auth stack on Auth0 (Okta) — production SSO, MFA, full user lifecycle."
         lenses: [it, dev]
-      - text: "Led the v2 migration to a cloud-native SaaS stack, deprecating most of the custom dev I had built — the right call once competitive tooling existed and the business pivoted to 1:1 coaching."
+      - text: "Led the v2 migration to a cloud-native SaaS stack, deprecating most of the custom dev we had built — the right call once competitive tooling existed and the business pivoted to 1:1 coaching."
         lenses: [dev, leader]
     stack: ["Nuxt", "Vercel", "FaunaDB", "Stripe", "PostgreSQL (Neon)", "InfluxDB 2.0", "Heroku", "Go", "Grafana", "Python", "R", "reticulate", "Hetzner", "Dokku/Docker"]
 
@@ -152,14 +152,14 @@ roles:
     start: "Oct 2016"
     end: "Jun 2021"
     location: "Ada, OK"
-    summary: "Sole owner of all retail + PCI payment systems across a diverse property portfolio (hundreds of devices) — casinos, c-stores, gas stations, restaurants, boutique retail."
+    summary: "One of two recognized experts for all retail + PCI payment systems across a diverse property portfolio (hundreds of devices) — casinos, c-stores, gas stations, restaurants, boutique retail. Formally a peer on the team; in practice a decision-maker the enterprise looked to."
     lenses: [it, leader]
     bullets:
       - text: "Two-year PCI-DSS subject-matter expert and lead preparer for PCI audits."
         lenses: [it, leader]
       - text: "Designed and implemented enterprise-wide payment + POS device tracking to enable PCI compliance."
         lenses: [it]
-      - text: "Led multiple retail-systems initiatives end-to-end as the domain specialist."
+      - text: "Led many retail-systems initiatives end-to-end as the domain specialist."
         lenses: [it, leader]
 
   - org: "Community First Investments"
@@ -172,7 +172,7 @@ roles:
     bullets:
       - text: "Acquired a distressed 12-unit apartment complex; led a multi-phase, to-the-studs renovation to fully renovated and fully occupied."
         lenses: [leader]
-      - text: "Hired and managed the general contractor — hands-on throughout, not a passive investor."
+      - text: "Hired and managed the general contractor and subcontractors — hands-on throughout, not a passive investor."
         lenses: [leader]
 
   - org: "Greeting Card Collection / Deep Space Robots"
@@ -285,10 +285,6 @@ writing:
     url: https://bytemycache.com/
     note: "Same architecture deployed in production at DKB"
     lenses: [it]
-  - title: "PowerShell Code Delivery — GitHub as source of truth"
-    url: https://bytemycache.com/
-    note: "Security argument against local code storage"
-    lenses: [it, dev]
   - title: "Why Laravel Image Handling Still Sucks and How to Fix It"
     url: https://bytemycache.com/
     note: ""

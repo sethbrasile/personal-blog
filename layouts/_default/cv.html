@@ -134,8 +134,13 @@
   {{- end }}
 
   <footer class="cv-footer">
-    <a class="cv-cta cv-cta-primary" href="/cv/resume.pdf" download>Download PDF</a>
+    {{- /* PDF + JSON Resume are build artifacts (Sessions 6-7); render only once they exist. */ -}}
+    {{- if os.FileExists "static/cv/resume.pdf" }}
+    <a class="cv-cta cv-cta-primary" href="/cv/resume.pdf" download="Seth-Brasile-Resume.pdf">Download PDF</a>
+    {{- end }}
+    {{- if os.FileExists "static/cv/resume.json" }}
     <a class="cv-cta" href="/cv/resume.json">JSON Resume</a>
+    {{- end }}
     <a class="cv-cta" href="/hire/">Hire me</a>
     <a class="cv-cta" href="/contact/">Contact</a>
   </footer>
