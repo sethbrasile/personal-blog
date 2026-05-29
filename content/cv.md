@@ -152,7 +152,7 @@ roles:
     start: "Oct 2016"
     end: "Jun 2021"
     location: "Ada, OK"
-    summary: "One of two recognized experts for all retail + PCI payment systems across a diverse property portfolio (hundreds of devices) — casinos, c-stores, gas stations, restaurants, boutique retail. Formally a peer on the team; in practice a decision-maker the enterprise looked to."
+    summary: "One of two go-to experts for all retail + PCI payment systems across a diverse property portfolio (hundreds of devices) — casinos, c-stores, gas stations, restaurants, boutique retail. The decision-maker the enterprise relied on for this domain."
     lenses: [it, leader]
     bullets:
       - text: "Two-year PCI-DSS subject-matter expert and lead preparer for PCI audits."
