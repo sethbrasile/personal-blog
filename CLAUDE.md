@@ -19,7 +19,18 @@ hugo new posts/my-slug.md     # new post from archetypes/default.md
 hugo new videos/my-slug.md    # new video page from archetypes/videos.md
 ```
 
-There is no package.json, linter, or test suite — it's a pure Hugo site.
+Node build scripts (the `/cv/` data pipeline) live in `scripts/`:
+
+```bash
+npm install                 # one-time (js-yaml)
+npm run build:cv            # resume/cv.yaml → content/cv.md
+npm run build:resume-json   # resume/cv.yaml → static/cv/resume.json
+npm run build:data          # both of the above
+HUGO=/path/to/hugo-0120 npm run build   # data + hugo (see version gotcha)
+```
+
+There is no linter or test suite — it's a Hugo site with a small Node
+data-gen step for `/cv/`.
 
 ### ⚠️ Hugo version pin (gotcha)
 
@@ -35,11 +46,19 @@ vendored theme. (See `## Tech debt`.)
 
 `/cv/` is a custom single-page CV, not a normal post. How it fits together:
 
-- `content/cv.md` — **generated**; all data lives in YAML frontmatter.
-  Do **not** hand-edit. Source of truth is the `resume` repo's
-  `knowledge/` dir → `scripts/build-cv.mjs` regenerates this. (Sync
-  script lands in Session 2; until then the frontmatter is a hand-authored
-  bootstrap.)
+- **Source of truth: `resume/cv.yaml`** (in the sibling `resume` repo) —
+  structured CV data incl. lens tags + weights + voice text. Edit there.
+- **Editing model:** edit `resume/cv.yaml` → `npm run build:data` →
+  commit the blog. The prose `resume/knowledge/*.md` files are narrative
+  background for tailoring a specific application; `cv.yaml` is what the
+  site renders.
+- `content/cv.md` — **generated**, do **not** hand-edit (header says so).
+  `scripts/build-cv.mjs` writes it from `cv.yaml`.
+- `static/cv/resume.json` — **generated** JSON Resume v1.0.0 export.
+  `scripts/export-json-resume.mjs` writes it from `cv.yaml`. Footer button
+  appears only when this file exists (`os.FileExists`).
+- Scripts read `cv.yaml` from `../resume` by default; override with the
+  `RESUME_REPO` env var. They need `npm install` (js-yaml).
 - `layouts/_default/cv.html` — main template (selected via `layout: cv`).
 - `layouts/partials/cv-*.html` — `cv-jsonld`, `cv-lens-toggle`, `cv-role`,
   `cv-project`, `cv-skill-cloud`.

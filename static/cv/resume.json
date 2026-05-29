@@ -1,0 +1,387 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Seth Brasile",
+    "label": "Engineer · IT/Security · Builder",
+    "email": "seth@tenorcreative.com",
+    "url": "https://bytemycache.com",
+    "summary": "I am an engineer who also spent the better part of a decade running enterprise IT and security, which means I build software and I have also been the person on the wrong end of the pager at 2am. Twelve-plus years across full-stack development, DevOps, and regulated-industry IT — casinos, healthcare, manufacturing, government. I codify, version, review, and secure the things most shops do by hand.",
+    "location": {
+      "city": "Durant",
+      "region": "OK"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "url": "https://github.com/sethbrasile"
+      },
+      {
+        "network": "YouTube",
+        "url": "https://youtube.com/@byteMyCache"
+      },
+      {
+        "network": "Site",
+        "url": "https://bytemycache.com"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Prickly Pear Marketing Co (PPMC)",
+      "position": "Co-Founder · Solutions Engineer · Primary Developer",
+      "startDate": "2025-10",
+      "summary": "Co-owned full-service marketing agency. I own the technical side — web, SEO, automation, internal tooling — and share agency leadership with partners.",
+      "highlights": [
+        "Built the internal AI-tool governance + scheduled-agent system the partner team runs on.",
+        "Built and operate the web + SEO delivery pipeline used across client engagements.",
+        "Co-owner equity, P&L, and decision authority."
+      ]
+    },
+    {
+      "name": "Tenor Creative LLC",
+      "position": "Founder · Solutions Engineer · Primary Developer",
+      "startDate": "2024-09",
+      "summary": "Solo shop that feeds engineering work into PPMC. Static sites for SMBs with a focus on technical SEO, performance, and accessibility.",
+      "highlights": [
+        "Build static sites for small-to-medium businesses — technical SEO, performance, accessibility.",
+        "Built the tooling that lets one person deliver premium static sites at a low price point.",
+        "Own full P&L for the entity."
+      ]
+    },
+    {
+      "name": "BetterLife",
+      "position": "Senior Full-Stack Engineer · DevOps · Software Systems Architect",
+      "startDate": "2023-03",
+      "summary": "Founding engineer and architect for a small-groups (\"pods\") matchmaking platform — no off-the-shelf solution existed at the time. Built v1 from zero; led the v2 migration to cloud-native SaaS when the market caught up and the business pivoted. Q&A advisory since ~mid-2024.",
+      "highlights": [
+        "Designed and owned the entire v1 platform — frontend, backend, ML, databases, CI/CD.",
+        "Hired and led a team of 6: 2 frontend devs, 1 backend dev, 1 senior frontend + UI/UX designer, 1 ML engineer.",
+        "Built an R-based ML matchmaking system pairing users with pods that fit.",
+        "Built the entire auth stack on Auth0 (Okta) — production SSO, MFA, full user lifecycle.",
+        "Led the v2 migration to a cloud-native SaaS stack, deprecating most of the custom dev we had built — the right call once competitive tooling existed and the business pivoted to 1:1 coaching."
+      ]
+    },
+    {
+      "name": "DKBinnovative",
+      "position": "Centralized Services Automation Specialist (IT DevOps)",
+      "startDate": "2021-06",
+      "endDate": "2023-03",
+      "summary": "Designed and built cybersecurity + compliance automation across enterprise Windows/Linux/Mac fleets (2,500–3,200 endpoints) in healthcare and manufacturing.",
+      "highlights": [
+        "Daily PowerShell development for workstation and service-management tooling; built Go tools to orchestrate it and aggregate reporting data.",
+        "Built a proof-of-concept MSP code-delivery + RMM platform in Go — cross-platform agent + server-side broker over gRPC + mutual TLS.",
+        "Led PrintNightmare response across the client base — PowerShell/GPO mitigations, then eliminated traditional print servers entirely via centralized print management.",
+        "Migrated all delivered PowerShell to a GitHub source-of-truth model — scripts execute in-memory from raw URLs, removing the local-file tampering surface and forcing PR review.",
+        "Compliance remediation against HIPAA / NIST / CMMC-adjacent scans supplied by a formal security team.",
+        "Automated distributed enterprise Windows update/upgrade management; owned internal tooling and infrastructure."
+      ]
+    },
+    {
+      "name": "The Chickasaw Nation",
+      "position": "Retail Systems Analyst",
+      "startDate": "2016-10",
+      "endDate": "2021-06",
+      "summary": "One of two go-to experts for all retail + PCI payment systems across a diverse property portfolio (hundreds of devices) — casinos, c-stores, gas stations, restaurants, boutique retail. The decision-maker the enterprise relied on for this domain.",
+      "highlights": [
+        "Two-year PCI-DSS subject-matter expert and lead preparer for PCI audits.",
+        "Designed and implemented enterprise-wide payment + POS device tracking to enable PCI compliance.",
+        "Led many retail-systems initiatives end-to-end as the domain specialist."
+      ]
+    },
+    {
+      "name": "Community First Investments",
+      "position": "Co-Founder & Operating Partner (Real Estate)",
+      "startDate": "2021",
+      "summary": "Real-estate investment partnership. Owner-side capital stewardship and full-lifecycle ownership — acquire, renovate, operate, exit.",
+      "highlights": [
+        "Acquired a distressed 12-unit apartment complex; led a multi-phase, to-the-studs renovation to fully renovated and fully occupied.",
+        "Hired and managed the general contractor and subcontractors — hands-on throughout, not a passive investor."
+      ]
+    },
+    {
+      "name": "Greeting Card Collection / Deep Space Robots",
+      "position": "Web Developer",
+      "startDate": "2015-04",
+      "endDate": "2016-07",
+      "summary": "Frontend development in JavaScript / Ember.js.",
+      "highlights": [
+        "Built a suite of tools letting clients build customized white-labeled greeting-card sites.",
+        "Hired directly by the Deep Space Robots client to continue building and maintaining."
+      ]
+    },
+    {
+      "name": "Koddi",
+      "position": "Junior Web Developer",
+      "startDate": "2014-09",
+      "endDate": "2015-04",
+      "summary": "PHP + JavaScript, junior full-stack on a lodging/booking/travel analytics and ad-management platform."
+    },
+    {
+      "name": "The Chickasaw Nation",
+      "position": "IT Client Services Technician",
+      "startDate": "2012-06",
+      "endDate": "2013-08",
+      "summary": "Remote and on-site IT support for 3,000+ users across 28 properties — frequently the lone on-site engineer, responsible for 20+ data centers and IDFs in rotation.",
+      "highlights": [
+        "Full-stack ownership (OS, software, lifecycle) of hundreds of facility workstations; first-responder infrastructure support across the gaming floor.",
+        "PC imaging, deployments, Cisco VOIP, AD/Exchange, SCSM ticketing."
+      ]
+    },
+    {
+      "name": "The Chickasaw Nation",
+      "position": "Electronic Gaming Floor Supervisor",
+      "startDate": "2008-08",
+      "endDate": "2011-08",
+      "summary": "Managed 75+ technical-support / customer-service reps at a time on the floor of the world's largest casino.",
+      "highlights": [
+        "Real people-management — scheduling, performance management, hiring input, discipline.",
+        "Enforced federal Title 31 (AML reporting) and IRS withholding law daily; handled sensitive PII / 1099 / tax-prep flows.",
+        "Vendor + cross-department operations coordination."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "margin-check.com",
+      "description": "Solo-built SaaS — ingests Etsy CSV exports and surfaces real per-listing profit margins after all fees. Pre-launch.",
+      "url": "https://margin-check.com",
+      "keywords": [
+        "Next.js 16",
+        "Cloudflare Workers (OpenNext)",
+        "Neon + Drizzle + Hyperdrive",
+        "Better Auth",
+        "Stripe",
+        "Inngest"
+      ]
+    },
+    {
+      "name": "potluck-planner.com",
+      "description": "Solo-built event-coordination SaaS — passkeys/WebAuthn, OAuth, magic links, payments, email/SMS, 10 background job handlers. Production-ready.",
+      "url": "https://potluck-planner.com",
+      "keywords": [
+        "Next.js 15",
+        "Better Auth",
+        "Neon + Drizzle",
+        "Cloudflare Workers",
+        "Stripe",
+        "Resend",
+        "Twilio",
+        "Inngest"
+      ]
+    },
+    {
+      "name": "idea-machine",
+      "description": "Team RAG with a dual-database privacy boundary by design — shared topics in Postgres, private topics in local SQLite that never touches shared infrastructure. Data classification enforced at the storage layer.",
+      "keywords": [
+        "Python",
+        "Postgres (Neon)",
+        "SQLite",
+        "trafilatura",
+        "yt-dlp",
+        "cryptography"
+      ]
+    },
+    {
+      "name": "ppmc-claude-routines-and-schedules",
+      "description": "Group-policy-as-code for an agency's AI usage — declarative routines, version-controlled CLAUDE.md set, drift detection, dev-mode guards, pre-push secret scanning.",
+      "keywords": [
+        "Bash",
+        "YAML",
+        "Claude Code",
+        "git"
+      ]
+    },
+    {
+      "name": "EZ Web Audio",
+      "description": "Framework-agnostic Web Audio API wrapper; modern successor to ember-audio. Authored + maintained.",
+      "url": "https://github.com/sethbrasile/ez-web-audio",
+      "keywords": [
+        "TypeScript",
+        "Web Audio API"
+      ]
+    },
+    {
+      "name": "Justice For Us — White House SXSL (2016)",
+      "description": "Engineering contributor on an interactive sentencing exhibit at the White House South by South Lawn. Author of the open-source Web Audio library that powered its interactive elements. (TechCrunch credited the lead developer.)",
+      "url": "https://techcrunch.com/2016/10/03/white-houses-sxsl-shows-what-its-like-to-be-in-the-criminal-justice-system/",
+      "keywords": [
+        "JavaScript",
+        "Ember",
+        "ember-audio"
+      ]
+    },
+    {
+      "name": "MSP RMM Platform (DKB POC)",
+      "description": "Cross-platform agent (Linux/Mac/Windows) + server-side message broker over gRPC + mutual TLS. Proof-of-concept replacement for traditional RMM tooling.",
+      "keywords": [
+        "Go",
+        "gRPC",
+        "mTLS"
+      ]
+    },
+    {
+      "name": "Immutable Reverse-Proxy Edge",
+      "description": "Fedora CoreOS immutable reverse proxy at the network edge, terminating SSL on the LAN side for IDS/IPS inspection. Deployed in production at DKB; documented in a 4-part series.",
+      "url": "https://bytemycache.com/",
+      "keywords": [
+        "Fedora CoreOS",
+        "NGINX",
+        "fail2ban",
+        "Cloudflare"
+      ]
+    },
+    {
+      "name": "Homelab",
+      "description": "Real infrastructure I rely on daily, treated as production — documented, with formal incident reports written for outages that affect only me.",
+      "highlights": [
+        "Proxmox / hypervisor hosts; Docker-first service deployment (in use since Docker's earliest days)",
+        "Zero-trust ingress via Cloudflare Tunnels — no inbound ports exposed",
+        "Previously: Fedora CoreOS immutable reverse proxy terminating SSL on the LAN side for IDS/IPS inspection (same pattern deployed at DKB)",
+        "Split-brain DNS via self-hosted Technitium — internal zones local, external via Cloudflare Registrar",
+        "Self-hosted LLM + Hermes agent setup on a local GPU rig",
+        "Self-hosted Immich, Mealie, Plex; custom Dockerfiles for patched/niche images",
+        "Formal post-mortem incident reports (Mar–Apr 2026 outage series)"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Languages",
+      "keywords": [
+        "TypeScript",
+        "JavaScript",
+        "PowerShell",
+        "Go",
+        "Python",
+        "PHP",
+        "R",
+        "SQL"
+      ]
+    },
+    {
+      "name": "Frontend / Web",
+      "keywords": [
+        "Nuxt 3",
+        "Vue 3",
+        "Ember.js",
+        "React",
+        "Tailwind CSS",
+        "Web Audio API"
+      ]
+    },
+    {
+      "name": "Backend / Platform",
+      "keywords": [
+        "Node / Express",
+        "gRPC / mutual TLS",
+        "REST / GraphQL",
+        "Better Auth",
+        "Stripe"
+      ]
+    },
+    {
+      "name": "Cloud / DevOps / Infra",
+      "keywords": [
+        "Docker / Compose / Dokku",
+        "CI/CD (GitHub Actions)",
+        "Cloudflare (Workers, Tunnels, DNS)",
+        "Microsoft Azure",
+        "NGINX / reverse-proxy hardening",
+        "Immutable infrastructure"
+      ]
+    },
+    {
+      "name": "Enterprise IT / Sysadmin",
+      "keywords": [
+        "Active Directory",
+        "Group Policy (GPO)",
+        "SCCM / SCSM",
+        "Intune",
+        "ConnectWise Automate (RMM)",
+        "M365 / Google Workspace admin",
+        "Okta / Auth0"
+      ]
+    },
+    {
+      "name": "Security / Compliance",
+      "keywords": [
+        "PCI-DSS (2-yr SME)",
+        "Title 31 / IRS",
+        "HIPAA",
+        "NIST / CMMC-adjacent",
+        "PrintNightmare response",
+        "Zero-trust ingress",
+        "IDS/IPS + split-brain DNS"
+      ]
+    },
+    {
+      "name": "Data / ML",
+      "keywords": [
+        "R + Python (production ML)",
+        "reticulate",
+        "Grafana",
+        "InfluxDB"
+      ]
+    },
+    {
+      "name": "Leadership",
+      "keywords": [
+        "Hired + led 6 engineers",
+        "Managed 75+ reports",
+        "Code review / mentoring",
+        "Vendor management",
+        "P&L ownership"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Mott Community College",
+      "studyType": "Coursework"
+    },
+    {
+      "institution": "Lapeer East High School",
+      "studyType": "High School Diploma",
+      "startDate": "1999",
+      "endDate": "2003"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "CompTIA A+",
+      "issuer": "University of North Texas testing center",
+      "date": "2015-02"
+    },
+    {
+      "name": "Programming for Everybody (Python)",
+      "issuer": "University of Michigan (Coursera)",
+      "date": "2014-08"
+    },
+    {
+      "name": "The Data Scientist's Toolbox",
+      "issuer": "Johns Hopkins University (Coursera)",
+      "date": "2014-08"
+    }
+  ],
+  "publications": [
+    {
+      "name": "How To Run Multiple Dockerized, Proxied, SPDY'd, and Pagespeedified Ghost Blogs with 4 Commands",
+      "publisher": "Featured in the official Docker newsletter",
+      "url": "https://bytemycache.com/posts/how-to-run-multiple-dockerized-proxied-spdyd-and-pagespeedified-ghost-blogs-with-4-commands/"
+    },
+    {
+      "name": "Protect Your Services with an Immutable Reverse Proxy, Fail2Ban, and Cloudflare (4-part series)",
+      "publisher": "Same architecture deployed in production at DKB",
+      "url": "https://bytemycache.com/"
+    },
+    {
+      "name": "Why Laravel Image Handling Still Sucks and How to Fix It",
+      "publisher": "bytemycache.com",
+      "url": "https://bytemycache.com/"
+    }
+  ],
+  "meta": {
+    "canonical": "https://bytemycache.com/cv/resume.json",
+    "version": "1.0.0"
+  }
+}

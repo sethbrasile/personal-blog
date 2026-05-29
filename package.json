@@ -1,0 +1,16 @@
+{
+  "name": "bytemycache-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "byteMyCache (bytemycache.com) — Hugo + PaperMod. Node scripts here build the /cv/ data artifacts.",
+  "type": "module",
+  "scripts": {
+    "build:cv": "node scripts/build-cv.mjs",
+    "build:resume-json": "node scripts/export-json-resume.mjs",
+    "build:data": "npm run build:cv && npm run build:resume-json",
+    "build": "npm run build:data && \"${HUGO:-hugo}\""
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
