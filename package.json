@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "build:cv": "node scripts/build-cv.mjs",
-    "build:resume-json": "node scripts/export-json-resume.mjs",
-    "build:data": "npm run build:cv && npm run build:resume-json",
+    "sync:assets": "node scripts/sync-cv-assets.mjs",
+    "build:data": "npm run build:cv && npm run sync:assets",
     "build": "npm run build:data && \"${HUGO:-hugo}\""
   },
   "dependencies": {

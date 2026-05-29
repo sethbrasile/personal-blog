@@ -134,9 +134,9 @@
   {{- end }}
 
   <footer class="cv-footer">
-    {{- /* PDF + JSON Resume are build artifacts (Sessions 6-7); render only once they exist. */ -}}
-    {{- if os.FileExists "static/cv/resume.pdf" }}
-    <a class="cv-cta cv-cta-primary" href="/cv/resume.pdf" download="Seth-Brasile-Resume.pdf">Download PDF</a>
+    {{- /* PDF + JSON Resume are produced by the resume repo and synced into static/cv/. Render only when present. */ -}}
+    {{- if os.FileExists "static/cv/Seth-Brasile-Resume.pdf" }}
+    <a class="cv-cta cv-cta-primary" href="/cv/Seth-Brasile-Resume.pdf" download>Download PDF</a>
     {{- end }}
     {{- if os.FileExists "static/cv/resume.json" }}
     <a class="cv-cta" href="/cv/resume.json">JSON Resume</a>

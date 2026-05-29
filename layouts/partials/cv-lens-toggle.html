@@ -7,7 +7,9 @@
     class="cv-lens-btn"
     :class="{ 'is-active': lens === '{{ $key }}' }"
     :aria-pressed="lens === '{{ $key }}' ? 'true' : 'false'"
-    @click="set('{{ $key }}')">
+    @click="set('{{ $key }}')"
+    @keydown.right.prevent="$el.nextElementSibling && $el.nextElementSibling.focus()"
+    @keydown.left.prevent="$el.previousElementSibling && $el.previousElementSibling.focus()">
     {{ index $labels $key }}
   </button>
   {{- end }}

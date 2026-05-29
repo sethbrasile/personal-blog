@@ -19,18 +19,22 @@ hugo new posts/my-slug.md     # new post from archetypes/default.md
 hugo new videos/my-slug.md    # new video page from archetypes/videos.md
 ```
 
-Node build scripts (the `/cv/` data pipeline) live in `scripts/`:
+Node build scripts (the `/cv/` ingest) live in `scripts/`:
 
 ```bash
+# In the resume repo first — it PRODUCES the artifacts:
+( cd ../resume && npm install && npm run build )   # → resume/output/{*.pdf,resume.json}
+
+# Then in this repo — it CONSUMES them:
 npm install                 # one-time (js-yaml)
 npm run build:cv            # resume/cv.yaml → content/cv.md
-npm run build:resume-json   # resume/cv.yaml → static/cv/resume.json
-npm run build:data          # both of the above
+npm run sync:assets         # resume/output/{pdf,json} → static/cv/
+npm run build:data          # build:cv + sync:assets
 HUGO=/path/to/hugo-0120 npm run build   # data + hugo (see version gotcha)
 ```
 
 There is no linter or test suite — it's a Hugo site with a small Node
-data-gen step for `/cv/`.
+ingest step for `/cv/`.
 
 ### ⚠️ Hugo version pin (gotcha)
 
@@ -53,12 +57,17 @@ vendored theme. (See `## Tech debt`.)
   background for tailoring a specific application; `cv.yaml` is what the
   site renders.
 - `content/cv.md` — **generated**, do **not** hand-edit (header says so).
-  `scripts/build-cv.mjs` writes it from `cv.yaml`.
-- `static/cv/resume.json` — **generated** JSON Resume v1.0.0 export.
-  `scripts/export-json-resume.mjs` writes it from `cv.yaml`. Footer button
-  appears only when this file exists (`os.FileExists`).
-- Scripts read `cv.yaml` from `../resume` by default; override with the
-  `RESUME_REPO` env var. They need `npm install` (js-yaml).
+  `scripts/build-cv.mjs` writes it from `cv.yaml` (Hugo-specific ingest).
+- **PDF + JSON Resume are produced by the resume repo, not here.** The
+  resume repo owns the data and its portable outputs; Hugo is one consumer.
+  `resume/scripts/{render-pdf,export-json-resume}.mjs` → `resume/output/`
+  (`Seth-Brasile-Resume.pdf` via @react-pdf — its own print layout, not the
+  web page; `resume.json` = JSON Resume v1.0.0). `scripts/sync-cv-assets.mjs`
+  copies them into `static/cv/`. Footer buttons render only when the files
+  exist (`os.FileExists`).
+- Scripts read `cv.yaml` / `output/` from `../resume` by default; override
+  with the `RESUME_REPO` env var. `npm install` here (js-yaml) and in the
+  resume repo (@react-pdf, react, js-yaml).
 - `layouts/_default/cv.html` — main template (selected via `layout: cv`).
 - `layouts/partials/cv-*.html` — `cv-jsonld`, `cv-lens-toggle`, `cv-role`,
   `cv-project`, `cv-skill-cloud`.
