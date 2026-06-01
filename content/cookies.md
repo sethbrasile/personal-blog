@@ -13,13 +13,13 @@ We do not use cookies on most pages of our site. You can browse our blog and acc
 
 ## 2. Contact Page
 
-On our contact page, we use a third-party iframe widget from **Calendly** to facilitate booking appointments. This widget is embedded directly on the page, and Calendly may use cookies to function. These cookies are managed by Calendly and are subject to their privacy and cookies policies.
+On our contact page, we use a third-party iframe widget from **GoHighLevel** to facilitate booking appointments. This widget is embedded directly on the page, and GoHighLevel may use cookies to function. These cookies are managed by GoHighLevel and are subject to their privacy and cookies policies.
 
-For more information about how Calendly uses cookies, please visit their [privacy policy.](https://calendly.com/privacy)
+For more information about how GoHighLevel uses cookies, please visit their [privacy policy.](https://www.gohighlevel.com/privacy-policy)
 
 ## 3. Managing Cookies
 
-Since cookies are only used by the third-party Calendly widget, you can manage your cookie preferences for that widget using your browser settings. If you do not wish to use Calendly or allow cookies, you can avoid the contact page.
+Since cookies are only used by the third-party GoHighLevel widget, you can manage your cookie preferences for that widget using your browser settings. If you do not wish to use GoHighLevel or allow cookies, you can avoid the contact page.
 
 ## 4. Updates to This Policy
 
