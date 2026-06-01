@@ -738,7 +738,4 @@ certifications:
     date: Aug 2014
 ---
 
-I keep the canonical version of all of this in a [resume repo](https://github.com/sethbrasile)
-and generate this page from it, because hand-maintaining a CV in two places is how
-CVs go stale. Use the lens toggle above to reweight the page toward **development**,
-**IT / security**, or **leadership** — or leave it on **Full** for everything.
+

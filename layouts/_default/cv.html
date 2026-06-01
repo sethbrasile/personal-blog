@@ -23,6 +23,10 @@
 
   <nav class="cv-lens-wrap" aria-label="CV focus lens">
     {{- partial "cv-lens-toggle.html" . }}
+    {{- /* Mirror of the footer PDF CTA, pinned right in the sticky bar. */ -}}
+    {{- if os.FileExists "static/cv/Seth-Brasile-Resume.pdf" }}
+    <a class="cv-lens-pdf" href="/cv/Seth-Brasile-Resume.pdf" download>Download PDF</a>
+    {{- end }}
   </nav>
 
   {{- with .Params.intro }}

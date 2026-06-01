@@ -42,8 +42,17 @@ body.dark .cv-root {
   margin: 0 -8px 1.5rem; padding: .5rem 8px;
   background: color-mix(in srgb, var(--theme) 88%, transparent);
   backdrop-filter: blur(6px);
+  display: flex; align-items: center; flex-wrap: wrap; gap: .4rem;
 }
 .cv-lens-bar { display: flex; flex-wrap: wrap; gap: .4rem; }
+.cv-lens-pdf {
+  margin-left: auto; white-space: nowrap; text-decoration: none;
+  border: 1px solid var(--cv-accent); background: var(--cv-accent); color: #fff;
+  border-radius: 999px; padding: .35rem .9rem; font-size: .85rem;
+  transition: background .15s ease, border-color .15s ease;
+}
+.cv-lens-pdf:hover { background: color-mix(in srgb, var(--cv-accent) 85%, #000); }
+body.dark .cv-lens-pdf { color: #172f3e; }
 .cv-lens-btn {
   border: 1px solid var(--cv-line); background: var(--entry);
   color: var(--primary); border-radius: 999px;
@@ -172,5 +181,5 @@ body.dark .cv-cta-primary { color: #172f3e; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cv-lens-btn, .cv-cta { transition: none; }
+  .cv-lens-btn, .cv-cta, .cv-lens-pdf { transition: none; }
 }
