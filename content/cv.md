@@ -28,10 +28,10 @@ basics:
 intro:
   full: >-
     I am an engineer who also spent the better part of a decade running enterprise IT and security,
-    which means I build software and I have also been the person on the wrong end of the pager at
-    2am. Twelve-plus years across full-stack development, DevOps, and regulated-industry IT —
-    casinos, healthcare, manufacturing, government. I codify, version, review, and secure the things
-    most shops do by hand.
+    which means I build software and I have also been the person on the wrong end of the on-call
+    line at 2am. Twelve-plus years across full-stack development, DevOps, and regulated-industry IT
+    — casinos, healthcare, manufacturing, government. I codify, version, review, and secure the
+    things most shops do by hand.
   dev: >-
     Full-stack engineer and architect. I built BetterLife's entire platform from zero (frontend,
     backend, ML, databases, CI/CD) and led the team that ran it, and I ship production-grade SaaS

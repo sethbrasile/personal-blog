@@ -50,12 +50,25 @@ vendored theme. (See `## Tech debt`.)
 
 `/cv/` is a custom single-page CV, not a normal post. How it fits together:
 
-- **Source of truth: `resume/cv.yaml`** (in the sibling `resume` repo) —
-  structured CV data incl. lens tags + weights + voice text. Edit there.
-- **Editing model:** edit `resume/cv.yaml` → `npm run build:data` →
-  commit the blog. The prose `resume/knowledge/*.md` files are narrative
-  background for tailoring a specific application; `cv.yaml` is what the
-  site renders.
+- **`../resume` is the SOURCE. This repo holds ARTIFACTS, never originals.**
+  Every CV byte the site serves — prose, PDF, JSON Resume — is generated
+  from the sibling `resume` repo. Nothing under `content/cv.md` or
+  `static/cv/` is hand-authored; treat all three as build output.
+- **"Change the resume" = change the source, then re-render.** When asked to
+  edit the resume/CV, edit it in `../resume` (`cv.yaml` for what the site
+  renders; `knowledge/*.md` / `voice/*.md` are tailoring background), then
+  run the full render below. Do **not** patch `content/cv.md`,
+  `static/cv/resume.json`, or the PDF directly — the next build overwrites them.
+- **Source of truth: `resume/cv.yaml`** (in `../resume`) — structured CV
+  data incl. lens tags + weights + voice text.
+- **Full re-render (two repos, in order):**
+  ```bash
+  ( cd ../resume && npm run build )   # cv.yaml → output/{resume.json, Seth-Brasile-Resume.pdf}
+  npm run build:data                  # build:cv (→ content/cv.md) + sync:assets (→ static/cv/)
+  ```
+  `npm run build:data` alone is **not** enough for text that appears in the
+  PDF/JSON — those come from the resume repo's `npm run build`. Skip step 1
+  and the PDF/JSON keep the old wording while `content/cv.md` updates.
 - `content/cv.md` — **generated**, do **not** hand-edit (header says so).
   `scripts/build-cv.mjs` writes it from `cv.yaml` (Hugo-specific ingest).
 - **PDF + JSON Resume are produced by the resume repo, not here.** The
@@ -68,6 +81,10 @@ vendored theme. (See `## Tech debt`.)
 - Scripts read `cv.yaml` / `output/` from `../resume` by default; override
   with the `RESUME_REPO` env var. `npm install` here (js-yaml) and in the
   resume repo (@react-pdf, react, js-yaml).
+- **react-pdf gotcha (fixed 2026-06-01):** `@react-pdf/renderer` ≥4.5 dropped
+  `renderToBuffer` from the default export (still a named export). `render-pdf.mjs`
+  now does `import ReactPDF, { renderToBuffer } from '@react-pdf/renderer'`.
+  Symptom if it regresses: `TypeError: ReactPDF.renderToBuffer is not a function`.
 - `layouts/_default/cv.html` — main template (selected via `layout: cv`).
 - `layouts/partials/cv-*.html` — `cv-jsonld`, `cv-lens-toggle`, `cv-role`,
   `cv-project`, `cv-skill-cloud`.
