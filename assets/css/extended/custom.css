@@ -143,3 +143,21 @@ a.cta {
 .copy-code {
   display: inline-block;
 }
+
+/* Code-block horizontal scroll.
+   PaperMod master regression: `.md-content pre code` became
+   `display: grid; word-break: break-all` with `overflow-x: auto` on the grid
+   `code`. The grid sizes to its longest line's max-content, so long lines
+   spill past the box instead of scrolling, and break-all wraps code mid-token.
+   Restore: pre is the scroll box, code is a plain non-wrapping block. */
+.post-content pre {
+  overflow-x: auto;
+}
+
+.post-content pre code {
+  display: block;
+  width: auto;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
