@@ -30,21 +30,31 @@ npm install                 # one-time (js-yaml)
 npm run build:cv            # resume/cv.yaml → content/cv.md
 npm run sync:assets         # resume/output/{pdf,json} → static/cv/
 npm run build:data          # build:cv + sync:assets
-HUGO=/path/to/hugo-0120 npm run build   # data + hugo (see version gotcha)
+npm run build               # build:data + hugo (uses `hugo` on PATH; HUGO=… overrides)
 ```
 
 There is no linter or test suite — it's a Hugo site with a small Node
 ingest step for `/cv/`.
 
-### ⚠️ Hugo version pin (gotcha)
+### Hugo version (current — no pin)
 
-The vendored PaperMod submodule is old and only builds on **Hugo < 0.124**
-(it uses `.Site.Social`, removed in 0.124, and a partial call with a
-superfluous `partials/` prefix that became a hard error in Hugo 0.146+).
-`brew install hugo` gives a current release (0.16x) that **breaks the
-build**. Use an older extended binary for local builds/preview, e.g.
-`hugo_extended_0.120.4`. Do not "fix" the deprecations by editing the
-vendored theme. (See `## Tech debt`.)
+Builds on **current Hugo extended** (`brew install hugo` → 0.16x is fine).
+The theme was the old blocker; it's now on a current PaperMod commit (see
+"Theme is a git submodule"), so the historic Hugo < 0.124 pin is **gone**.
+`hugo`'s default environment is `production`, so a plain `hugo` build emits
+the prod-only Umami snippet — that's expected, not a leak.
+
+Harmless, non-fatal deprecation WARNs remain:
+- `.Language.LanguageDirection` / `.Language.LanguageCode` — **theme**
+  templates (`baseof.html`, `opengraph.html`, `rss.xml`). Clear when PaperMod
+  updates upstream; don't fix by editing the vendored theme.
+- `languageCode` config key (`hugo.yaml`) — **ours**. Hugo 0.158 deprecated it
+  in favor of `locale`. Safe future cleanup, but verify RSS `<language>` output
+  doesn't regress before renaming — not done yet.
+
+Also pre-existing (not theme-related): one post trips the goldmark
+"raw HTML omitted" WARN — content uses inline HTML and `markup.goldmark`
+`unsafe` is off. Left as-is.
 
 ## The /cv/ page (lens-toggle CV system)
 
@@ -105,6 +115,15 @@ theme. **Do not edit files under `themes/PaperMod/`** — override instead (see
 below). `themes/PaperMod` content surfaces in QMD/grep results but is vendored,
 not ours.
 
+**Pinned to a master commit, not a tag.** PaperMod's last tag (v8.0, Sep 2024)
+predates the Hugo-compat fixes (`partials/` prefix → hard error, `site.Social`
+→ `site.Params.social`), so it does **not** build on current Hugo. Master does.
+The submodule is pinned to a recent master commit (updated 2026-06-01, was the
+stale vendored tree before). To bump: `git -C themes/PaperMod fetch && git -C
+themes/PaperMod checkout <newer-master-sha>`, rebuild, re-test the custom pages
+(cv, videos, homepage, search), then commit the new gitlink. Prefer a tag once
+PaperMod cuts one newer than v8.0.
+
 ## How customization works (override pattern)
 
 Local files in `layouts/` and `assets/` shadow the theme's versions by matching
@@ -150,7 +169,9 @@ PaperMod's client-side search.
 
 ## Tech debt
 
-- **PaperMod submodule is stale** — pins the site to Hugo < 0.124. Either
-  bump the submodule to a current PaperMod (and re-test all layouts) or
-  keep the old Hugo pin documented above. Skipped during the /cv/ build
-  (2026-05-28) to avoid scope creep; preview used `hugo_extended_0.120.4`.
+- _(resolved 2026-06-01)_ ~~PaperMod submodule is stale — pins to Hugo < 0.124.~~
+  Theme bumped to a current PaperMod master commit + restored as a real submodule
+  (was a broken plain-tree state); site now builds on current Hugo extended. All
+  custom pages re-tested. Remaining: re-pin to a PaperMod **tag** once one newer
+  than v8.0 ships, and the theme's own `.Language.*` deprecation WARNs clear
+  upstream.
