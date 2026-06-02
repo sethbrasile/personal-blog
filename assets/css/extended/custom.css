@@ -131,7 +131,7 @@ button[type=submit]:hover {
 
 a.cta {
   text-align: center;
-  width: 100%;
+  width: auto;
   background-color: var(--dark-bg);
   color: white;
   border: 1px solid #ccc;
@@ -142,9 +142,33 @@ a.cta {
   cursor: pointer;
 }
 
+/* The cta-button shortcode nests a native <button> inside <a class="cta">.
+   Neutralize the UA button chrome so the <a> is the only visible button. */
+.cta button {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
 .cta:hover {
   background-color:  var(--lighter-dark-bg);
 }
+
+/* PaperMod's heading margins live under `.md-content`, but our single.html
+   override wraps content in `.post-content` only, and the theme reset
+   (core/reset.css) zeroes margin-top/bottom on all headings + paragraphs.
+   Restore heading spacing so headings don't sit flush against the content
+   above them. Values mirror the theme's md-content.css. */
+.post-content h1 { margin: 40px 0 32px; }
+.post-content h2 { margin: 32px 0 24px; }
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 { margin: 24px 0 16px; }
 
 .copy-code {
   display: inline-block;
