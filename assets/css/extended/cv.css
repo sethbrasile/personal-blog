@@ -6,7 +6,7 @@
   --cv-line: var(--border);
   --cv-muted: var(--secondary);
 }
-body.dark .cv-root {
+[data-theme="dark"] .cv-root {
   --cv-accent: var(--attention);
 }
 
@@ -52,7 +52,7 @@ body.dark .cv-root {
   transition: background .15s ease, border-color .15s ease;
 }
 .cv-lens-pdf:hover { background: color-mix(in srgb, var(--cv-accent) 85%, #000); }
-body.dark .cv-lens-pdf { color: #172f3e; }
+[data-theme="dark"] .cv-lens-pdf { color: #172f3e; }
 .cv-lens-btn {
   border: 1px solid var(--cv-line); background: var(--entry);
   color: var(--primary); border-radius: 999px;
@@ -70,7 +70,7 @@ body.dark .cv-lens-pdf { color: #172f3e; }
   background: var(--cv-accent); border-color: var(--cv-accent);
   color: #fff;
 }
-body.dark .cv-lens-btn.is-active { color: #172f3e; }
+[data-theme="dark"] .cv-lens-btn.is-active { color: #172f3e; }
 
 /* ── Intro (one variant shown per lens) ── */
 .cv-intro [data-intro] { display: none; font-size: 1.05rem; line-height: 1.6; }
@@ -173,7 +173,7 @@ body.dark .cv-lens-btn.is-active { color: #172f3e; }
 }
 .cv-cta:hover { border-color: var(--cv-accent); }
 .cv-cta-primary { background: var(--cv-accent); border-color: var(--cv-accent); color: #fff; }
-body.dark .cv-cta-primary { color: #172f3e; }
+[data-theme="dark"] .cv-cta-primary { color: #172f3e; }
 
 @media (max-width: 600px) {
   .cv-name { font-size: 1.8rem; }
