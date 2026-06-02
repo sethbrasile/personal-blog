@@ -8,15 +8,21 @@
   --attention: #f7b4b3;
 }
 
-body.dark .post-content a:not(.cta) {
+/* PaperMod switched dark mode from `body.dark` to `<html data-theme="dark">`,
+   so the old `.dark` / `body.dark` selectors below went dead and the theme's
+   default gray --theme won. Override the var (body + .list read var(--theme))
+   and migrate the rest to [data-theme="dark"]. */
+:root[data-theme="dark"] {
+  --theme: #172f3e;
+}
+
+[data-theme="dark"] .post-content a:not(.cta) {
  color: var(--attention);
 }
 
-.dark, body.dark, body.list.dark {
-  background-color: #172f3e;
-}
-
-.dark .post-entry, .dark .terms-tags a, .dark .post-tags a {
+[data-theme="dark"] .post-entry,
+[data-theme="dark"] .terms-tags a,
+[data-theme="dark"] .post-tags a {
   background-color: var(--dark-bg);
   border: none;
   color: var(--primary);
