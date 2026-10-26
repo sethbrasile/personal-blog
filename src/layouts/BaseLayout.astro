@@ -3,6 +3,7 @@ import '@/styles/global.css';
 import { SITE } from '@/lib/site';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import Analytics from '@/components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -58,7 +59,7 @@ const fonts =
     <meta property="og:image" content={image} />
     <meta name="twitter:card" content="summary" />
     <slot name="head" />
-    {/* Task 7: <Analytics /> goes here */}
+    <Analytics />
   </head>
   <body class="flex min-h-screen flex-col bg-ground font-sans text-[17px] leading-[1.6] text-ink antialiased dark:bg-ground-dark dark:text-ink-dark">
     <Header variant={headerVariant} />
