@@ -4,11 +4,17 @@
  * non-empty path segment and is substituted by name in the target.
  */
 export function matchRedirect(rules: string, path: string): string | null {
+  const parsed: [string, string][] = [];
   for (const raw of rules.split('\n')) {
     const line = raw.trim();
     if (!line || line.startsWith('#')) continue;
     const [from, to] = line.split(/\s+/);
-    if (!from || !to) continue;
+    if (from && to) parsed.push([from, to]);
+  }
+  // Cloudflare resolves static (no `*`, no `:name`) rules before dynamic ones, wherever they sit in the file.
+  const isDynamic = ([from]: [string, string]) => /[*:]/.test(from.replace(/^[a-z]+:\/\//, ''));
+  const ordered = [...parsed.filter((r) => !isDynamic(r)), ...parsed.filter(isDynamic)];
+  for (const [from, to] of ordered) {
     const names: string[] = [];
     const source = from
       .split('/')

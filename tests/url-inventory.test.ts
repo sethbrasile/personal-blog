@@ -21,15 +21,20 @@ function resolves(path: string): { ok: boolean; trail: string[] } {
   const trail = [path];
   let cur = path;
   for (let hop = 0; hop < 4; hop++) {
-    if (exists(builtFile(cur))) return { ok: true, trail };
+    // Cloudflare applies a matching redirect even when an asset exists at that path.
     const target = matchRedirect(rules, cur);
-    if (target === null) return { ok: false, trail };
+    if (target === null) return { ok: exists(builtFile(cur)), trail };
     trail.push(target);
     if (!target.startsWith('/')) return { ok: true, trail }; // external site
     cur = target;
   }
   return { ok: false, trail };
 }
+
+test('no built page in the main fixture is shadowed by a redirect rule', () => {
+  const shadowed = urls.filter((p) => exists(builtFile(p)) && matchRedirect(rules, p) !== null);
+  expect(shadowed).toEqual([]);
+});
 
 test('fixtures are populated', () => {
   expect(urls.length).toBeGreaterThan(70);

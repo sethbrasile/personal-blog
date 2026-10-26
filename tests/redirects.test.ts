@@ -10,7 +10,7 @@ const rules = `
 /c/*           /t/:splat  301
 /c2/*          /t2/       301
 /first/*       /one/      301
-/first/x       /two/      301
+/first/:y      /two/      301
 `;
 
 test('exact match', () => expect(matchRedirect(rules, '/exact/')).toBe('/new/'));
@@ -22,7 +22,15 @@ test('placeholder substitutes one segment', () => expect(matchRedirect(rules, '/
 test('placeholder does not span segments', () => expect(matchRedirect(rules, '/tags/a/b/index.xml')).toBeNull());
 test('first match wins', () => {
   expect(matchRedirect(rules, '/first/x')).toBe('/one/');
+  expect(matchRedirect(rules, '/first/x/y')).toBe('/one/');
   expect(matchRedirect(rules, '/tags/candida/')).toBe('/tags/');
 });
 test('no match is null', () => expect(matchRedirect(rules, '/nope/')).toBeNull());
 test('comments and blanks ignored', () => expect(matchRedirect(rules, '#')).toBeNull());
+
+test('static rules win over earlier dynamic rules regardless of file position', () => {
+  const r = '/a/*  /splat/  301\n/a/b/  /static/  301\n/:x/b/  /ph/  301\n/z/b/  /static2/  301';
+  expect(matchRedirect(r, '/a/b/')).toBe('/static/');
+  expect(matchRedirect(r, '/z/b/')).toBe('/static2/');
+  expect(matchRedirect(r, '/a/c/')).toBe('/splat/');
+});

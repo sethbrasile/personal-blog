@@ -112,3 +112,11 @@ describe('pages', () => {
     expect(read('dist/about/index.html')).not.toContain('noindex');
   });
 });
+
+test('homepod post og:image is its processed cover, not the logo fallback', () => {
+  const html = read('dist/posts/fix-a-homepod-mini-that-wont-turn-on/index.html');
+  const m = html.match(/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/) ?? html.match(/<meta[^>]+content="([^"]+)"[^>]+property="og:image"/);
+  expect(m, 'og:image meta').not.toBeNull();
+  expect(m![1]).toMatch(/^https:\/\/bytemycache\.com\/_astro\/homepod\..+\.webp$/);
+  expect(exists(`dist${new URL(m![1]).pathname}`)).toBe(true);
+});

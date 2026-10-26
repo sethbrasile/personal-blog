@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import { render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PostCard from '@/components/PostCard.astro';
@@ -15,6 +15,7 @@ const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 const { title, description, author, cover, tags, note, unlisted, date } = entry.data;
 
+const ogImage = cover ? new URL((await getImage({ src: cover.image, width: 1200 })).src, Astro.site).href : undefined;
 const { prev, next } = seriesNeighbours(await getPublishedPosts(), entry);
 const more = (await getListedPosts()).filter((p) => p.id !== entry.id).slice(0, 2);
 
@@ -22,7 +23,7 @@ const toc = headings.filter((h) => h.depth <= 3);
 const topDepth = Math.min(...toc.map((h) => h.depth));
 const arrow = 'text-sm text-muted dark:text-muted-dark';
 ---
-<BaseLayout title={title} description={description} noindex={unlisted} ogType="article">
+<BaseLayout title={title} description={description} noindex={unlisted} ogType="article" ogImage={ogImage}>
   <main class="mx-auto flex w-full max-w-[1180px] flex-col gap-16 px-4 pb-[72px] pt-14 sm:px-8">
     <article class="grid grid-cols-1 items-start gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,760px)_320px] lg:justify-between text-[18px] leading-[1.65]">
       <div class="flex min-w-0 max-w-[760px] flex-col gap-10">
