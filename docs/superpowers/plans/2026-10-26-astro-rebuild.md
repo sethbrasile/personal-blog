@@ -25,6 +25,23 @@
 - Visual design: the spec's "Visual design" section and the four reference artboards in `docs/superpowers/design/`. Copy exact values from them (sizes, colours, spacing, weights); never round to a framework default. Fonts: Bricolage Grotesque (500, 800), IBM Plex Sans (400, 500, 600), IBM Plex Mono (400, 500) from Google Fonts, one `<link>` in the base layout.
 - No edits under `archive/hugo` after Task 1.
 
+## Review Gates (model assignment)
+
+Orchestrator: Opus. Implementers: Sonnet-class. Per-task reviewers: Opus,
+except at the gates below, where the reviewer runs on **Fable**
+(`model: "fable"` on the Agent tool) and must sign off before the next task
+starts. Each Fable gate reads the spec, the plan, and the diff since the
+previous gate, and reports with `superpowers:requesting-code-review`.
+
+| After | Why Fable here |
+|---|---|
+| Task 2 | Content migration is the one step that cannot be re-derived once `content/` and the script are deleted. Verify every post body is byte-identical to `archive/hugo`, every image resolves, frontmatter mapping matches the Task 2 rules. |
+| Task 5 | Design fidelity: layout, type, colour and spacing against the four artboards in `docs/superpowers/design/`, light and dark, at 1280 and phone width. Accessibility as drawn (real controls, contrast). |
+| Task 8 | Pre-cutover correctness: zero unhandled Hugo URLs, drafts absent, RSS and sitemap right, headers and CSP do not break the booking iframe or YouTube facade, PostHog gated. |
+| Task 9 | Whole-branch review before the PR: standards (PPMC checklist in the spec), security headers, no secrets, CLAUDE.md accuracy, copy gate applied to chrome strings. This is the review `superpowers:finishing-a-development-branch` expects. |
+
+Task 10 is operational; Seth reviews the live site himself.
+
 ## Review Focus
 
 1. A post with no `description` (16 of 17 posts) renders, has no empty `<meta name="description">`, and its RSS item uses the title only. Test in Task 4.
