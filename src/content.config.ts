@@ -35,6 +35,7 @@ const videos = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     youtubeId: z.string(),
+    thumbnail: z.string().optional(),
     extras: z.array(z.object({ label: z.string(), youtubeId: z.string() })).optional(),
     series: series.optional(),
     tags: z.array(z.string()).default([]),
@@ -51,6 +52,7 @@ const pages = defineCollection({
   loader: glob({ pattern: '*.{md,mdx}', base: './src/content/pages' }),
   schema: z.object({
     title: z.string(),
+    description: z.string().optional(),
     unlisted: z.boolean().default(false),
     noindex: z.boolean().default(false),
   }),
