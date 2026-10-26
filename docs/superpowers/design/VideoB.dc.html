@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>B — Video page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;background:#f2f4f5;color:#172f3e;font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#c9431f;text-decoration:none}a:hover{color:#a2341a}
+</style>
+</helmet>
+<div style="min-height: 100px; background-color: #f2f4f5; color: #172f3e; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 18px; line-height: 1.65">
+
+  <header style="border-bottom: 2px solid #172f3e">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px">
+      <a href="OptionB.dc.html" style="display: flex; align-items: center; gap: 12px; color: #172f3e">
+        <img src="/_blob/9e04e0e3559bea8f5909cf87d8bc71bf" alt="byteMyCache" style="width: 40px; height: 40px; border-radius: 50%">
+        <span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 28px; line-height: 1; letter-spacing: -0.03em">byteMyCache</span>
+      </a>
+      <nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 8px 32px; font-weight: 500; font-size: 16px">
+        <a href="#videos" style="color: #172f3e; padding: 8px 0">Videos</a>
+        <a href="#posts" style="color: #172f3e; padding: 8px 0">Posts</a>
+        <a href="#about" style="color: #172f3e; padding: 8px 0">About</a>
+        <a href="https://store.bytemycache.com" style="color: #172f3e; padding: 8px 0; display: inline-flex; align-items: center; gap: 8px">Store <span aria-hidden="true" style="display: inline-block; width: 10px; height: 10px; background-color: #ff8a6b"></span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="max-width: 1180px; margin: 0 auto; padding: 56px 32px 72px; display: flex; flex-direction: column; gap: 56px">
+
+    <div style="display: flex; flex-direction: column; gap: 20px">
+      <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #46606f; display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="display: inline-block; width: 28px; height: 3px; background-color: #ff8a6b"></span>Video · Jul 7, 2024</p>
+      <h1 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 64px; line-height: 0.98; letter-spacing: -0.035em; text-wrap: balance; max-width: 18ch">Control Your Home with Magic</h1>
+    </div>
+
+    <a href="#play" aria-label="Play: Control Your Home with Magic" style="position: relative; display: block; overflow: hidden; background-color: #172f3e; box-shadow: 16px 16px 0 #ff8a6b; margin-right: 16px">
+      <img src="/_blob/286e9ba578c1e8fd688e33935cb27774" alt="" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover">
+      <span aria-hidden="true" style="position: absolute; left: 32px; bottom: 32px; width: 80px; height: 80px; background-color: #f2f4f5; display: flex; align-items: center; justify-content: center">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#172f3e"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+    </a>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(680px, 100%), 1fr)); gap: 48px 64px; align-items: start">
+
+      <article style="display: flex; flex-direction: column; gap: 24px; max-width: 760px">
+        <p style="margin: 0; font-size: 20px; line-height: 1.5; color: #2d4555">Control your home with magic wands using infrared and ESP8266. This project uses Home Assistant and ESPHome to control devices in your home with the flick of a wand.</p>
+        <h2 style="margin: 16px 0 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 32px; line-height: 1.1; letter-spacing: -0.025em">Series Summary</h2>
+        <p style="margin: 0">In this video series, I show you how to control your smart home with a magic wand from the Magiquest game at Great Wolf Lodge (or from eBay)!</p>
+        <p style="margin: 0">I show you how to make an infrared receiver listening for signals cast specifically from these Magiquest wands, effectively repurposing the wands into home automation controllers.</p>
+        <p style="margin: 0">The sensor is an ESP based microcontroller (in my case an esp8266) flashed with ESPHome with an attached TSOP4838 IR receiver.</p>
+
+        <section aria-labelledby="extras" style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px">
+          <h2 id="extras" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 28px; line-height: 1.1; letter-spacing: -0.025em">Extras</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px">
+            <a href="#extra" style="display: flex; flex-direction: column; gap: 10px; color: #172f3e">
+              <span style="display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 9; background-color: #dadadb; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #46606f">[EXTRA 1 THUMBNAIL]</span>
+              <span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 500; font-size: 20px; line-height: 1.2">[Extra video 1 title]</span>
+            </a>
+            <a href="#extra" style="display: flex; flex-direction: column; gap: 10px; color: #172f3e">
+              <span style="display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 9; background-color: #dadadb; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #46606f">[EXTRA 2 THUMBNAIL]</span>
+              <span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 500; font-size: 20px; line-height: 1.2">[Extra video 2 title]</span>
+            </a>
+          </div>
+        </section>
+
+        <ul aria-label="Tags" style="list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px">
+          <li><a href="#tag" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid #172f3e; color: #172f3e; font-family: 'IBM Plex Mono', monospace; font-size: 13px">diy</a></li>
+          <li><a href="#tag" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid #172f3e; color: #172f3e; font-family: 'IBM Plex Mono', monospace; font-size: 13px">smart home</a></li>
+          <li><a href="#tag" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid #172f3e; color: #172f3e; font-family: 'IBM Plex Mono', monospace; font-size: 13px">esp8266</a></li>
+          <li><a href="#tag" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid #172f3e; color: #172f3e; font-family: 'IBM Plex Mono', monospace; font-size: 13px">home assistant</a></li>
+          <li><a href="#tag" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid #172f3e; color: #172f3e; font-family: 'IBM Plex Mono', monospace; font-size: 13px">esphome</a></li>
+        </ul>
+      </article>
+
+      <aside style="display: flex; flex-direction: column; gap: 32px; max-width: 360px">
+        <section aria-labelledby="store-products" style="background-color: #ff8a6b; color: #172f3e; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+          <h2 id="store-products" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.05; letter-spacing: -0.025em">Products in my store</h2>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+            <li style="display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid #172f3e"><a href="https://store.bytemycache.com/products/esp8266-case-ir" style="color: #172f3e; font-weight: 500">3D printed case</a><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">[PRICE]</span></li>
+            <li style="display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid #172f3e"><a href="https://store.bytemycache.com/products/esp-d1-mini-ir-sensor-kit" style="color: #172f3e; font-weight: 500">Full kit</a><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">[PRICE]</span></li>
+            <li style="display: flex; justify-content: space-between; gap: 16px; padding: 12px 0"><a href="https://store.bytemycache.com/products/esp-d1-mini-ir-sensor-assembled" style="color: #172f3e; font-weight: 500">Fully assembled wand sensor</a><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">[PRICE]</span></li>
+          </ul>
+          <a href="https://store.bytemycache.com" style="display: inline-flex; align-items: center; align-self: flex-start; min-height: 44px; padding: 0 18px; background-color: #172f3e; color: #f2f4f5; font-weight: 500; font-size: 15px">Visit the store</a>
+        </section>
+
+        <section aria-labelledby="mentioned" style="display: flex; flex-direction: column; gap: 12px; border-top: 2px solid #172f3e; padding-top: 16px">
+          <h2 id="mentioned" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em">Products mentioned</h2>
+          <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #46606f">Note: the following are Amazon affiliate links. If you use these links to purchase, I get a small commission. It doesn't cost you anything extra, but it helps me out a lot. Thanks!</p>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; font-size: 16px">
+            <li style="padding: 8px 0; border-bottom: 1px solid #c7ced3"><a href="https://amzn.to/4bv6kr2">TSOP4838 IR Receiver</a></li>
+            <li style="padding: 8px 0; border-bottom: 1px solid #c7ced3"><a href="https://amzn.to/4eOtcop">UL listed USB plug</a></li>
+            <li style="padding: 8px 0; border-bottom: 1px solid #c7ced3"><a href="https://amzn.to/3RYRqT2">ESP8266 D1 Mini Clone</a></li>
+            <li style="padding: 8px 0"><a href="https://amzn.to/3WgSJ19">Nice long USB cables</a></li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+  </main>
+
+  <footer style="border-top: 2px solid #172f3e">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 28px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 14px; color: #46606f">
+      <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 8px 22px">
+        <a href="https://youtube.com/@byteMyCache" style="color: #172f3e">YouTube</a>
+        <a href="https://github.com/sethbrasile" style="color: #172f3e">GitHub</a>
+        <a href="https://www.buymeacoffee.com/sethbrasile" style="color: #172f3e">Buy Me a Coffee</a>
+        <a href="#rss" style="color: #172f3e">RSS</a>
+        <a href="#contact" style="color: #172f3e">Contact</a>
+        <a href="#privacy" style="color: #172f3e">Privacy</a>
+        <a href="#terms" style="color: #172f3e">Terms</a>
+        <a href="#cookies" style="color: #172f3e">Cookies</a>
+      </nav>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px">© 2026 byteMyCache</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -32,9 +32,8 @@ state is archived and the Astro site starts from a clean tree.
 - Up to current PPMC standards: Astro, Tailwind, Cloudflare Pages,
   PostHog analytics, pinned account id, pre-commit hooks, dependency
   audit.
-- Deliberately plain, readable styling. The visual design is a separate
-  later pass (the `/design` skill) that replaces looks without touching the
-  content model.
+- The chosen visual design (Option B, below) implemented in the one
+  CSS token file plus the layout components, light and dark.
 - Simple enough that Seth can publish a post or a video page by adding one
   markdown file and pushing.
 
@@ -53,8 +52,10 @@ scope for this build.
   A future comments system shares the identity layer with subscribers
   (one sign-in, likely better-auth on a Worker with D1, per PPMC defaults),
   so comments and the mailing list are one later project, not two widgets.
-- **Visual design.** Done later with `/design`. Today's styling is a
-  placeholder.
+- **Visual design pass.** Was deferred; on 2026-10-26 Seth folded it into
+  the build. Direction chosen on the Design canvas
+  (https://claude.ai/artifact/1aVNQQb99GiapCzbpYhj6b): **Option B, "Maker
+  Zine"**. See "Visual design" below.
 - **Search.** Dropped. 17 posts do not need it. Pagefind is the obvious
   add if the corpus grows.
 - **Automated blog/social repurposing from the video pipeline.** Phase 3 of
@@ -176,6 +177,42 @@ scope for this build.
 - **Pre-commit:** the PPMC `setup-pre-commit` skill; at minimum
   frontmatter schema validation (Astro content collections already fail
   the build on bad frontmatter) and no-secrets.
+
+## Visual design (chosen 2026-10-26)
+
+Canvas: https://claude.ai/artifact/1aVNQQb99GiapCzbpYhj6b. Artboards
+`OptionB` (home, light), `HomeBDark` (home, dark), `PostB` (post page),
+`VideoB` (video page) are the reference; `Main` (Option A) and `OptionC`
+were rejected.
+
+- **Palette.** Ground `#f2f4f5`, ink `#172f3e`, muted `#46606f`, body
+  secondary `#2d4555`, rules `#c7ced3`, link `#c9431f` (hover `#a2341a`),
+  accent `#ff8a6b` used as fills with ink text, never as text on the
+  light ground. Dark mode: ground `#0f1f2a`, ink `#f2f4f5`, muted
+  `#9fb3bf`, secondary `#c3ccd2`, rules `#2b4557`, link `#ff8a6b` (hover
+  `#ffa78f`); the coral store band keeps ink `#172f3e` text in both modes.
+- **Type.** Display: Bricolage Grotesque 800 (headlines, wordmark) and
+  500 (list titles). Body: IBM Plex Sans 400/500/600. Meta: IBM Plex Mono
+  400/500 for dates, kickers, tags, code. Loaded from Google Fonts.
+- **Shapes.** No rounded corners except the circular logo. 2px ink rules
+  for header and footer and section heads, 1px rules between list rows.
+  The video thumbnail carries a hard coral offset shadow (12px home,
+  16px video page). Buttons are square: filled ink, or 2px ink outline.
+  Tags are square 1px outlined mono chips.
+- **Home.** Masthead: 56px logo, 48px wordmark, mono tagline right.
+  Ruled nav below. Hero: 72px balanced headline left, thumbnail right.
+  Posts: numbered two-column index. Store: full-width coral band with the
+  product list. Footer: ruled.
+- **Post.** 60px headline, kicker "Post · date · author", tag chips,
+  prose at 18px/1.65 max 760px, headings in Bricolage, code blocks on ink
+  ground with mono text and a language label; "On this page" aside right
+  from `headings`; "More posts" index below.
+- **Video.** Kicker "Video · date", 64px headline, full-width embed with
+  shadow, description at 20px, show notes, "Extras" as thumbnail cards,
+  tags; aside with the coral "Products in my store" box and the
+  "Products mentioned" list under the disclosure.
+- **Light is the default** (a change from the current site). The toggle
+  switches `data-theme`.
 
 ## Content model
 

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>B — Post page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;background:#f2f4f5;color:#172f3e;font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#c9431f;text-decoration:none}a:hover{color:#a2341a}
+</style>
+</helmet>
+<div style="min-height: 100px; background-color: #f2f4f5; color: #172f3e; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 18px; line-height: 1.65">
+
+  <header style="border-bottom: 2px solid #172f3e">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px">
+      <a href="OptionB.dc.html" style="display: flex; align-items: center; gap: 12px; color: #172f3e">
+        <img src="/_blob/9e04e0e3559bea8f5909cf87d8bc71bf" alt="byteMyCache" style="width: 40px; height: 40px; border-radius: 50%">
+        <span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 28px; line-height: 1; letter-spacing: -0.03em">byteMyCache</span>
+      </a>
+      <nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 8px 32px; font-weight: 500; font-size: 16px">
+        <a href="#videos" style="color: #172f3e; padding: 8px 0">Videos</a>
+        <a href="#posts" style="color: #172f3e; padding: 8px 0">Posts</a>
+        <a href="#about" style="color: #172f3e; padding: 8px 0">About</a>
+        <a href="https://store.bytemycache.com" style="color: #172f3e; padding: 8px 0; display: inline-flex; align-items: center; gap: 8px">Store <span aria-hidden="true" style="display: inline-block; width: 10px; height: 10px; background-color: #ff8a6b"></span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="max-width: 1180px; margin: 0 auto; padding: 56px 32px 72px; display: flex; flex-direction: column; gap: 64px">
+
+    <article style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(680px, 100%), 1fr)); gap: 48px 64px; align-items: start">
+      <div style="display: flex; flex-direction: column; gap: 40px; max-width: 760px">
+        <div style="display: flex; flex-direction: column; gap: 20px">
+          <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #46606f; display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="display: inline-block; width: 28px; height: 3px; background-color: #ff8a6b"></span>Post · Mar 6, 2025 · Seth Brasile</p>
+          <h1 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 60px; line-height: 1; letter-spacing: -0.035em; text-wrap: balance">Why Laravel Image Handling Still Sucks and How to Fix It</h1>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px">
+            <li><a href="#tag" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid #172f3e; color: #172f3e; font-family: 'IBM Plex Mono', monospace; font-size: 13px">laravel</a></li>
+            <li><a href="#tag" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid #172f3e; color: #172f3e; font-family: 'IBM Plex Mono', monospace; font-size: 13px">php</a></li>
+            <li><a href="#tag" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid #172f3e; color: #172f3e; font-family: 'IBM Plex Mono', monospace; font-size: 13px">cloudflare r2</a></li>
+            <li><a href="#tag" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid #172f3e; color: #172f3e; font-family: 'IBM Plex Mono', monospace; font-size: 13px">s3</a></li>
+          </ul>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 22px">
+          <h2 style="margin: 16px 0 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 34px; line-height: 1.1; letter-spacing: -0.025em">Rethinking Image Handling in PHP: A Modern Approach</h2>
+          <p style="margin: 0">Let's be honest—many PHP developers still handle image uploads like it's the early 2000s. The traditional method of routing every user upload through your server before pushing to cloud storage (or even *gasp* storing on your own server?!) isn't just inefficient; it creates unnecessary bottlenecks in 2025. Here's how we can do better.</p>
+          <h3 style="margin: 12px 0 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.15; letter-spacing: -0.02em">Common Challenges with Traditional Image Handling</h3>
+          <p style="margin: 0">Before diving into solutions, let's acknowledge some pain points you might recognize:</p>
+          <ol style="margin: 0; padding-left: 28px; display: flex; flex-direction: column; gap: 10px">
+            <li><strong style="font-weight: 600">Bandwidth Costs</strong>: Why pay for server traffic when services like Cloudflare R2 offer zero egress fees? Your server shouldn't need to act as a middleman.</li>
+            <li><strong style="font-weight: 600">Security Gaps</strong>: Relying solely on <code style="font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; background-color: #e3e7ea; padding: 2px 6px">move_uploaded_file()</code> leaves vulnerabilities—malicious files can still slip through.</li>
+            <li><strong style="font-weight: 600">Database Strain</strong>: Storing images as BLOBs turns your database into an expensive CDN.</li>
+            <li><strong style="font-weight: 600">Caching Misses</strong>: Serving images via PHP instead of letting a CDN handle them wastes free performance gains.</li>
+          </ol>
+          <h3 style="margin: 12px 0 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.15; letter-spacing: -0.02em">A Smarter Approach: Client ➔ R2 ➔ Your App</h3>
+          <p style="margin: 0">Here's how to bypass server bottlenecks using Cloudflare R2 and Laravel. We'll use pre-signed URLs to let clients upload directly to cloud storage—no middleman required.</p>
+          <p style="margin: 0"><strong style="font-weight: 600">Step 1: Generate a Pre-Signed URL (Server-Side)</strong></p>
+          <div style="position: relative; background-color: #172f3e; color: #dadadb; padding: 24px 28px; overflow-x: auto; font-family: 'IBM Plex Mono', monospace; font-size: 14px; line-height: 1.6">
+            <span style="position: absolute; right: 12px; top: 10px; font-size: 12px; color: #9fb3bf">php</span>
+            <pre style="margin: 0; font-family: inherit; white-space: pre">// In your Laravel controller
+public function generateUploadUrl(Request $request)
+{
+    $validated = $request-&gt;validate([
+        'filename' =&gt; 'required|string|regex:/^[\w\-\/]+\.(jpe?g|png|webp)$/',
+        'contentType' =&gt; 'required|in:image/jpeg,image/png,image/webp'
+    ]);
+
+    // Create a time-limited upload URL (5-minute expiry)
+    $url = Storage::disk('r2')-&gt;temporaryUploadUrl(
+        $validated['filename'],
+        now()-&gt;addMinutes(5),
+        ['ContentType' =&gt; $validated['contentType']]
+    );
+
+    return response()-&gt;json([
+        'url' =&gt; $url,
+        'publicUrl' =&gt; config('filesystems.disks.r2.public_url').'/'.$validated['filename']
+    ]);
+}</pre>
+          </div>
+        </div>
+      </div>
+
+      <aside aria-label="On this page" style="display: flex; flex-direction: column; gap: 12px; border-top: 2px solid #172f3e; padding-top: 14px; max-width: 320px">
+        <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #46606f">On this page</p>
+        <nav aria-label="Table of contents" style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.4">
+          <a href="#rethinking" style="color: #172f3e; font-weight: 500">Rethinking Image Handling in PHP</a>
+          <a href="#challenges" style="color: #46606f; padding-left: 14px">Common Challenges</a>
+          <a href="#smarter" style="color: #46606f; padding-left: 14px">A Smarter Approach</a>
+          <a href="#validation" style="color: #46606f; padding-left: 14px">Validation on the Way In</a>
+          <a href="#wrap" style="color: #172f3e; font-weight: 500">Wrapping Up</a>
+        </nav>
+      </aside>
+    </article>
+
+    <section aria-labelledby="more-posts" style="display: flex; flex-direction: column">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 2px solid #172f3e; padding-bottom: 10px">
+        <h2 id="more-posts" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em">More posts</h2>
+        <a href="#posts" style="font-weight: 500">All posts</a>
+      </div>
+      <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 0 40px">
+        <li style="border-bottom: 1px solid #c7ced3"><a href="#post" style="display: flex; flex-direction: column; gap: 10px; padding: 22px 0; color: #172f3e">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #46606f">Feb 5, 2025</span>
+          <span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 500; font-size: 24px; line-height: 1.15; letter-spacing: -0.015em">Some Great Mac Apps to Check Out</span>
+        </a></li>
+        <li style="border-bottom: 1px solid #c7ced3"><a href="#post" style="display: flex; flex-direction: column; gap: 10px; padding: 22px 0; color: #172f3e">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #46606f">Oct 22, 2024</span>
+          <span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 500; font-size: 24px; line-height: 1.15; letter-spacing: -0.015em">Protect Your Services with an Immutable Reverse Proxy, Fail2Ban, and Cloudflare (Part 3)</span>
+        </a></li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer style="border-top: 2px solid #172f3e">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 28px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 14px; color: #46606f">
+      <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 8px 22px">
+        <a href="https://youtube.com/@byteMyCache" style="color: #172f3e">YouTube</a>
+        <a href="https://github.com/sethbrasile" style="color: #172f3e">GitHub</a>
+        <a href="https://www.buymeacoffee.com/sethbrasile" style="color: #172f3e">Buy Me a Coffee</a>
+        <a href="#rss" style="color: #172f3e">RSS</a>
+        <a href="#contact" style="color: #172f3e">Contact</a>
+        <a href="#privacy" style="color: #172f3e">Privacy</a>
+        <a href="#terms" style="color: #172f3e">Terms</a>
+        <a href="#cookies" style="color: #172f3e">Cookies</a>
+      </nav>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px">© 2026 byteMyCache</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
