@@ -1,0 +1,65 @@
+# URLs Hugo (PaperMod, archive/hugo:hugo.yaml) emitted but did NOT list in its sitemap.
+# Derived from config + content, not crawled:
+#  - outputs.home = HTML, RSS, JSON  -> /index.json (PaperMod search index)
+#  - Hugo emits an RSS feed for every section, taxonomy and term -> /posts/, /videos/, /authors/ (+terms), /tags/, /categories/ (+terms)
+#  - hugo.yaml sets no paginate, so the default (10 per page) applies; 11 posts are published -> /posts/page/2/ exists (and /posts/page/1/ is an alias redirect page)
+# Index pages /authors/ and /categories/ are already in hugo-urls.txt.
+/index.json
+/posts/index.xml
+/posts/page/1/
+/posts/page/2/
+/videos/index.xml
+/authors/index.xml
+/authors/matthew-weir/index.xml
+/authors/noah-weir/index.xml
+/authors/seth-brasile/index.xml
+/tags/index.xml
+/categories/index.xml
+/tags/apple/index.xml
+/tags/candida/index.xml
+/tags/cloudflare/index.xml
+/tags/cloudflare-r2/index.xml
+/tags/containers/index.xml
+/tags/coreos/index.xml
+/tags/cybersecurity/index.xml
+/tags/diy/index.xml
+/tags/docker/index.xml
+/tags/dystopian/index.xml
+/tags/esp8266/index.xml
+/tags/esphome/index.xml
+/tags/ghost/index.xml
+/tags/google/index.xml
+/tags/health/index.xml
+/tags/home-assistant/index.xml
+/tags/homekit/index.xml
+/tags/homelab/index.xml
+/tags/homepod/index.xml
+/tags/immutable-infrastructure/index.xml
+/tags/infrared/index.xml
+/tags/it/index.xml
+/tags/laravel/index.xml
+/tags/magic-wands/index.xml
+/tags/microsoft/index.xml
+/tags/nginx/index.xml
+/tags/old-content-rescued-with-the-wayback-machine/index.xml
+/tags/overgrowth/index.xml
+/tags/pagespeed/index.xml
+/tags/performance/index.xml
+/tags/php/index.xml
+/tags/powershell/index.xml
+/tags/privacy/index.xml
+/tags/proxy/index.xml
+/tags/s3/index.xml
+/tags/scripting/index.xml
+/tags/smart-home/index.xml
+/tags/spdy/index.xml
+/tags/speed/index.xml
+/tags/supplements/index.xml
+/tags/tips/index.xml
+/tags/windows/index.xml
+/categories/cybersecurity/index.xml
+/categories/diy/index.xml
+/categories/powershell/index.xml
+/categories/privacy/index.xml
+/categories/smart-home/index.xml
+/categories/web-services/index.xml

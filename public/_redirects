@@ -2,7 +2,17 @@
 /cv/*           https://sethbrasile.com/  301
 /hire/          https://sethbrasile.com/  301
 /search/        /posts/                   301
+/index.json     /                         301
+/posts/index.xml       /index.xml         301
+/videos/index.xml      /index.xml         301
+/tags/index.xml        /index.xml         301
+/categories/index.xml  /index.xml         301
+/authors/index.xml     /index.xml         301
+/posts/page/*          /posts/            301
+/authors/       /about/                   301
 /authors/*      /about/                   301
+/categories/    /tags/                    301
+/categories/:cat/index.xml  /tags/:cat/   301
 /categories/*   /tags/:splat              301
 /coming-soon/   /                         301
 /my-candida-treatment-plan/   /           301
@@ -10,3 +20,4 @@
 /tags/overgrowth/   /tags/  301
 /tags/health/       /tags/  301
 /tags/supplements/  /tags/  301
+/tags/:tag/index.xml  /tags/:tag/  301
