@@ -29,9 +29,9 @@ state is archived and the Astro site starts from a clean tree.
 - Every existing public URL keeps working (same path or a 301).
 - A content model the video production pipeline can write into later
   without template changes: one markdown file per video, one per post.
-- Up to current PPMC standards: Astro, Tailwind, Cloudflare Workers with
-  static assets, PostHog analytics, pinned account id, Custom Domain,
-  pre-commit hooks, dependency audit.
+- Up to current PPMC standards: Astro, Tailwind, Cloudflare Pages,
+  PostHog analytics, pinned account id, pre-commit hooks, dependency
+  audit.
 - Deliberately plain, readable styling. The visual design is a separate
   later pass (the `/design` skill) that replaces looks without touching the
   content model.
@@ -68,7 +68,7 @@ scope for this build.
 - A theme. No PaperMod successor, no third-party Astro theme. Layouts are
   owned in-repo so the design pass has nothing to fight.
 - Any new always-on job on the workstation or home lab. The site is static
-  on Cloudflare.
+  on Cloudflare Pages.
 - Rewriting content. Posts migrate as they are. New chrome text (nav labels,
   home intro, meta descriptions) is copy and goes through `page-authoring`
   because the repo has a deploy target.
@@ -79,7 +79,7 @@ scope for this build.
   fail2ban + immutable reverse proxy), 1 video page with 3 YouTube ids,
   3 author pages (seth-brasile, matthew-weir, noah-weir), top-level pages:
   about, contact, hire, cv, privacy, terms, cookies, search, coming-soon,
-  my-candida-treatment-plan.
+  my-candida-treatment-plan (removed, see decisions).
 - 32 images, about 3.4 MB, mostly under `content/posts/images/` plus
   bundle-local `images/` dirs.
 - `/cv/` is generated from the sibling `../resume` repo via Node scripts.
@@ -104,13 +104,19 @@ scope for this build.
   PPMC brochure sites already run on it.
 - Archive the current repo state and start over; only content carries.
 - `/cv/` is superseded by sethbrasile.com. Redirect it there.
-- Each video gets its own page (confirmed as the shape the production
-  pipeline needs; the current single series page becomes the first video
-  entry, or one entry per video id, see builder notes).
+- One page per main-channel video. Supplemental videos (the two extra
+  clips on the Magic page today, and future extras-channel videos) attach
+  to the main video's page as `extras`, not as pages of their own. The
+  Magic page stays one page at its current URL.
 - No comments at launch. Better-than-giscus comes later with subscribers.
-- The candida treatment page stays, as an unlisted page for sharing with
-  friends: noindex, not in nav, sitemap, search, feed, or any listing.
-  Reachable only by direct link.
+- The candida treatment page is removed from the site and the repo. The
+  markdown was copied to the vault at `Personal/Candida Treatment Plan.md`
+  on 2026-10-26. Not secret, so no history scrub; it just does not belong
+  in the repo. The `unlisted` flag stays in the content model for future
+  use.
+- Hosting stays on Cloudflare Pages. Workers has been rejected each time
+  it was proposed because nothing on this site needs it; Astro's `dist/`
+  is the same either way, so a later move is a config change.
 - Store, mailing list, and design are deferred aims, documented here.
 
 ## Calls made by the author of this document (Seth can overrule)
@@ -120,14 +126,15 @@ scope for this build.
   the `coming-soon` page, the `hire` page (301 to sethbrasile.com; it leads
   with the agency and that belongs on Seth's personal site, not the channel
   brand), the giscus and Umami snippets, share buttons.
-- **Hosting:** Cloudflare Workers with static assets, not a new Pages
-  project (PPMC default; Pages is "will migrate to Workers"). Custom Domain
-  on the Worker, `www` via Redirect Rule. Seth chose to deploy in the
-  **Setherd14 account** (`fd15b6bd9ab1cec50b0832c91d7cf53a`, Workers Free)
-  because the zone lives there; no zone move. `CLOUDFLARE_ACCOUNT_ID` is
-  pinned to that id in the deploy script.
-- **Redirects** live in `public/_redirects` (Workers static assets honours
-  `_redirects` and `_headers`). No Worker code needed for the site itself.
+- **Hosting:** reuse the existing Cloudflare Pages project `personal-blog`
+  in the **Setherd14 account** (`fd15b6bd9ab1cec50b0832c91d7cf53a`, Pages
+  Free). The custom domain never detaches; cutover is a build-settings
+  change (framework preset Astro, build `npm run build`, output `dist`)
+  plus a push to `main`. Pages git integration builds every PR as a
+  preview on `*.pages.dev`. `CLOUDFLARE_ACCOUNT_ID` is pinned to that id in
+  any wrangler script in `package.json`. `www` via Redirect Rule.
+- **Redirects** live in `public/_redirects` (Pages honours `_redirects`
+  and `_headers`).
 - **Styling:** Tailwind CSS v4, one base layout, system font stack, a
   single accent colour, prose via `@tailwindcss/typography`. Nothing more
   until the design pass.
@@ -145,34 +152,27 @@ scope for this build.
   purchase, I get a small commission. It doesn't cost you anything extra,
   but it helps me out a lot. Thanks!") is reused verbatim as the automatic
   disclosure above any `mentioned` list. No new copy.
-- **Deploy token:** Seth creates the Cloudflare API token in the chosen
-  account (Workers Scripts Edit, plus DNS Edit if the Custom Domain is
-  managed by wrangler) and adds it as a GitHub Actions secret. The builder
-  writes the step-by-step in the new `CLAUDE.md`.
 - **Repo name:** Seth chose to rename the GitHub repo to `bytemycache` at
   cutover. GitHub redirects the old name. The local checkout moves to
-  `~/dev/bytemycache`, the Worker is named `bytemycache`, and the
-  `ppmc-claude-routines-and-schedules` repo list is updated if it lists
-  this repo.
+  `~/dev/bytemycache`, and the `ppmc-claude-routines-and-schedules` repo
+  list is updated if it lists this repo. The Pages project keeps its
+  internal name `personal-blog` (its `pages.dev` host is fixed; nobody
+  sees it). After the rename the builder confirms the Pages GitHub
+  connection still follows the repo, and reconnects it if not.
 - **Repo:** keep the GitHub repo and its history. Tag the last Hugo commit
   `hugo-final`, push an `archive/hugo` branch, then replace the tree on
   `main` in one cutover commit. History of every post stays reachable.
-  Renaming the repo to `bytemycache` is suggested, not done (question for
-  Seth).
+  Renaming the repo is answered below.
 - **Analytics:** PostHog per D007. Seth approved an **own project** in the
   PPMC Clients org for byteMyCache (different-in-kind property; uses one of
   the six slots). Projects are UI-only; Seth creates it and the builder
-  commits the public key. The
-  same-origin `/ingest` proxy from the PPMC pattern needs a Worker
-  entrypoint: `wrangler.jsonc` sets `main` to a small script and
-  `assets.run_worker_first` to `["/ingest/*"]` so every other path is
-  served straight from static assets. That script is the only Worker code
-  in the repo.
-- **Build and deploy:** GitHub Actions on push to `main` runs `astro check`,
-  `astro build`, `npm audit --audit-level=high`, then `wrangler deploy` via
-  `cloudflare/wrangler-action@v3`. Pull requests build but do not deploy.
-  Secrets: a Cloudflare API token scoped to the target account in GitHub
-  Actions secrets. Nothing committed.
+  commits the public key. The same-origin `/ingest` proxy is the Pages
+  Function from the PPMC pattern (`functions/ingest/[[path]].ts`, copied
+  from lisa-may-salon). That is the only server code in the repo.
+- **Build and deploy:** Cloudflare Pages git integration deploys `main`
+  and previews every PR. GitHub Actions runs the checks only: `astro
+  check`, `astro build`, `npm audit --audit-level=high`. No deploy token
+  in GitHub; nothing committed.
 - **Pre-commit:** the PPMC `setup-pre-commit` skill; at minimum
   frontmatter schema validation (Astro content collections already fail
   the build on bad frontmatter) and no-secrets.
@@ -198,7 +198,9 @@ One file per video. The production pipeline's publish package writes
 here later.
 
 ```
-title, description, date, youtubeId (required, one video per page),
+title, description, date, youtubeId (required, the main-channel video),
+extras[]? (label + youtubeId, supplemental clips rendered below the main
+embed, may live on another channel),
 series? (name + part number), tags[], thumbnail? (falls back to the
 YouTube thumbnail), products[]? (label + url, for store links),
 mentioned[]? (label + url, affiliate links with disclosure rendered
@@ -209,17 +211,13 @@ draft, unlisted
 Body: show notes, markdown.
 
 URL: `/videos/<slug>/`. The existing "Control Your Home with Magic" page
-has three ids; it becomes a series of three video entries plus a redirect
-from its current URL to part one. Author's call on the split: the builder
-takes each entry's title from YouTube (oEmbed on the video id, no new copy
-written), derives the slug from that title, and gives all three entries
-the existing series body verbatim. Per-video show notes are Seth's to
-write later. The `products` and `mentioned` lists from the current page
-go on all three entries.
+has three ids; the first is the main video, the other two are
+supplemental and become `extras`. Builder takes the extras' labels from
+YouTube (oEmbed on the id, no new copy). The page keeps its URL and body.
 
 ### `pages`
 
-about, contact, privacy, terms, cookies, my-candida-treatment-plan.
+about, contact, privacy, terms, cookies.
 
 ```
 title, description?, unlisted (default false), noindex (default false)
@@ -231,8 +229,9 @@ URL: `/<slug>/`.
 
 An unlisted entry is built and served at its URL but is excluded from
 every listing, the sitemap, the RSS feed, tag pages and home, and carries
-`<meta name="robots" content="noindex, nofollow">`. Candida uses this.
-`draft` is stronger: not built in production at all.
+`<meta name="robots" content="noindex, nofollow">`. Nothing uses it at
+launch; it exists for share-by-link pages later. `draft` is stronger: not
+built in production at all.
 
 ## Routes
 
@@ -245,7 +244,6 @@ every listing, the sitemap, the RSS feed, tag pages and home, and carries
 /tags/                    tag index
 /tags/<tag>/              posts and videos sharing a tag
 /about/ /contact/ /privacy/ /terms/ /cookies/
-/my-candida-treatment-plan/   unlisted
 /index.xml                RSS (posts and videos)
 /sitemap-index.xml        sitemap
 /404                      real 404 page (PostHog soft-404 gotcha)
@@ -263,7 +261,7 @@ site is live:
 /authors/*      /about/
 /categories/*   /tags/
 /coming-soon/   /
-/videos/control-your-home-with-magic/   /videos/<part-one-slug>/
+/my-candida-treatment-plan/   /     (page removed; not secret, plain redirect)
 ```
 
 Builder verifies the full Hugo URL inventory by building the archived
@@ -283,9 +281,8 @@ carry over unchanged.
 ## Standards checklist (PPMC)
 
 - Astro latest stable, TypeScript strict, Tailwind v4.
-- Cloudflare Workers static assets, `wrangler.jsonc` with
-  `compatibility_date` current, Custom Domain, `CLOUDFLARE_ACCOUNT_ID`
-  pinned in `package.json` scripts, never exported globally.
+- Cloudflare Pages, existing project, `CLOUDFLARE_ACCOUNT_ID` pinned in
+  any `package.json` wrangler script, never exported globally.
 - PostHog with same-origin proxy, hostname-gated so previews and local dev
   never count, public key committed, `outbound_click` capture so store and
   affiliate clicks are measurable from day one.
@@ -301,16 +298,17 @@ carry over unchanged.
 ## Cutover
 
 1. Tag `hugo-final`, push `archive/hugo`.
-2. Build the Astro site on a branch; preview on the Worker's
-   `workers.dev` URL (not the custom domain).
-3. Run the URL inventory diff; fix until zero public 404s.
-4. Move bytemycache.com to the Worker's Custom Domain. A Custom Domain
-   needs the zone in the same account as the Worker (Error 1014 otherwise).
-   The zone is in the Setherd14 personal account and the Worker deploys
-   there too, so no zone move.
-5. Verify live: home, a post, a video, a tag, the candida page, `/cv/`
+2. Build the Astro site on a branch. Switch the Pages project's build
+   settings to Astro (`npm run build`, output `dist`). The PR preview on
+   `*.pages.dev` is the staging check.
+3. Run the URL inventory diff against the preview; fix until zero public
+   404s.
+4. Merge to `main`. Pages deploys to bytemycache.com. Rollback is
+   "rollback to previous deployment" in the Pages dashboard.
+5. Verify live: home, a post, the video page with extras, a tag, `/cv/`
    redirect, RSS, PostHog events arriving.
-6. Delete the old Pages project after a week of clean operation.
+6. Rename the GitHub repo and move the local checkout once the site has
+   been live and clean for a day.
 
 ## Left to the builder
 
@@ -326,16 +324,12 @@ carry over unchanged.
 
 ## Questions answered by Seth (2026-10-26)
 
-- Deploy account: Setherd14 (zone already there), Workers Free.
+- Deploy account: Setherd14 (zone already there), existing Pages project.
+- Hosting: Pages, not Workers (2026-10-26, second answer).
+- Magic page: one page, extras attached (2026-10-26).
+- Candida: removed from repo, cached in vault (2026-10-26).
 - `/cv/` and `/hire/`: 301 to `https://sethbrasile.com/` now.
 - PostHog: own project in the PPMC Clients org.
 - Repo: rename to `bytemycache` at cutover.
 
-## Note on the candida page
 
-It is already public today: `draft: false` in a public GitHub repo and
-indexed on the live site. Making it unlisted and noindex reduces exposure
-but the markdown stays in the public repo and its history. If Seth wants
-the text out of the public repo entirely, the repo goes private (the
-archive branch would be hidden with it) or the page moves elsewhere.
-Not changed by this build unless Seth says so.
