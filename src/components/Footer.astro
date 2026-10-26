@@ -1,0 +1,22 @@
+---
+import { SITE } from '@/lib/site';
+
+const links = [
+  { label: 'YouTube', href: SITE.youtube },
+  { label: 'GitHub', href: SITE.github },
+  { label: 'Buy Me a Coffee', href: SITE.coffee },
+  { label: 'RSS', href: SITE.rss },
+  { label: 'Contact', href: '/contact/' },
+  { label: 'Privacy', href: '/privacy/' },
+  { label: 'Terms', href: '/terms/' },
+  { label: 'Cookies', href: '/cookies/' },
+];
+---
+<footer class="mt-auto border-t-2 border-ink dark:border-ink-dark">
+  <div class="mx-auto flex max-w-[1180px] flex-wrap justify-between gap-x-8 gap-y-3 px-4 py-7 text-sm text-muted dark:text-muted-dark sm:px-8">
+    <nav aria-label="Footer" class="flex flex-wrap gap-x-[22px] gap-y-2">
+      {links.map((l) => <a href={l.href} class="text-ink dark:text-ink-dark">{l.label}</a>)}
+    </nav>
+    <span class="font-mono text-[13px]">© {new Date().getFullYear()} byteMyCache</span>
+  </div>
+</footer>

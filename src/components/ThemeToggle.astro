@@ -1,0 +1,24 @@
+---
+---
+<button
+  type="button"
+  data-theme-toggle
+  aria-label="Switch between light and dark theme"
+  class="inline-flex h-9 w-9 cursor-pointer items-center justify-center border border-ink bg-transparent text-ink dark:border-ink-dark dark:text-ink-dark"
+>
+  <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+    <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" />
+  </svg>
+</button>
+<script>
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try {
+        localStorage.theme = next;
+      } catch {}
+    });
+  });
+</script>

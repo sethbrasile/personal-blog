@@ -1,0 +1,46 @@
+---
+import { SITE } from '@/lib/site';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  variant?: 'masthead' | 'compact';
+}
+const { variant = 'compact' } = Astro.props;
+const masthead = variant === 'masthead';
+const links = [
+  { label: 'Videos', href: '/videos/' },
+  { label: 'Posts', href: '/posts/' },
+  { label: 'About', href: '/about/' },
+];
+const navLink = 'py-2 text-ink dark:text-ink-dark';
+---
+<header class="border-b-2 border-ink dark:border-ink-dark">
+  {masthead ? (
+    <>
+      <div class="mx-auto flex max-w-[1180px] flex-wrap items-end justify-between gap-x-8 gap-y-3 px-4 pb-0 pt-7 sm:px-8">
+        <a href="/" class="flex items-center gap-4 !text-ink dark:!text-ink-dark">
+          <img src="/bytemycachelogo.svg" alt="byteMyCache" width="56" height="56" class="h-10 w-10 rounded-full sm:h-14 sm:w-14" />
+          <span class="font-display text-[34px] font-extrabold leading-none tracking-[-0.03em] sm:text-[48px]">byteMyCache</span>
+        </a>
+        <p class="mb-[6px] mt-0 font-mono text-[13px] uppercase tracking-[0.08em] text-muted dark:text-muted-dark">DIY Electronics · Smart Home · Homelab · DevOps · Web</p>
+      </div>
+      <nav aria-label="Main" class="mx-auto mt-5 flex max-w-[1180px] flex-wrap items-center gap-x-8 gap-y-2 border-t border-rule px-4 py-[14px] text-base font-medium dark:border-rule-dark sm:px-8">
+        {links.map((l) => <a href={l.href} class={navLink}>{l.label}</a>)}
+        <a href={SITE.store} class={`${navLink} inline-flex items-center gap-2`}>Store <span aria-hidden="true" class="inline-block h-[10px] w-[10px] bg-accent"></span></a>
+        <span class="ml-auto"><ThemeToggle /></span>
+      </nav>
+    </>
+  ) : (
+    <div class="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-x-8 gap-y-3 px-4 py-5 sm:px-8">
+      <a href="/" class="flex items-center gap-3 !text-ink dark:!text-ink-dark">
+        <img src="/bytemycachelogo.svg" alt="byteMyCache" width="40" height="40" class="h-10 w-10 rounded-full" />
+        <span class="font-display text-[28px] font-extrabold leading-none tracking-[-0.03em]">byteMyCache</span>
+      </a>
+      <nav aria-label="Main" class="flex flex-wrap items-center gap-x-8 gap-y-2 text-base font-medium">
+        {links.map((l) => <a href={l.href} class={navLink}>{l.label}</a>)}
+        <a href={SITE.store} class={`${navLink} inline-flex items-center gap-2`}>Store <span aria-hidden="true" class="inline-block h-[10px] w-[10px] bg-accent"></span></a>
+        <ThemeToggle />
+      </nav>
+    </div>
+  )}
+</header>

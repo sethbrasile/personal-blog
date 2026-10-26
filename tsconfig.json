@@ -3,5 +3,5 @@
   "compilerOptions": {
     "paths": { "@/*": ["./src/*"] }
   },
-  "include": ["src", "functions", "tests", ".astro/types.d.ts"]
+  "include": [".astro/types.d.ts", "src", "functions", "tests"]
 }

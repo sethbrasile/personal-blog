@@ -1,0 +1,68 @@
+---
+import '@/styles/global.css';
+import { SITE } from '@/lib/site';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+  ogImage?: string;
+  headerVariant?: 'masthead' | 'compact';
+  ogType?: 'website' | 'article';
+}
+const { title, description, canonical, noindex = false, ogImage, headerVariant = 'compact', ogType = 'website' } = Astro.props;
+const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
+const url = canonical ?? new URL(Astro.url.pathname, SITE.url).href;
+const image = new URL(ogImage ?? '/bytemycachelogo.png', SITE.url).href;
+const hasDescription = typeof description === 'string' && description.trim() !== '';
+const fonts =
+  'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    {hasDescription && <meta name="description" content={description} />}
+    <link rel="canonical" href={url} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.theme;
+          if (t !== 'dark' && t !== 'light') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={fonts} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.name} href={SITE.rss} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    {hasDescription && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:card" content="summary" />
+    <slot name="head" />
+    {/* Task 7: <Analytics /> goes here */}
+  </head>
+  <body class="flex min-h-screen flex-col bg-ground font-sans text-[17px] leading-[1.6] text-ink antialiased dark:bg-ground-dark dark:text-ink-dark">
+    <Header variant={headerVariant} />
+    <slot />
+    <Footer />
+  </body>
+</html>

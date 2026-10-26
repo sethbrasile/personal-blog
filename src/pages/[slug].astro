@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  noindex={entry.data.noindex || entry.data.unlisted}
+>
+  <main class="mx-auto w-full max-w-[1180px] px-4 pb-[72px] pt-14 sm:px-8">
+    <article class="flex max-w-[760px] flex-col gap-10">
+      <h1 class="m-0 font-display text-[40px] font-extrabold leading-none tracking-[-0.035em] [text-wrap:balance] sm:text-[60px]">{entry.data.title}</h1>
+      <div class="prose dark:prose-invert post-body"><Content /></div>
+    </article>
+  </main>
+</BaseLayout>
