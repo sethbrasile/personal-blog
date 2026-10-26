@@ -13,17 +13,30 @@
  *
  * Headers: cookies are never forwarded (PostHog doesn't need them; keeps the
  * proxy from leaking anything first-party). CF-Connecting-IP IS forwarded as
- * X-Forwarded-For — this is a local business, city-level geo on the dashboard
- * is the point, so PostHog must see the visitor's IP, not the edge's.
+ * X-Forwarded-For — city-level geo is kept per the PPMC standard pattern, so
+ * PostHog must see the visitor's IP, not the edge's.
  */
 const API_HOST = 'https://us.i.posthog.com';
 const ASSETS_HOST = 'https://us-assets.i.posthog.com';
 
 const DROP = new Set([
-  'connection', 'keep-alive', 'proxy-authenticate', 'proxy-authorization',
-  'te', 'trailer', 'transfer-encoding', 'upgrade', 'host', 'cookie',
-  'cf-connecting-ip', 'cf-ray', 'cf-visitor', 'cf-ipcountry', 'x-forwarded-for',
-  'x-forwarded-proto', 'x-real-ip',
+  'connection',
+  'keep-alive',
+  'proxy-authenticate',
+  'proxy-authorization',
+  'te',
+  'trailer',
+  'transfer-encoding',
+  'upgrade',
+  'host',
+  'cookie',
+  'cf-connecting-ip',
+  'cf-ray',
+  'cf-visitor',
+  'cf-ipcountry',
+  'x-forwarded-for',
+  'x-forwarded-proto',
+  'x-real-ip',
 ]);
 
 /**

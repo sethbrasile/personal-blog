@@ -1,7 +1,8 @@
 export const SITE = {
   name: 'byteMyCache',
   url: 'https://bytemycache.com',
-  description: 'Web, Infrastructure, Devops, Automation, Homelab',
+  description:
+    'Videos and posts on DIY electronics, smart home, homelab, DevOps and web. The store sells kits, cases and sensors from the videos.',
   youtube: 'https://youtube.com/@byteMyCache',
   store: 'https://store.bytemycache.com',
   github: 'https://github.com/sethbrasile',

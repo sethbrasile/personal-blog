@@ -4,14 +4,21 @@ import { getTagIndex, tagPath } from '@/lib/content';
 
 const tags = [...(await getTagIndex())].sort(([a], [b]) => a.localeCompare(b));
 ---
+
 <BaseLayout title="Tags">
   <main class="mx-auto w-full max-w-[1180px] px-4 pb-[72px] pt-14 sm:px-8">
     <h1 class="m-0 font-display text-[40px] font-extrabold leading-none tracking-[-0.035em] sm:text-[60px]">Tags</h1>
     <ul class="m-0 mt-10 flex list-none flex-wrap gap-2 p-0">
       {tags.map(([slug, { name, posts, videos }]) => (
         <li>
-          <a href={tagPath(slug)} class="inline-flex min-h-8 items-center gap-2 border border-ink px-3 font-mono text-[13px] !text-ink dark:border-ink-dark dark:!text-ink-dark">
-            {name}<span class="text-muted dark:text-muted-dark">{posts.length + videos.length}</span>
+          <a
+            href={tagPath(slug)}
+            class="inline-flex min-h-8 items-center gap-2 border border-ink px-3 font-mono text-[13px] !text-ink dark:border-ink-dark dark:!text-ink-dark"
+          >
+            {name}
+            <span class="sr-only">, </span>
+            <span class="text-muted dark:text-muted-dark">{posts.length + videos.length}</span>
+            <span class="sr-only"> {posts.length + videos.length === 1 ? 'item' : 'items'}</span>
           </a>
         </li>
       ))}
