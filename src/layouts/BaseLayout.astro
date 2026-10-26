@@ -28,7 +28,7 @@ const fonts =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     {hasDescription && <meta name="description" content={description} />}
-    <link rel="canonical" href={url} />
+    {!noindex && <link rel="canonical" href={url} />}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <script is:inline>
       (function () {

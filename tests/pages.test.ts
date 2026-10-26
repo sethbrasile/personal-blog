@@ -49,6 +49,8 @@ describe('pages', () => {
   });
   test('dates use one Chicago-zoned format', () => {
     expect(read('dist/index.html')).toMatch(/\b\w{3} \d{1,2}, \d{4}\b/);
+    // 2024-05-22T02:38Z is still 21 May in Chicago.
+    expect(read(part(1))).toContain('Post · May 21, 2024');
   });
   test('mdx page renders the booking component', () => {
     expect(read('dist/contact/index.html')).toContain('link.tenorcreative.com/widget/booking/');
@@ -66,6 +68,12 @@ describe('pages', () => {
     expect(html).toContain('astro-code');
     expect(exists('dist/posts/index.html')).toBe(true);
   });
+  test('the basH fence (mixed-case alias) is syntax highlighted', () => {
+    const html = read('dist/posts/how-to-run-multiple-dockerized-proxied-spdyd-and-pagespeedified-ghost-blogs-with-4-commands/index.html');
+    const block = html.split('<pre').find((b) => b.includes('data-language="basH"'));
+    expect(block, 'expected the basH code block in the output').toBeDefined();
+    expect(block).toContain('style="color:');
+  });
   test('post page has kicker, toc aside and more posts', () => {
     const html = read('dist/posts/why-laravel-image-handling-still-sucks-and-how-to-fix-it/index.html');
     expect(html).toContain('Post · ');
@@ -74,6 +82,8 @@ describe('pages', () => {
   });
   test('noindex pages and unlisted entries get robots meta', () => {
     expect(read('dist/404.html')).toContain('name="robots" content="noindex, nofollow"');
+    expect(read('dist/404.html')).not.toContain('rel="canonical"');
+    expect(read('dist/about/index.html')).toContain('rel="canonical"');
     expect(read('dist/about/index.html')).not.toContain('noindex');
   });
 });
