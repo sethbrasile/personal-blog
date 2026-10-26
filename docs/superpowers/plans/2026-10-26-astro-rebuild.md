@@ -276,7 +276,8 @@ git commit -m "feat: content collections, schemas, and query helpers"
 
 **Files:**
 - Create: `src/layouts/BaseLayout.astro`, `src/components/Header.astro`, `src/components/Footer.astro`, `src/components/ThemeToggle.astro`, `src/components/PostCard.astro`, `src/components/TagList.astro`, `src/pages/index.astro` (replace), `src/pages/posts/index.astro`, `src/pages/posts/[...id].astro`, `src/pages/[slug].astro`, `src/pages/404.astro`
-- Test: `tests/pages.test.ts` (builds once in `beforeAll`, reads `dist/`)
+- Create: `tests/build.ts` exporting `ensureBuilt(): void` (runs `npx astro build` once per process, 180s timeout), `read(path: string): string`, `exists(path: string): boolean`, paths relative to the repo root
+- Test: `tests/pages.test.ts` (calls `ensureBuilt()` in `beforeAll`, reads `dist/`)
 
 **Interfaces:**
 - Consumes: Task 3 helpers and `SITE`.
@@ -284,11 +285,13 @@ git commit -m "feat: content collections, schemas, and query helpers"
 
 Chrome text, exact: header links `Videos`, `Posts`, `About`, `Store`. Masthead tagline `Web · Infrastructure · DevOps · Automation · Homelab`. Footer links `YouTube`, `GitHub`, `Buy Me a Coffee`, `RSS`, `Contact`, `Privacy`, `Terms`, `Cookies`, and `© <year> byteMyCache`. Home: kicker `Latest video`, section `Latest posts` with link `All posts`, store band heading `Kits, cases and parts from the videos` and button `Visit the store`, hero buttons `Watch` and `Show notes and parts`. Post page kicker `Post · <date> · <author>`, aside `On this page`, section `More posts`. 404 body: heading `Page not found`, text `That page doesn't exist. Try the videos or posts.` with those two words linked.
 
+Copy gate: the masthead tagline, store band heading, hero button labels and 404 text are new human-facing copy on a shipping page. Before this task's commit, run them through `page-authoring` and use its result; the strings above are the draft it starts from, and the tests are updated to whatever it returns.
+
 Design reference: `docs/superpowers/design/OptionB.dc.html` (home, light), `HomeBDark.dc.html` (home, dark), `PostB.dc.html` (post). Port the markup structure and every inline value into Tailwind utilities or the token file; the artboards are the source of truth for sizes and colours. The home hero shows the latest listed video with its YouTube thumbnail and the coral offset shadow; the store band lists the products of the latest video (`products` field) with `[PRICE]` omitted (no prices on the site).
 
 - [ ] **Step 1: Write the failing tests**
 
-`tests/pages.test.ts` uses `execSync('npx astro build')` in `beforeAll` (timeout 180s) and `fs.readFileSync` on `dist/`:
+`tests/pages.test.ts` uses `ensureBuilt()` from `tests/build.ts` in `beforeAll`:
 
 ```ts
 test('post without description has no empty meta description', () => {
@@ -362,7 +365,7 @@ Disclosure text, exact (from the spec): `Note: the following are Amazon affiliat
 
 - [ ] **Step 1: Write the failing tests**
 
-`tests/videos.test.ts` (same `beforeAll` build pattern; share it via `tests/build.ts` exporting `ensureBuilt()` and `read()`):
+`tests/videos.test.ts` (same `beforeAll` pattern via `tests/build.ts`):
 
 ```ts
 test('video page embeds the main video and lists extras', () => {
