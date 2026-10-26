@@ -100,3 +100,8 @@
 .post-body blockquote { font-style: normal; }
 .post-body hr { border-color: var(--color-rule); }
 [data-theme=dark] .post-body hr { border-color: var(--color-rule-dark); }
+
+/* Video show notes follow the VideoB artboard: 24px rhythm, 32px section heads. */
+.video-body > * + * { margin-top: 24px; }
+.video-body > :is(h1, h2) { font-size: 32px; margin-top: 40px; }
+.video-body > :is(h3, h4, h5, h6) { margin-top: 32px; }

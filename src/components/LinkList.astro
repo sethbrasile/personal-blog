@@ -1,0 +1,38 @@
+---
+import { SITE } from '@/lib/site';
+
+interface Props {
+  heading: string;
+  items: { label: string; url: string }[];
+  disclosure?: string;
+  /** `store` = the coral box with the store button; `plain` = ruled list. */
+  variant?: 'store' | 'plain';
+}
+const { heading, items, disclosure, variant = 'plain' } = Astro.props;
+const id = variant === 'store' ? 'store-products' : 'products-mentioned';
+---
+{items.length > 0 && (variant === 'store' ? (
+  <section aria-labelledby={id} class="flex flex-col gap-[14px] bg-accent p-7 text-[#172f3e]">
+    <h2 id={id} class="m-0 font-display text-[26px] font-extrabold leading-[1.05] tracking-[-0.025em]">{heading}</h2>
+    <ul class="m-0 flex list-none flex-col p-0">
+      {items.map((item) => (
+        <li class="border-b border-[#172f3e] py-3 last:border-b-0">
+          <a href={item.url} class="font-medium !text-[#172f3e]">{item.label}</a>
+        </li>
+      ))}
+    </ul>
+    <a href={SITE.store} class="inline-flex min-h-11 items-center self-start bg-[#172f3e] px-[18px] text-[15px] font-medium !text-[#f2f4f5]">Visit the store</a>
+  </section>
+) : (
+  <section aria-labelledby={id} class="flex flex-col gap-3 border-t-2 border-ink pt-4 dark:border-ink-dark">
+    <h2 id={id} class="m-0 font-display text-2xl font-extrabold leading-[1.1] tracking-[-0.02em]">{heading}</h2>
+    {disclosure && <p class="m-0 text-sm leading-[1.5] text-muted dark:text-muted-dark">{disclosure}</p>}
+    <ul class="m-0 flex list-none flex-col gap-[2px] p-0 text-base">
+      {items.map((item) => (
+        <li class="border-b border-rule py-2 last:border-b-0 dark:border-rule-dark">
+          <a href={item.url}>{item.label}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+))}

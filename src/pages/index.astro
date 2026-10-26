@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PostCard from '@/components/PostCard.astro';
+import VideoCard from '@/components/VideoCard.astro';
 import { SITE } from '@/lib/site';
 import { getListedPosts, getListedVideos, videoPath } from '@/lib/content';
 import { formatDate } from '@/lib/format';
 
-const [video] = await getListedVideos();
+const [video, ...moreVideos] = await getListedVideos();
 const posts = (await getListedPosts()).slice(0, 5);
 
 const thumb = video && (video.data.thumbnail ?? `https://i.ytimg.com/vi/${video.data.youtubeId}/maxresdefault.jpg`);
@@ -39,6 +40,17 @@ const btnLine = 'inline-flex min-h-12 items-center border-2 border-ink px-[22px]
             <svg width="26" height="26" viewBox="0 0 24 24" class="fill-ink dark:fill-ink-dark"><path d="M8 5v14l11-7z" /></svg>
           </span>
         </a>
+      </section>
+    )}
+
+    {moreVideos.length > 0 && (
+      <section id="videos" aria-labelledby="more-videos" class="flex flex-col">
+        <div class="flex items-baseline justify-between gap-4 border-b-2 border-ink pb-[10px] dark:border-ink-dark">
+          <h2 id="more-videos" class="m-0 font-display text-[34px] font-extrabold tracking-[-0.02em]">Videos</h2>
+        </div>
+        <ul class="m-0 mt-6 grid list-none grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] gap-x-10 gap-y-10 p-0">
+          {moreVideos.slice(0, 3).map((entry) => <VideoCard entry={entry} />)}
+        </ul>
       </section>
     )}
 

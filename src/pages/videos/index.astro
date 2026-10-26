@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import VideoCard from '@/components/VideoCard.astro';
+import { getListedVideos } from '@/lib/content';
+
+const videos = await getListedVideos();
+---
+<BaseLayout title="Videos">
+  <main class="mx-auto flex w-full max-w-[1180px] flex-col gap-10 px-4 pb-[72px] pt-14 sm:px-8">
+    <h1 class="m-0 font-display text-[40px] font-extrabold leading-none tracking-[-0.035em] [text-wrap:balance] sm:text-[60px]">Videos</h1>
+    <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] gap-x-10 gap-y-12 p-0">
+      {videos.map((entry) => <VideoCard entry={entry} />)}
+    </ul>
+  </main>
+</BaseLayout>

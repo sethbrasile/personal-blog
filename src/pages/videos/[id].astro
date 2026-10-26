@@ -1,0 +1,59 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import YouTubeEmbed from '@/components/YouTubeEmbed.astro';
+import VideoExtras from '@/components/VideoExtras.astro';
+import VideoChapters from '@/components/VideoChapters.astro';
+import LinkList from '@/components/LinkList.astro';
+import TagList from '@/components/TagList.astro';
+import { getPublishedPosts, getPublishedVideos, postPath } from '@/lib/content';
+import { formatDate } from '@/lib/format';
+import { AFFILIATE_DISCLOSURE } from '@/lib/site';
+
+export async function getStaticPaths() {
+  return (await getPublishedVideos()).map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, date, youtubeId, thumbnail, extras, tags, products, mentioned, chapters, relatedPosts, unlisted } = entry.data;
+
+const posts = await getPublishedPosts();
+const related = (relatedPosts ?? []).flatMap((slug) => posts.filter((p) => p.id === slug));
+---
+<BaseLayout title={title} description={description} noindex={unlisted} ogType="article">
+  <main class="mx-auto flex w-full max-w-[1180px] flex-col gap-14 px-4 pb-[72px] pt-14 sm:px-8">
+    <div class="flex flex-col gap-5">
+      <p class="m-0 flex items-center gap-3 font-mono text-[13px] uppercase tracking-[0.1em] text-muted dark:text-muted-dark"><span aria-hidden="true" class="inline-block h-[3px] w-7 shrink-0 bg-accent"></span>Video · {formatDate(date)}</p>
+      <h1 class="m-0 max-w-[18ch] font-display text-[40px] font-extrabold leading-[0.98] tracking-[-0.035em] [text-wrap:balance] sm:text-[64px]">{title}</h1>
+    </div>
+
+    <div class="mr-4 shadow-[16px_16px_0_var(--color-accent)]">
+      <YouTubeEmbed id={youtubeId} title={title} thumbnail={thumbnail} />
+    </div>
+
+    <div class="grid grid-cols-1 items-start gap-x-16 gap-y-12 text-[18px] leading-[1.65] lg:grid-cols-[minmax(0,760px)_360px] lg:justify-between">
+      <article class="flex min-w-0 max-w-[760px] flex-col gap-6">
+        <p class="m-0 text-xl leading-[1.5] text-secondary dark:text-secondary-dark">{description}</p>
+        <div class="prose dark:prose-invert post-body video-body"><Content /></div>
+        <VideoChapters chapters={chapters} />
+        <VideoExtras extras={extras} />
+        {related.length > 0 && (
+          <section aria-labelledby="related-posts" class="mt-4 flex flex-col gap-4">
+            <h2 id="related-posts" class="m-0 font-display text-[28px] font-extrabold leading-[1.1] tracking-[-0.025em]">Related posts</h2>
+            <ul class="m-0 flex list-none flex-col gap-3 p-0">
+              {related.map((p) => (
+                <li><a href={postPath(p)} class="font-display text-xl font-medium leading-[1.2]">{p.data.title}</a></li>
+              ))}
+            </ul>
+          </section>
+        )}
+        <div class="mt-4"><TagList tags={tags} /></div>
+      </article>
+
+      <aside class="flex max-w-[360px] flex-col gap-8">
+        <LinkList variant="store" heading="Products in my store" items={products ?? []} />
+        <LinkList heading="Products mentioned" items={mentioned ?? []} disclosure={AFFILIATE_DISCLOSURE} />
+      </aside>
+    </div>
+  </main>
+</BaseLayout>

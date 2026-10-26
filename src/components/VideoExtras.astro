@@ -1,0 +1,21 @@
+---
+import YouTubeEmbed from './YouTubeEmbed.astro';
+
+interface Props {
+  extras?: { label: string; youtubeId: string }[];
+}
+const { extras = [] } = Astro.props;
+---
+{extras.length > 0 && (
+  <section aria-labelledby="extras" class="mt-4 flex flex-col gap-4">
+    <h2 id="extras" class="m-0 font-display text-[28px] font-extrabold leading-[1.1] tracking-[-0.025em]">Extras</h2>
+    <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6 p-0">
+      {extras.map((e) => (
+        <li class="flex flex-col gap-[10px]">
+          <YouTubeEmbed id={e.youtubeId} title={e.label} size="sm" />
+          <span class="font-display text-xl font-medium leading-[1.2]">{e.label}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
