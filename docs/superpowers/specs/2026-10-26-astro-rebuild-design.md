@@ -1,7 +1,7 @@
 # bytemycache.com rebuild: Hugo to Astro
 
 Date: 2026-10-26
-Status: reviewed (builder check done), open questions answered 2026-10-26, pending Seth's approval of the full document
+Status: approved by Seth 2026-10-26
 Repo: `sethbrasile/personal-blog` (GitHub), local `~/dev/personal-blog`
 
 ## Intent
