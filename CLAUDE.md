@@ -38,7 +38,7 @@ How to:
 - **Add an extra** (additional YouTube video on a video page): add `{label, youtubeId}` to that video's `extras`.
 - **Store products** (the three-product band on the video page and home): `products` on the video, `{label, url}` pointing at store.bytemycache.com product URLs.
 - **Affiliate links**: `mentioned` on the video. The Amazon affiliate disclosure (`AFFILIATE_DISCLOSURE` in `src/lib/site.ts`) is rendered automatically with that list.
-- **draft vs unlisted**: `draft: true` is excluded from production builds entirely (shown in `astro dev`). `unlisted: true` is built and reachable by URL but left out of lists, tags and RSS, and gets `noindex`. The sitemap exclusion is manual: add its path to `UNLISTED_PATHS` in `src/lib/sitemap.mjs`.
+- **draft vs unlisted**: `draft: true` is excluded from production builds entirely (shown in `astro dev`). `unlisted: true` is built and reachable by URL but left out of lists, tags and RSS, and gets `noindex`. The sitemap exclusion is manual: add its full URL (e.g. `https://bytemycache.com/<path>/`) to `UNLISTED_PATHS` in `src/lib/sitemap.mjs`.
 - Markdown runs through Astro 7's default Satteri processor. A local mdast plugin (`src/lib/mdast-strip-comments.mjs`) strips HTML comments (Hugo never rendered raw HTML). Shiki `langAlias` maps `basH` and `Powershell` (set in `astro.config.mjs`). Migrated bodies are byte-identical to the Hugo originals (R14); do not reformat them (`.prettierignore` covers them).
 - New site chrome or page text is copy: it goes through `page-authoring` (the repo has a deploy target).
 
@@ -58,7 +58,7 @@ How to:
 
 ## Deploy
 
-Cloudflare Pages git integration deploys `main` (production) and builds a preview for every other branch. GitHub Actions only checks. Build settings: command `npm run build`, output `dist`, `NODE_VERSION=22`. Do not push or merge to `main` without Seth.
+Cloudflare Pages git integration deploys `main` (production) and builds a preview for every other branch. GitHub Actions only checks. Intended Pages build settings, applied by Seth at cutover (plan Task 10 Step 1), not yet set: command `npm run build`, output `dist`, `NODE_VERSION=22`. Never set `NODE_ENV=production` in the Pages build env: `npm ci` would skip devDependencies and `astro check` would fail (the test harness sets it itself, `tests/global-setup.ts`). Do not push or merge to `main` without Seth.
 
 ## Design
 
@@ -89,5 +89,6 @@ Tokens live in `src/styles/global.css` (`@theme`: colors with `-dark` pairs, fon
 - Masthead tagline and `SITE.description` wording: both are agent-drafted copy-gate text, not approved. Description is `Videos and posts on DIY electronics, smart home, homelab, DevOps and web. The store sells kits, cases and sensors from the videos.` Options: keep, drop the store sentence, or your own wording.
 - The `/contact/` booking widget URL (`link.tenorcreative.com/widget/booking/aRNGagoZBqgXKJ92L6mC`) returns 404 on GHL's side.
 - sethbrasile.com does not resolve yet, so the `/cv/` and `/hire/` redirects point nowhere live.
-- `www.bytemycache.com` has no DNS record.
+- `www.bytemycache.com` has no DNS record. The spec wants `www` to apex via a Cloudflare Redirect Rule (dashboard action).
+- Before pasting `POSTHOG_KEY` (Task 10 Step 3): `src/content/pages/privacy.md` (Umami, "stored on our servers") and `cookies.md` (only the GHL widget sets cookies) become false once PostHog is live (US cloud, cookies on, IP forwarded for geo). Update that copy through `page-authoring`, or configure PostHog cookieless (`persistence: 'memory'`) until then.
 - PostHog project and `POSTHOG_KEY` still to create.
