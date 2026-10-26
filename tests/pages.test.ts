@@ -47,6 +47,22 @@ describe('pages', () => {
     expect(html).toContain('href="https://store.bytemycache.com/products/esp8266-case-ir"');
     expect(html).not.toContain('[PRICE]');
   });
+  test('home hero thumbnail opens the show notes, not YouTube', () => {
+    const html = read('dist/index.html');
+    expect(html).toMatch(/<a href="\/videos\/your-kids-can-use-magic-wands-to-control-your-home\/" aria-label="Play: /);
+  });
+  test('home shows six latest posts', () => {
+    const html = read('dist/index.html');
+    expect(html.match(/<li class="border-b[^"]*"><a href="\/posts\//g)?.length).toBe(6);
+  });
+  test('coral surfaces use an ink focus ring and the theme toggle exposes state', () => {
+    expect(read('dist/index.html').match(/class="on-accent /g)?.length).toBe(1);
+    expect(read('dist/index.html')).toContain('aria-pressed="false"');
+  });
+  test('code comments meet contrast: no #6a737d in highlighted output', () => {
+    const html = read('dist/posts/how-to-run-multiple-dockerized-proxied-spdyd-and-pagespeedified-ghost-blogs-with-4-commands/index.html');
+    expect(html.toLowerCase()).not.toContain('#6a737d');
+  });
   test('dates use one Chicago-zoned format', () => {
     expect(read('dist/index.html')).toMatch(/\b\w{3} \d{1,2}, \d{4}\b/);
     // 2024-05-22T02:38Z is still 21 May in Chicago.

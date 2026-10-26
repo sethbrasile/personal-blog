@@ -25,11 +25,14 @@
   [data-theme=dark] a { color: var(--color-link-dark); }
   [data-theme=dark] a:hover { color: var(--color-link-hover-dark); }
   :where(a, button):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  /* Coral ground: an accent ring would vanish, so use ink. */
+  .on-accent :where(a, button):focus-visible { outline-color: #172f3e; }
 }
 
 /* Post and page body: PaperMod-free prose that follows the PostB artboard. */
 .prose {
   --tw-prose-body: var(--color-ink);
+  --tw-prose-code: var(--color-ink);
   --tw-prose-headings: var(--color-ink);
   --tw-prose-lead: var(--color-secondary);
   --tw-prose-links: var(--color-link);
@@ -45,6 +48,7 @@
 }
 [data-theme=dark] .prose {
   --tw-prose-body: var(--color-ink-dark);
+  --tw-prose-code: var(--color-ink-dark);
   --tw-prose-headings: var(--color-ink-dark);
   --tw-prose-lead: var(--color-secondary-dark);
   --tw-prose-links: var(--color-link-dark);

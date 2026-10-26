@@ -3,6 +3,7 @@
 <button
   type="button"
   data-theme-toggle
+  aria-pressed="false"
   aria-label="Switch between light and dark theme"
   class="inline-flex h-9 w-9 cursor-pointer items-center justify-center border border-ink bg-transparent text-ink dark:border-ink-dark dark:text-ink-dark"
 >
@@ -12,10 +13,13 @@
   </svg>
 </button>
 <script>
+  const isDark = () => document.documentElement.dataset.theme === 'dark';
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    btn.setAttribute('aria-pressed', String(isDark()));
     btn.addEventListener('click', () => {
-      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      const next = isDark() ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
+      btn.setAttribute('aria-pressed', String(next === 'dark'));
       try {
         localStorage.theme = next;
       } catch {}

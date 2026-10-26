@@ -12,7 +12,7 @@ const { heading, items, disclosure, variant = 'plain' } = Astro.props;
 const id = variant === 'store' ? 'store-products' : 'products-mentioned';
 ---
 {items.length > 0 && (variant === 'store' ? (
-  <section aria-labelledby={id} class="flex flex-col gap-[14px] bg-accent p-7 text-[#172f3e]">
+  <section aria-labelledby={id} class="on-accent flex flex-col gap-[14px] bg-accent p-7 text-[#172f3e]">
     <h2 id={id} class="m-0 font-display text-[26px] font-extrabold leading-[1.05] tracking-[-0.025em]">{heading}</h2>
     <ul class="m-0 flex list-none flex-col p-0">
       {items.map((item) => (
