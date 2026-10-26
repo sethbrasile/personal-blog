@@ -1,0 +1,12 @@
+/cv/            https://sethbrasile.com/  301
+/cv/*           https://sethbrasile.com/  301
+/hire/          https://sethbrasile.com/  301
+/search/        /posts/                   301
+/authors/*      /about/                   301
+/categories/*   /tags/:splat              301
+/coming-soon/   /                         301
+/my-candida-treatment-plan/   /           301
+/tags/candida/      /tags/  301
+/tags/overgrowth/   /tags/  301
+/tags/health/       /tags/  301
+/tags/supplements/  /tags/  301
