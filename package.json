@@ -1,16 +1,29 @@
 {
-  "name": "bytemycache-blog",
-  "version": "1.0.0",
-  "private": true,
-  "description": "byteMyCache (bytemycache.com) — Hugo + PaperMod. Node scripts here build the /cv/ data artifacts.",
+  "name": "bytemycache",
   "type": "module",
+  "private": true,
   "scripts": {
-    "build:cv": "node scripts/build-cv.mjs",
-    "sync:assets": "node scripts/sync-cv-assets.mjs",
-    "build:data": "npm run build:cv && npm run sync:assets",
-    "build": "npm run build:data && \"${HUGO:-hugo}\""
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "typecheck": "astro check",
+    "format": "prettier --write ."
   },
   "dependencies": {
-    "js-yaml": "^4.1.0"
+    "@astrojs/mdx": "^8.1.1",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.2",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.2",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5"
   }
 }
