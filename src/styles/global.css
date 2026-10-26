@@ -109,3 +109,7 @@
 .video-body > * + * { margin-top: 24px; }
 .video-body > :is(h1, h2) { font-size: 32px; margin-top: 40px; }
 .video-body > :is(h3, h4, h5, h6) { margin-top: 32px; }
+
+/* github-dark comments (#6a737d) are 2.9:1 on the ink code ground; lift to #9fb3bf (6.4:1).
+   Satteri's Shiki bridge ignores colorReplacements, so override the inline colour. */
+.post-body pre.astro-code span[style*="#6A737D" i] { color: #9fb3bf !important; }

@@ -1,3 +1,5 @@
+import { readdirSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { beforeAll, describe, expect, test } from 'vitest';
 import { ensureBuilt, exists, read } from './build';
 
@@ -59,9 +61,16 @@ describe('pages', () => {
     expect(read('dist/index.html').match(/class="on-accent /g)?.length).toBe(1);
     expect(read('dist/index.html')).toContain('aria-pressed="false"');
   });
-  test('code comments meet contrast: no #6a737d in highlighted output', () => {
-    const html = read('dist/posts/how-to-run-multiple-dockerized-proxied-spdyd-and-pagespeedified-ghost-blogs-with-4-commands/index.html');
-    expect(html.toLowerCase()).not.toContain('#6a737d');
+  test('code comments are lifted from #6a737d to #9fb3bf', () => {
+    // Shiki still emits #6A737D inline (colorReplacements is ignored by Satteri); CSS must override it.
+    const post = read('dist/posts/understanding-googles-page-speed-guidelines/index.html');
+    expect(post.toLowerCase()).toContain('#6a737d');
+    const css = readdirSync(resolve(import.meta.dirname, '../dist/_astro'))
+      .filter((f) => f.endsWith('.css'))
+      .map((f) => read(`dist/_astro/${f}`))
+      .join('\n')
+      .toLowerCase();
+    expect(css).toMatch(/\[style\*=\\?#6a737d i\][^}]*color:#9fb3bf!important/);
   });
   test('dates use one Chicago-zoned format', () => {
     expect(read('dist/index.html')).toMatch(/\b\w{3} \d{1,2}, \d{4}\b/);

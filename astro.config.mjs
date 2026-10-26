@@ -14,8 +14,6 @@ export default defineConfig({
     processor: satteri({ mdastPlugins: [stripHtmlComments] }),
     shikiConfig: {
       theme: 'github-dark',
-      // github-dark comments (#6a737d) are 2.9:1 on the ink code ground; lift to 6.4:1.
-      colorReplacements: { '#6a737d': '#9fb3bf' },
       // Hugo's highlighter was case-insensitive; two migrated posts rely on it.
       langAlias: { basH: 'bash', Powershell: 'powershell' },
     },
