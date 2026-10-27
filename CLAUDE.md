@@ -57,6 +57,13 @@ How to:
 - `functions/ingest/[[path]].ts`: Pages Function reverse proxy to PostHog (static assets host vs API host). The only server code in the repo.
 - `src/components/analytics.test.ts` is key-aware: with an empty key it asserts no PostHog code in the build; with a key it asserts the snippet, host gate and `/ingest`.
 
+## Contact form
+
+- `src/components/ContactForm.astro` (no React): name, email, message. Cloudflare's Turnstile script loads and the widget renders only on the first focus of a field, so visitors who never touch the form load nothing from Cloudflare. Every visible string sits in one `TEXT` object at the top (agent drafts, not yet approved by Seth). The public site key is hardcoded in the component.
+- `functions/api/contact.ts` (with `_lib/crm.ts`, `_lib/resend-fallback.ts`, from the `crm-contact-worker` skill): origin allow-list (apex, www, `personal-blog-4u8.pages.dev` and its subdomains, judged on the parsed hostname), Turnstile siteverify, then a signed lead to the CRM ingest endpoint. An empty `CRM_ACCOUNT_KEY` or missing `CRM_CLIENT_SECRET` means "no CRM": the lead goes straight to the Resend fallback email. Request validation is by hand (no zod).
+- Secrets, set with `CLOUDFLARE_ACCOUNT_ID=fd15b6bd9ab1cec50b0832c91d7cf53a npx wrangler pages secret put <NAME> --project-name personal-blog`: `CRM_CLIENT_SECRET`, `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`. Never in the repo or `wrangler.toml`.
+- `wrangler.toml` is Pages-only and holds the plain vars (`CRM_INGEST_URL`, `CRM_ACCOUNT_KEY`, `RESEND_FROM`, `LEAD_FALLBACK_TO`, `NODE_VERSION`). Because `pages_build_output_dir` is set, every git build overwrites dashboard-set plain vars; secrets survive. Change plain vars in the file, not the dashboard. `CRM_ACCOUNT_KEY` stays `""` until `db:onboard` mints the account.
+
 ## Deploy
 
 Cloudflare Pages git integration deploys `main` (production) and builds a preview for every other branch. GitHub Actions only checks. Intended Pages build settings, applied by Seth at cutover (plan Task 10 Step 1), not yet set: command `npm run build`, output `dist`, `NODE_VERSION=22`. Never set `NODE_ENV=production` in the Pages build env: `npm ci` would skip devDependencies and `astro check` would fail (the test harness sets it itself, `tests/global-setup.ts`). Do not push or merge to `main` without Seth.
@@ -88,7 +95,6 @@ Tokens live in `src/styles/global.css` (`@theme`: colors with `-dark` pairs, fon
 ## Open questions for Seth
 
 - Masthead tagline and `SITE.description` wording: both are agent-drafted copy-gate text, not approved. Description is `Videos and posts on DIY electronics, smart home, homelab, DevOps and web. The store sells kits, cases and sensors from the videos.` Options: keep, drop the store sentence, or your own wording.
-- GoHighLevel is retired (2026-10-27). The `/contact/` booking widget (`link.tenorcreative.com`, already 404) is replaced by a contact form into Seth's CRM: plan Task 11, which gates the merge.
 - sethbrasile.com does not resolve yet, so the `/cv/` and `/hire/` redirects point nowhere live.
 - `www.bytemycache.com` has no DNS record. The spec wants `www` to apex via a Cloudflare Redirect Rule (dashboard action).
 - Before pasting `POSTHOG_KEY` (Task 10 Step 3): `src/content/pages/privacy.md` (Umami, "stored on our servers") and `cookies.md` (only the GHL widget sets cookies) become false once PostHog is live (US cloud, cookies on, IP forwarded for geo). Update that copy through `page-authoring`, or configure PostHog cookieless (`persistence: 'memory'`) until then.

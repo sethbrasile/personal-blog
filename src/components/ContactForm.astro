@@ -1,0 +1,156 @@
+---
+// Every visible string lives here so it is easy to revise (agent drafts, pending Seth's approval).
+const TEXT = {
+  name: 'Name',
+  email: 'Email',
+  message: 'Message',
+  send: 'Send message',
+  sending: 'Sending…',
+  success: "Thanks, your message is on its way. I'll reply by email.",
+  errorBefore: "Something went wrong and your message wasn't sent. Please try again, or email ",
+  errorAddress: 'seth@bytemycache.com',
+  errorAfter: '.',
+  check: "The spam check didn't finish. Wait a moment and press Send again.",
+};
+// Public Turnstile site key (not a secret). Hardcoded on purpose.
+const SITE_KEY = '0x4AAAAAAFogPDfu_0ImLQti';
+const field =
+  'block w-full border-2 border-ink bg-ground px-3 py-2 font-sans text-base text-ink focus:outline-2 focus:outline-offset-2 focus:outline-accent dark:border-ink-dark dark:bg-ground-dark dark:text-ink-dark';
+const label = 'mb-1 block font-sans text-sm font-semibold text-ink dark:text-ink-dark';
+---
+
+<div
+  id="contact-form"
+  class="not-prose my-8 max-w-xl"
+  data-sitekey={SITE_KEY}
+  data-check={TEXT.check}
+  data-sending={TEXT.sending}
+  data-send={TEXT.send}
+>
+  <form id="contact-form-el" method="post" action="/api/contact" class="space-y-5" novalidate>
+    <div>
+      <label for="cf-name" class={label}>
+        {TEXT.name}
+      </label>
+      <input id="cf-name" name="name" type="text" required maxlength="200" autocomplete="name" class={field} />
+    </div>
+    <div>
+      <label for="cf-email" class={label}>
+        {TEXT.email}
+      </label>
+      <input id="cf-email" name="email" type="email" required maxlength="200" autocomplete="email" class={field} />
+    </div>
+    <div>
+      <label for="cf-message" class={label}>
+        {TEXT.message}
+      </label>
+      <textarea id="cf-message" name="message" required maxlength="2000" rows="6" class={field}></textarea>
+    </div>
+    <div id="cf-turnstile"></div>
+    <p
+      id="cf-error"
+      role="alert"
+      class="hidden border-2 border-ink p-3 font-sans text-sm text-ink dark:border-ink-dark dark:text-ink-dark"
+    ></p>
+    <button
+      id="cf-submit"
+      type="submit"
+      class="border-2 border-ink bg-accent px-5 py-2 font-sans text-base font-semibold text-[#172f3e] hover:bg-ink hover:text-ground disabled:opacity-60 dark:border-ink-dark dark:hover:bg-ink-dark dark:hover:text-ground-dark"
+    >
+      {TEXT.send}
+    </button>
+  </form>
+  <p
+    id="cf-success"
+    hidden
+    tabindex="-1"
+    class="border-2 border-ink p-4 font-sans text-base text-ink dark:border-ink-dark dark:text-ink-dark"
+  >
+    {TEXT.success}
+  </p>
+  <template id="cf-error-text">
+    {TEXT.errorBefore}
+    <a href="mailto:seth@bytemycache.com">{TEXT.errorAddress}</a>
+    {TEXT.errorAfter}
+  </template>
+</div>
+
+<script>
+  type TurnstileApi = {
+    render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+    reset: (id?: string) => void;
+  };
+  const w = window as unknown as { turnstile?: TurnstileApi };
+  const root = document.getElementById('contact-form')!;
+  const form = document.getElementById('contact-form-el') as HTMLFormElement;
+  const errorEl = document.getElementById('cf-error')!;
+  const success = document.getElementById('cf-success')!;
+  const submit = document.getElementById('cf-submit') as HTMLButtonElement;
+  const errorTpl = document.getElementById('cf-error-text') as HTMLTemplateElement;
+  const siteKey = root.dataset.sitekey!;
+
+  let token = '';
+  let widgetId: string | undefined;
+  let started = false;
+
+  function showError(content: string | DocumentFragment) {
+    errorEl.replaceChildren(content);
+    errorEl.classList.remove('hidden');
+  }
+
+  function renderWidget() {
+    if (widgetId !== undefined || !w.turnstile) return;
+    widgetId = w.turnstile.render(document.getElementById('cf-turnstile')!, {
+      sitekey: siteKey,
+      callback: (t: string) => {
+        token = t;
+      },
+      'expired-callback': () => {
+        token = '';
+      },
+      'error-callback': () => {
+        token = '';
+      },
+    });
+  }
+
+  // Cloudflare's script loads only when someone starts using the form.
+  function loadTurnstile() {
+    if (started) return;
+    started = true;
+    const s = document.createElement('script');
+    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    s.async = true;
+    s.onload = renderWidget;
+    document.head.appendChild(s);
+  }
+  form.addEventListener('focusin', loadTurnstile);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.classList.add('hidden');
+    if (!form.reportValidity()) return;
+    if (!token) {
+      showError(root.dataset.check!);
+      loadTurnstile();
+      return;
+    }
+    const fd = new FormData(form);
+    fd.set('cf-turnstile-response', token);
+    submit.disabled = true;
+    submit.textContent = root.dataset.sending!;
+    try {
+      const res = await fetch('/api/contact', { method: 'POST', body: fd });
+      if (!res.ok) throw new Error(String(res.status));
+      form.hidden = true;
+      success.hidden = false;
+      success.focus();
+    } catch {
+      showError(errorTpl.content.cloneNode(true) as DocumentFragment);
+      token = '';
+      if (w.turnstile && widgetId !== undefined) w.turnstile.reset(widgetId);
+      submit.disabled = false;
+      submit.textContent = root.dataset.send!;
+    }
+  });
+</script>

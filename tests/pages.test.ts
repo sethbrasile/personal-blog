@@ -85,8 +85,11 @@ describe('pages', () => {
     // 2024-05-22T02:38Z is still 21 May in Chicago.
     expect(read(part(1))).toContain('Post · May 21, 2024');
   });
-  test('mdx page renders the booking component', () => {
-    expect(read('dist/contact/index.html')).toContain('link.tenorcreative.com/widget/booking/');
+  test('contact page renders the form posting to /api/contact', () => {
+    const html = read('dist/contact/index.html');
+    expect(html).toContain('action="/api/contact"');
+    expect(html).toContain('0x4AAAAAAFogPDfu_0ImLQti');
+    expect(html).not.toContain('tenorcreative');
   });
   test('html comments in markdown bodies never reach dist', () => {
     expect(read('dist/about/index.html')).not.toContain('strugglebuss');

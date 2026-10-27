@@ -1,0 +1,16 @@
+# Pages-only config. With pages_build_output_dir set, this file is the source of
+# truth for PLAIN vars: every git build overwrites dashboard-set plain vars
+# (secrets survive). Never put a secret here; CRM_CLIENT_SECRET, RESEND_API_KEY
+# and TURNSTILE_SECRET_KEY are set with `wrangler pages secret put`.
+name = "personal-blog"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-10-01"
+
+[vars]
+CRM_INGEST_URL = "https://crm.pricklypearmarketing.co/api/leads/ingest"
+# Empty until the CRM account is minted; fill in with the account key printed by
+# `db:onboard`. While empty the Function skips the CRM and emails via Resend.
+CRM_ACCOUNT_KEY = ""
+RESEND_FROM = "byteMyCache <noreply@notify.pricklypearmarketingco.com>"
+LEAD_FALLBACK_TO = "support@pricklypearmarketingco.com"
+NODE_VERSION = "22"
