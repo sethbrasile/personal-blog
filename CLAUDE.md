@@ -33,7 +33,7 @@ Collections are defined in `src/content.config.ts`. Helpers (published/listed fi
 
 How to:
 
-- **Add a post**: create `src/content/posts/<slug>/index.md` with frontmatter; put images in `images/` and reference them relatively (they are optimised). Set `draft: true` while writing.
+- **Add a post**: create `src/content/posts/<slug>/index.md` with frontmatter; put images in `images/` and reference them relatively (they are optimised). Set `draft: true` while writing. Give it a `description` (110-160 characters, written through `page-authoring`) before publishing: the tests fail on a published post without one. The 5 current drafts have none yet.
 - **Add a video**: create `src/content/videos/<slug>.md` with `youtubeId`. The newest listed video is the home hero.
 - **Add an extra** (additional YouTube video on a video page): add `{label, youtubeId}` to that video's `extras`.
 - **Store products** (the three-product band on the video page and home): `products` on the video, `{label, url}` pointing at store.bytemycache.com product URLs in the form `https://store.bytemycache.com/en-usd/products/<slug>` (the bare `/products/<slug>` form 404s; `tests/videos.test.ts` checks it).
@@ -83,7 +83,6 @@ Tokens live in `src/styles/global.css` (`@theme`: colors with `-dark` pairs, fon
 
 ## Tech debt
 
-- 16 posts have no `description`, so they have no meta description and title-only RSS items. Seth writes them through `page-authoring`; do not invent them.
 - The Shiki comment-colour fix is a CSS override keyed to the github-dark hex (`#6a737d`) and scoped to `.post-body` (Satteri's Shiki bridge ignores `colorReplacements`). It breaks silently if the theme changes; `tests/pages.test.ts` guards it.
 - `public/_headers` still sends the deprecated `X-XSS-Protection: 1; mode=block`.
 - The ingest proxy strips only a denylist of headers (hop-by-hop plus cookie), so `authorization`/`cf-access` headers are forwarded. Negligible here.

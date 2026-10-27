@@ -15,11 +15,12 @@ test('rss lives at /index.xml and contains posts and videos newest first', () =>
   expect(dates.length).toBeGreaterThan(2);
   expect(dates).toEqual([...dates].sort((a, b) => b - a));
 });
-test('rss items without a description carry no empty <description>', () => {
+test('every rss item carries a non-empty <description>', () => {
   const xml = read('dist/index.xml');
   expect(xml).not.toMatch(/<description>\s*<\/description>/);
   const items = xml.split('<item>').slice(1);
-  expect(items.some((i) => !i.includes('<description>'))).toBe(true);
+  expect(items.length).toBeGreaterThan(0);
+  for (const i of items) expect(i, i.slice(0, 120)).toMatch(/<description>\S/);
 });
 test('tag pages merge categories and use hugo slugs', () => {
   expect(exists('dist/tags/cloudflare-r2/index.html')).toBe(true);

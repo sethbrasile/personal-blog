@@ -1,5 +1,6 @@
 ---
 title: How to Run Multiple Dockerized Proxied SPDY'd and Pagespeedified Ghost Blogs with 4 Commands
+description: "A 2014 walkthrough for hosting several Ghost blogs in Docker behind one nginx proxy with PageSpeed and SPDY, with a volume container holding the data."
 date: '2014-07-26T10:11:19-05:00'
 draft: false
 author: Seth Brasile

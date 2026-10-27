@@ -1,5 +1,6 @@
 ---
 title: Fix a Homepod Mini That Wont Turn On
+description: "Three HomePod minis went dead after an update and two power events, and Apple's reset did nothing. A plug-in-and-hold trick brought all three back."
 date: '2023-07-12T12:57:56-05:00'
 draft: false
 author: Seth Brasile

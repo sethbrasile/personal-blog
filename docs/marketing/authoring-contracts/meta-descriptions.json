@@ -1,0 +1,250 @@
+{
+  "contract": {
+    "version": "1.0.0",
+    "mode": "Patterned",
+    "pageId": "bytemycache-meta-descriptions",
+    "familyId": "bytemycache-meta-descriptions",
+    "skeletonId": "meta-description-v1",
+    "authorityPack": {
+      "sources": [
+        {
+          "id": "post:email-is-stupid",
+          "kind": "post-body",
+          "reference": "src/content/posts/email-is-stupid/index.md",
+          "sha256": "2bce980bce6a315e000eed2119cde36aff84bb26e8c9c1fd26af28c2522734f3"
+        },
+        {
+          "id": "post:fix-a-homepod-mini-that-wont-turn-on",
+          "kind": "post-body",
+          "reference": "src/content/posts/fix-a-homepod-mini-that-wont-turn-on/index.md",
+          "sha256": "5444454e0bb844b610332c895b83af53b8c236d727f6aa002eee9313ced3492a"
+        },
+        {
+          "id": "post:fixing-throw-in-powershell",
+          "kind": "post-body",
+          "reference": "src/content/posts/fixing-throw-in-powershell/index.md",
+          "sha256": "56840009b25e58f4e93daea08e3470eae7091d42d1a53ddc3dde7c4ce051bb48"
+        },
+        {
+          "id": "post:how-to-run-multiple-dockerized-proxied-spdyd-and-pagespeedified-ghost-blogs-with-4-commands",
+          "kind": "post-body",
+          "reference": "src/content/posts/how-to-run-multiple-dockerized-proxied-spdyd-and-pagespeedified-ghost-blogs-with-4-commands/index.md",
+          "sha256": "9b5057263dc756e31e49f0d9e4bf06debd131d14d11292626de5d8e237f6b2e6"
+        },
+        {
+          "id": "post:microsoft-copilot-365-copilot-copilot-plus-recall",
+          "kind": "post-body",
+          "reference": "src/content/posts/microsoft-copilot-365-copilot-copilot-plus-recall/index.md",
+          "sha256": "6819edc663eedfe36c2fbc9d2397bb5b38e32328fcbb8e2f6ea7d28918b16650"
+        },
+        {
+          "id": "post:protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-1",
+          "kind": "post-body",
+          "reference": "src/content/posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-1/index.md",
+          "sha256": "6ad3b331a2955c675e0f0c8ae9f5a023aefc0eef94a5829e775367b3d2c7588c"
+        },
+        {
+          "id": "post:protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2",
+          "kind": "post-body",
+          "reference": "src/content/posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-2/index.md",
+          "sha256": "955b084933bfc19ba7118400c6afdad90aa77222f786f3052410170867b19b52"
+        },
+        {
+          "id": "post:protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3",
+          "kind": "post-body",
+          "reference": "src/content/posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-3/index.md",
+          "sha256": "64bc08128bea71dc74bec255b64401c2084b030fc85e4a133e207f1b82e8436b"
+        },
+        {
+          "id": "post:some-great-mac-apps-to-check-out",
+          "kind": "post-body",
+          "reference": "src/content/posts/some-great-mac-apps-to-check-out/index.md",
+          "sha256": "5e1b828ac8ff253c8bc8c9226017cf20e39bc19e75010fcc301c69c272c57e86"
+        },
+        {
+          "id": "post:understanding-googles-page-speed-guidelines",
+          "kind": "post-body",
+          "reference": "src/content/posts/understanding-googles-page-speed-guidelines/index.md",
+          "sha256": "13214b0887557ac34748c185bf680da6e47d7fe55e613319b7c25052b3716a4d"
+        },
+        {
+          "id": "post:why-laravel-image-handling-still-sucks-and-how-to-fix-it",
+          "kind": "post-body",
+          "reference": "src/content/posts/why-laravel-image-handling-still-sucks-and-how-to-fix-it/index.md",
+          "sha256": "a3a3885280391f96eaa51ed89937b9bcf232469dcc830861d3cb3cf1b33faf09"
+        },
+        {
+          "id": "video:magic-wands",
+          "kind": "video-entry",
+          "reference": "src/content/videos/your-kids-can-use-magic-wands-to-control-your-home.md",
+          "sha256": "7ef51ddb38f7619f0c8839e4fc35d6b60111dd2bd25ce956b70fd9b855037bc2"
+        },
+        {
+          "id": "list:posts",
+          "kind": "route",
+          "reference": "src/pages/posts/index.astro",
+          "sha256": "8ed1e5a3d166900a56c69473793efba2071e1b9eefa955e1d1339231ab789e07"
+        },
+        {
+          "id": "list:videos",
+          "kind": "route",
+          "reference": "src/pages/videos/index.astro",
+          "sha256": "b6e2b5c4418af55d6bfdada04fa8ecd2ae8bb6f0a54b0a7855e0ce8208cf3dc9"
+        },
+        {
+          "id": "render:surfaces",
+          "kind": "render-path",
+          "reference": "src/layouts/BaseLayout.astro (meta + og:description), src/components/PostCard.astro (card blurb), src/pages/index.xml.ts (RSS item)"
+        },
+        {
+          "id": "operator:instruction",
+          "kind": "user-decision",
+          "reference": "Seth in chat 2026-10-27: the agent writes the missing descriptions ('that's your writing, get on it'); best-for-SEO is the goal"
+        }
+      ],
+      "prohibitedClaims": [
+        "Any fact, result, or recommendation the page itself does not contain",
+        "Outcome promises stronger than the post makes (e.g. a guaranteed fix where the post reports what worked for the author)",
+        "Presenting a 2014-era post (SPDY, PageSpeed Insights scores, Ghost, Dreamhost email pricing) as current advice",
+        "Promising part 4 of the reverse-proxy series, which is unpublished",
+        "Videos or posts that do not exist on the site"
+      ],
+      "constraints": [
+        "One description per page, authored individually with that page's source open; no template or token swap",
+        "Roughly 110-160 characters so Google shows it untruncated; a single sentence or two short ones",
+        "Reads correctly in all four places it renders: search snippet, social preview, RSS item, and the post-card blurb on /posts/ and tag pages",
+        "Seth's register: plain, direct, first person allowed, no hype words, no marketing CTA",
+        "Do not edit migrated post bodies (R14); the change is frontmatter only, plus a description prop on the two list routes"
+      ]
+    },
+    "pageJob": {
+      "reader": "A developer, homelabber or tinkerer who sees a ByteMyCache page in Google results, a shared link, RSS, or a post card",
+      "state": "Scanning several options and deciding which one actually covers their problem or interest",
+      "action": "Decide quickly whether this page is the one to open, or skip it"
+    },
+    "genreEvidence": {
+      "basis": "funnel",
+      "sources": [
+        {
+          "reference": "Google Search Central, 'Control your snippets in search results' (meta description guidance: unique per page, accurate summary, specific facts over keyword lists); from prior knowledge, not re-fetched this session",
+          "observedAt": "2026-10-27"
+        },
+        {
+          "reference": "Site render path: description doubles as card blurb and RSS item (render:surfaces)",
+          "observedAt": "2026-10-27"
+        }
+      ],
+      "readerDecisions": [
+        "Is this page about my exact problem or topic?",
+        "Will it give me a fix, a how-to, or an opinion?",
+        "Is it current enough to trust?"
+      ],
+      "proofPatterns": [
+        "The concrete thing the page delivers (the fix, the steps, the tools named)",
+        "The specific stack or product names a searcher would type"
+      ],
+      "notForegrounded": [
+        "Keyword lists or tag dumps",
+        "Generic CTAs such as 'read more' or 'click here'",
+        "Superlatives such as 'ultimate guide'"
+      ]
+    },
+    "questionSequence": [
+      {
+        "index": 1,
+        "question": "What, specifically, is this page about?"
+      },
+      {
+        "index": 2,
+        "question": "What will I get from it: a fix, a walkthrough, a list, or an opinion?"
+      },
+      {
+        "index": 3,
+        "question": "Is there anything about its age or scope I should know before I click?"
+      }
+    ],
+    "argumentMap": [
+      {
+        "index": 1,
+        "questionIndex": 1,
+        "belief": "The reader can tell at a glance which exact problem, tool or topic the page covers.",
+        "evidenceIds": [
+          "post:email-is-stupid",
+          "render:surfaces"
+        ],
+        "lens": "seo-entity-value",
+        "surface": "description-subject"
+      },
+      {
+        "index": 2,
+        "questionIndex": 2,
+        "belief": "The reader knows what kind of payoff the page offers, stated no stronger than the page delivers.",
+        "evidenceIds": [
+          "operator:instruction"
+        ],
+        "lens": "reader-value",
+        "surface": "description-payoff"
+      },
+      {
+        "index": 3,
+        "questionIndex": 3,
+        "belief": "Where age or scope changes whether the page helps (2014 posts, a multi-part series), the reader learns it before clicking.",
+        "evidenceIds": [
+          "post:understanding-googles-page-speed-guidelines"
+        ],
+        "lens": "reader-value",
+        "surface": "description-qualifier"
+      }
+    ],
+    "maximalHonestPromise": "Each description tells the reader exactly what the page covers and what they will get from it, with nothing the page does not deliver.",
+    "signedThesis": "A specific, honest one-line preview in Seth's plain voice gets the right readers to click and lets the wrong ones skip.",
+    "deliberateOmissions": [
+      {
+        "section": "Keyword or tag lists",
+        "reason": "Google ignores them and they read badly on cards and in RSS."
+      },
+      {
+        "section": "Calls to action",
+        "reason": "The card and the search result are already links; a CTA wastes the character budget."
+      },
+      {
+        "section": "Publish dates",
+        "reason": "Google and the cards show the date; age is mentioned only where it changes whether the advice holds."
+      },
+      {
+        "section": "Wayback-machine rescue note",
+        "reason": "Already on the page; it does not help a searcher decide."
+      }
+    ],
+    "reviewPriority": [
+      "factual-legal",
+      "user-client",
+      "register",
+      "page-job-thesis",
+      "craft"
+    ],
+    "lensReview": [
+      {
+        "unit": "description-subject",
+        "lens": "seo-entity-value",
+        "rationale": "Names the subject in terms a searcher types."
+      },
+      {
+        "unit": "description-payoff",
+        "lens": "reader-value",
+        "rationale": "Lets the reader judge whether the page answers their need."
+      },
+      {
+        "unit": "description-qualifier",
+        "lens": "reader-value",
+        "rationale": "Prevents a click that the reader would regret because of age or scope."
+      }
+    ]
+  },
+  "approval": {
+    "status": "approved",
+    "approver": "Seth Brasile (chat, 2026-10-27: 'Approve, show me first')",
+    "approvedAt": "2026-10-27T21:55:00Z",
+    "contractSha256": "cbeaca8f1a524de80360bb4b51c2f2ba58a935086b34cba140a9e8b1931434a7"
+  }
+}

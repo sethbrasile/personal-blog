@@ -1,5 +1,6 @@
 ---
 title: Protect Your Services with an Immutable Reverse Proxy, Fail2Ban, and Cloudflare (Part 3)
+description: "Part 3 moves the reverse proxy onto its own VLAN in pfSense, so a compromised proxy can reach only the service ports you explicitly allow."
 date: '2024-10-22T11:38:01-05:00'
 draft: false
 author: Seth Brasile

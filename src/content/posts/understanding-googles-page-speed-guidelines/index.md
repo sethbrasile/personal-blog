@@ -1,5 +1,6 @@
 ---
 title: Understanding Googles Page Speed Guidelines
+description: "How I reached 98/100 on PageSpeed Insights back in 2014 by inlining critical CSS and loading stylesheets, fonts and scripts after the page renders."
 date: '2014-08-16T15:54:37-05:00'
 draft: false
 author: Seth Brasile

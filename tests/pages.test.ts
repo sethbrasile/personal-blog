@@ -9,10 +9,20 @@ const part = (n: number) =>
   `dist/posts/protect-your-services-with-an-immutable-reverse-proxy-fail2ban-and-cloudflare-part-${n}/index.html`;
 
 describe('pages', () => {
-  test('post without description has no empty meta description', () => {
-    const html = read('dist/posts/email-is-stupid/index.html');
-    expect(html).not.toMatch(/<meta name="description" content="">/);
-    expect(html).not.toMatch(/<meta name="description"/);
+  test('every indexable post and list page has a non-empty meta description', () => {
+    const pages = [
+      ...readdirSync('dist/posts', { withFileTypes: true })
+        .filter((d) => d.isDirectory() && exists(`dist/posts/${d.name}/index.html`))
+        .map((d) => `dist/posts/${d.name}/index.html`),
+      'dist/posts/index.html',
+      'dist/videos/index.html',
+    ];
+    for (const f of pages) {
+      const html = read(f);
+      if (/name="robots"[^>]*noindex/.test(html)) continue;
+      expect(html, f).not.toMatch(/<meta name="description" content="">/);
+      expect(html, f).toMatch(/<meta name="description" content="[^"]{50,}"/);
+    }
   });
   test('page bundle images are optimised and served', () => {
     const html = read(part(3));

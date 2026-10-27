@@ -1,5 +1,6 @@
 ---
 title: Microsoft Copilot 365 Copilot Copilot Plus Recall
+description: "My take on Microsoft's Copilot+ Recall: who asked for a PC that logs what was on your screen, then keeps that database in plain text?"
 date: '2024-06-05T09:51:25-05:00'
 draft: false
 author: Seth Brasile

@@ -1,5 +1,6 @@
 ---
 title: Protect Your Services with an Immutable Reverse Proxy, Fail2Ban, and Cloudflare (Part 1)
+description: "Part 1 is the theory: the attacks a self-hosted service attracts, and how a firewall, reverse proxy, Fail2Ban, Cloudflare and Fedora CoreOS each defend it."
 date: '2024-05-21T21:38:00-05:00'
 draft: false
 author: Seth Brasile

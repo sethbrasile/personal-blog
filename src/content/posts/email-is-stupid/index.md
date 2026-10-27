@@ -1,5 +1,6 @@
 ---
 title: Email Is Stupid
+description: "A 2014 rant: running your own email was still stuck in 1993, and moving 26 inboxes to Google's custom-domain email would have cost me $130 a month."
 date: '2014-09-21T17:11:04-05:00'
 draft: false
 author: Seth Brasile
