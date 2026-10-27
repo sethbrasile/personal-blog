@@ -20,11 +20,11 @@ tags:
 unlisted: false
 products:
   - label: 3D printed case
-    url: https://store.bytemycache.com/products/esp8266-case-ir
+    url: https://store.bytemycache.com/en-usd/products/esp8266-wemos-d1-ir-case
   - label: Full kit
-    url: https://store.bytemycache.com/products/esp-d1-mini-ir-sensor-kit
+    url: https://store.bytemycache.com/en-usd/products/complete-esp-infrared-sensor-kit
   - label: Fully assembled wand sensor
-    url: https://store.bytemycache.com/products/esp-d1-mini-ir-sensor-assembled
+    url: https://store.bytemycache.com/en-usd/products/assembled-esp-infrared-sensor
 ---
 
 ## Series Summary
@@ -44,9 +44,9 @@ I also make multiple hardware recommendations, but none of the specific pieces I
 The sensor is an ESP based microcontroller (in my case an esp8266) flashed with ESPHome with an attached TSOP4838 IR receiver.
 
 ### Components available in my store
-[3D printed case](https://store.bytemycache.com/products/esp8266-case-ir)\
-[Full kit](https://store.bytemycache.com/products/esp-d1-mini-ir-sensor-kit)\
-[Fully assembled wand sensor](https://store.bytemycache.com/products/esp-d1-mini-ir-sensor-assembled)
+[3D printed case](https://store.bytemycache.com/en-usd/products/esp8266-wemos-d1-ir-case)\
+[Full kit](https://store.bytemycache.com/en-usd/products/complete-esp-infrared-sensor-kit)\
+[Fully assembled wand sensor](https://store.bytemycache.com/en-usd/products/assembled-esp-infrared-sensor)
 
 ### Products mentioned in this video series
 _Note: the following are Amazon affiliate links. If you use these links to purchase, I get a small commission. It doesn't cost you anything extra, but it helps me out a lot. Thanks!_

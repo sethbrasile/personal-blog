@@ -24,7 +24,7 @@ describe('video page', () => {
   });
   test('store and affiliate blocks render with the disclosure once', () => {
     const html = read(PAGE);
-    expect(html).toContain('store.bytemycache.com/products/esp8266-case-ir');
+    expect(html).toContain('store.bytemycache.com/en-usd/products/esp8266-wemos-d1-ir-case');
     expect(html.match(/Amazon affiliate links/g)?.length).toBe(1);
     expect(html).toContain('Products in my store');
     expect(html).toContain('Visit the store');
@@ -62,7 +62,11 @@ describe('components with nothing to show render nothing', () => {
     expect(html.replaceAll('&#39;', "'")).toContain(DISCLOSURE);
   });
   test('LinkList store variant has the store button', async () => {
-    const html = await render(LinkList, { heading: 'Products in my store', variant: 'store', items: [{ label: 'Case', url: 'https://store.bytemycache.com/p' }] });
+    const html = await render(LinkList, {
+      heading: 'Products in my store',
+      variant: 'store',
+      items: [{ label: 'Case', url: 'https://store.bytemycache.com/p' }],
+    });
     expect(html).toContain('Visit the store');
   });
   test('VideoExtras with none or empty', async () => {
@@ -94,4 +98,20 @@ describe('YouTubeEmbed', () => {
     expect(html).toContain('src="/custom.jpg"');
     expect(html).not.toContain('i.ytimg.com/vi/abc123/');
   });
+});
+
+// Fourthwall product pages live under /<locale>/products/; the bare
+// /products/<slug> form 404s. Guard every video's store links in source.
+test('store product links use the /en-usd/products/ form', async () => {
+  const { readdirSync, readFileSync } = await import('node:fs');
+  const dir = 'src/content/videos';
+  const links = readdirSync(dir).flatMap((f) =>
+    [
+      ...readFileSync(`${dir}/${f}`, 'utf8').matchAll(
+        /https:\/\/store\.bytemycache\.com\/[^\s)"']*products\/[^\s)"']*/g,
+      ),
+    ].map((m) => m[0]),
+  );
+  expect(links.length).toBeGreaterThan(0);
+  for (const l of links) expect(l).toMatch(/^https:\/\/store\.bytemycache\.com\/en-usd\/products\/[a-z0-9-]+$/);
 });

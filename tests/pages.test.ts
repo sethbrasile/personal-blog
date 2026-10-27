@@ -52,7 +52,7 @@ describe('pages', () => {
     expect(html).toContain('https://www.youtube.com/watch?v=6ElDx8rN_Po');
     expect(html).toContain('Watch on YouTube');
     expect(html).toContain('Show notes and parts');
-    expect(html).toContain('href="https://store.bytemycache.com/products/esp8266-case-ir"');
+    expect(html).toContain('href="https://store.bytemycache.com/en-usd/products/esp8266-wemos-d1-ir-case"');
     expect(html).not.toContain('[PRICE]');
   });
   test('home hero thumbnail opens the show notes, not YouTube', () => {
