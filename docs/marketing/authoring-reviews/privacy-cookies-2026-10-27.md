@@ -3,7 +3,8 @@
 - reportVersion: 1
 - reviewer: Claude (agent read; not an operator read)
 - reviewedAt: 2026-10-27
-- status: **block** (open findings P1 to P3 below; the wording itself is awaiting Seth's approval)
+- status: **block** (open findings P1 to P3 below)
+- operator read: **Seth approved this wording in session on 2026-10-27**, for both draft digests below. P1 to P3 still have to close before merge; a draft change from them gets a fresh review and Seth's read of the changed lines.
 
 | pageId | contractSha256 | draftSha256 |
 |---|---|---|
