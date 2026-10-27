@@ -88,7 +88,7 @@ Tokens live in `src/styles/global.css` (`@theme`: colors with `-dark` pairs, fon
 ## Open questions for Seth
 
 - Masthead tagline and `SITE.description` wording: both are agent-drafted copy-gate text, not approved. Description is `Videos and posts on DIY electronics, smart home, homelab, DevOps and web. The store sells kits, cases and sensors from the videos.` Options: keep, drop the store sentence, or your own wording.
-- The `/contact/` booking widget URL (`link.tenorcreative.com/widget/booking/aRNGagoZBqgXKJ92L6mC`) returns 404 on GHL's side.
+- GoHighLevel is retired (2026-10-27). The `/contact/` booking widget (`link.tenorcreative.com`, already 404) is replaced by a contact form into Seth's CRM: plan Task 11, which gates the merge.
 - sethbrasile.com does not resolve yet, so the `/cv/` and `/hire/` redirects point nowhere live.
 - `www.bytemycache.com` has no DNS record. The spec wants `www` to apex via a Cloudflare Redirect Rule (dashboard action).
 - Before pasting `POSTHOG_KEY` (Task 10 Step 3): `src/content/pages/privacy.md` (Umami, "stored on our servers") and `cookies.md` (only the GHL widget sets cookies) become false once PostHog is live (US cloud, cookies on, IP forwarded for geo). Update that copy through `page-authoring`, or configure PostHog cookieless (`persistence: 'memory'`) until then.
