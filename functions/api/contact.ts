@@ -7,6 +7,7 @@ import { sendFallbackEmail } from './_lib/resend-fallback';
  * (fields: name, email, message; request validation done by hand, no zod).
  */
 
+const MAX_BODY_BYTES = 16 * 1024;
 const SOURCE_LABEL = 'bytemycache.com contact form';
 const PREVIEW_HOST = 'personal-blog-4u8.pages.dev';
 const ALLOWED_ORIGINS = ['https://bytemycache.com', 'https://www.bytemycache.com'];
@@ -154,6 +155,11 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     return Response.json({ error: 'Server configuration error. Please email seth@bytemycache.com.' }, { status: 500 });
   }
 
+  // Refuse oversized bodies before parsing; the three fields are capped far below this.
+  if (Number(request.headers.get('content-length') ?? 0) > MAX_BODY_BYTES) {
+    return Response.json({ error: 'Request too large' }, { status: 413 });
+  }
+
   // The client posts FormData; JSON is accepted too.
   let raw: unknown;
   try {
@@ -167,16 +173,21 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
   if ('error' in parsed) return Response.json({ error: parsed.error }, { status: 400 });
   const data = parsed.data;
 
-  const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      secret: env.TURNSTILE_SECRET_KEY,
-      response: data.token,
-      remoteip: request.headers.get('CF-Connecting-IP') || '',
-    }),
-  });
-  const turnstileResult = (await turnstileRes.json().catch(() => ({ success: false }))) as { success?: boolean };
+  let turnstileResult: { success?: boolean } = { success: false };
+  try {
+    const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        secret: env.TURNSTILE_SECRET_KEY,
+        response: data.token,
+        remoteip: request.headers.get('CF-Connecting-IP') || '',
+      }),
+    });
+    turnstileResult = (await turnstileRes.json().catch(() => ({ success: false }))) as { success?: boolean };
+  } catch (err) {
+    console.error('Turnstile siteverify unreachable', err);
+  }
   if (!turnstileResult.success) {
     return Response.json({ error: 'Bot verification failed. Please try again.' }, { status: 400 });
   }

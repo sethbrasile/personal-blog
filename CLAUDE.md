@@ -54,7 +54,7 @@ How to:
 - `src/data/analytics.ts`: `POSTHOG_KEY` (public client token, committed on purpose). It is `''` until Seth creates the PostHog project; empty means no snippet ships at all.
 - `src/components/Analytics.astro`: loads the snippet only when `location.hostname` is `bytemycache.com` (previews and dev stay out), against the same-origin `/ingest`.
 - PostHog runs cookieless for every visitor (`cookieless_mode: 'always'`): nothing on the device, no consent banner in any region, replay off. The privacy and cookies pages depend on this; `analytics.test.ts` pins it. **The PostHog project setting "Cookieless server hash mode" must stay on**, or PostHog silently drops every event. Background: `docs/superpowers/research/2026-10-27-privacy-analytics-standards.md`.
-- `functions/ingest/[[path]].ts`: Pages Function reverse proxy to PostHog (static assets host vs API host). The only server code in the repo.
+- `functions/ingest/[[path]].ts`: Pages Function reverse proxy to PostHog (static assets host vs API host). The other Pages Function is `functions/api/contact.ts`.
 - `src/components/analytics.test.ts` is key-aware: with an empty key it asserts no PostHog code in the build; with a key it asserts the snippet, host gate and `/ingest`.
 
 ## Contact form
@@ -97,5 +97,5 @@ Tokens live in `src/styles/global.css` (`@theme`: colors with `-dark` pairs, fon
 - Masthead tagline and `SITE.description` wording: both are agent-drafted copy-gate text, not approved. Description is `Videos and posts on DIY electronics, smart home, homelab, DevOps and web. The store sells kits, cases and sensors from the videos.` Options: keep, drop the store sentence, or your own wording.
 - sethbrasile.com does not resolve yet, so the `/cv/` and `/hire/` redirects point nowhere live.
 - `www.bytemycache.com` has no DNS record. The spec wants `www` to apex via a Cloudflare Redirect Rule (dashboard action).
-- Before pasting `POSTHOG_KEY` (Task 10 Step 3): `src/content/pages/privacy.md` (Umami, "stored on our servers") and `cookies.md` (only the GHL widget sets cookies) become false once PostHog is live (US cloud, cookies on, IP forwarded for geo). Update that copy through `page-authoring`, or configure PostHog cookieless (`persistence: 'memory'`) until then.
+- Privacy and cookies pages are rewritten for cookieless PostHog and the CRM contact form (contracts in `docs/marketing/authoring-contracts/`, review in `docs/marketing/authoring-reviews/`). Before merge: recheck the form claims against the code, check what Turnstile stores in the browser, and set both effective dates to the go-live date.
 - PostHog project and `POSTHOG_KEY` still to create.

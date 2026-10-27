@@ -158,3 +158,31 @@ test('wrangler.toml is Pages-only and holds no secrets', () => {
     ).not.toContain(s);
   expect(toml).toMatch(/^pages_build_output_dir\s*=/m);
 });
+
+test('a body over the size cap is refused before parsing', async () => {
+  const calls = stubFetch({});
+  const r = new Request('https://bytemycache.com/api/contact', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      Origin: 'https://bytemycache.com',
+      'content-length': String(17 * 1024),
+    },
+    body: JSON.stringify(good),
+  });
+  const res = await run(r, baseEnv).p;
+  expect(res.status).toBe(413);
+  expect(calls).toHaveLength(0);
+});
+
+test('an unreachable siteverify fails closed with a 400', async () => {
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(async () => {
+      throw new Error('network down');
+    }),
+  );
+  vi.spyOn(console, 'error').mockImplementation(() => {});
+  const res = await run(req(good), baseEnv).p;
+  expect(res.status).toBe(400);
+});
