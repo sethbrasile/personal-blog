@@ -1,9 +1,7 @@
 // PostHog project token for byteMyCache. It is a PUBLIC client-side token (not a
 // secret), committed on purpose, like a GA4 measurement ID. Leave empty to
 // ship the site with no PostHog snippet at all.
-//
-// Set to the byteMyCache project token once Seth creates the project (PPMC Clients org).
-export const POSTHOG_KEY = '';
+export const POSTHOG_KEY: string = 'phc_qUz9WCfE29ToXE5yhWP5v6ZVwCCPacLWEL5CDXsJyMup';
 
 // Only capture on the real production host: previews (*.pages.dev) and local
 // dev stay out of the numbers.
