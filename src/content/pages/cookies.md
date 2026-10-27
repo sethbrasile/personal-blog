@@ -4,28 +4,23 @@ unlisted: false
 noindex: false
 ---
 
-Welcome to the byteMyCache Blog. This Cookies Policy explains how we use cookies on our website.
+Effective date: October 27, 2026
 
-## 1. General Use of Cookies
+## What this site stores
 
-We do not use cookies on most pages of our site. You can browse our blog and access our content without any cookies being stored on your device.
+byteMyCache sets no cookies of its own. It keeps one thing in your browser: whether you picked the light or dark theme, saved in local storage as `theme`. The analytics we use stores nothing on your device; the [privacy page](/privacy/) explains how it counts visits without it.
 
-## 2. Contact Page
+## When other services add their own
 
-On our contact page, we use a third-party iframe widget from **GoHighLevel** to facilitate booking appointments. This widget is embedded directly on the page, and GoHighLevel may use cookies to function. These cookies are managed by GoHighLevel and are subject to their privacy and cookies policies.
+Outside services store things in your browser only when you use them:
 
-For more information about how GoHighLevel uses cookies, please visit their [privacy policy.](https://www.gohighlevel.com/privacy-policy)
+- **YouTube**, once you press play on a video (or when the page loads, if JavaScript is turned off).
+- **Amazon**, once you follow one of our affiliate links. Amazon and other third parties may then place and read cookies on your browser.
 
-## 3. Managing Cookies
+Each service's own policy lists what it stores.
 
-Since cookies are only used by the third-party GoHighLevel widget, you can manage your cookie preferences for that widget using your browser settings. If you do not wish to use GoHighLevel or allow cookies, you can avoid the contact page.
+## Clearing or blocking it
 
-## 4. Updates to This Policy
+Your browser settings can clear or block all of it. Blocking storage costs you nothing here except your theme choice: the site goes back to matching your device's light or dark setting.
 
-We may update this Cookies Policy from time to time. Any changes will be posted on this page, and the date of the latest revision will be noted below.
-
-## Contact Us
-
-If you have any questions about this Cookies Policy, please contact us at [support@bytemycache.com](mailto:support@bytemycache.com).
-
-_Last updated: 12/21/24_
+Questions go to [support@bytemycache.com](mailto:support@bytemycache.com).

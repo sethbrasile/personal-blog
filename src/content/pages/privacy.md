@@ -4,34 +4,30 @@ unlisted: false
 noindex: false
 ---
 
-Welcome to the byteMyCache Blog. Your privacy is important to us. This Privacy Policy outlines how we handle your information when you visit our site at [bytemycache.com](https://bytemycache.com).
+Effective date: October 27, 2026
 
-## 1. Information We Collect
+## What we record
 
-We do not collect any personal information unless you voluntarily provide it, such as by contacting us via email.
+We count visits with [PostHog](https://posthog.com). For each visit it records the pages you view, the site that sent you, your browser, operating system and device type, and the links and buttons you click. It stores nothing on your device to do this: no cookies and no local storage.
 
-## 2. Analytics
+## Is it tied to you?
 
-We use a self-hosted, open-source analytics platform called **Umami** to gather anonymous usage data. This data helps us understand how our site is being used and improve the user experience. No personally identifiable information (PII) is collected, stored, or shared.
+Not to your name. PostHog receives your IP address and keeps it with the visit. Instead of a cookie, it counts you under an ID worked out from your IP address and browser together with a value that changes every day and is then deleted, so a visit today and a visit tomorrow count as two different people.
 
-## 3. Cookies
+PostHog stores this data in the United States. We don't make recordings of your visit, we don't sell the data, and we don't use it for advertising. PostHog's own policy is at [posthog.com/privacy](https://posthog.com/privacy).
 
-Please see our [cookies page.](/cookies)
+## Other services your visit touches
 
-## 4. Data Sharing
+- **Cloudflare** hosts the site, so every request you make to it passes through Cloudflare.
+- **Google** serves the fonts and the video thumbnails, so your browser fetches those from Google's servers.
+- **YouTube** plays the videos. The player loads only when you press play (straight away if JavaScript is turned off), from YouTube's reduced-cookie address, youtube-nocookie.com.
+- **Amazon** receives you when you follow one of our affiliate links, and knows you came from here. Amazon and other third parties may place and read cookies on your browser.
+- **Fourthwall** runs our store at [store.bytemycache.com](https://store.bytemycache.com). Its own privacy policy applies once you are there.
 
-We do not share any information with third parties. All data collected through analytics remains private and is stored securely on our servers.
+## Messages you send
 
-## 5. External Links
+If you use the contact form, we get your name, email address and message. They go into our own customer database (CRM), which runs on Cloudflare and stores its data with Neon. When you start filling in the form, Cloudflare Turnstile checks that you are a person and not a bot. If the CRM can't be reached when you send, the form emails your message to us through Resend instead. An email you send us lands in our inbox. Either way, we use what you send only to reply to you.
 
-Our site contains links to external websites, including our store at [store.bytemycache.com](https://store.bytemycache.com). We are not responsible for the privacy practices or content of external sites.
+## Questions
 
-## 6. Updates to This Policy
-
-We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the date of the latest revision will be noted at the bottom.
-
-## Contact Us
-
-If you have any questions about this Privacy Policy, please contact us at [support@bytemycache.com](mailto:support@bytemycache.com).
-
-_Last updated: 12/21/2024_
+What the site keeps in your browser is on the [cookies page](/cookies/). Ask anything about this policy at [support@bytemycache.com](mailto:support@bytemycache.com).
