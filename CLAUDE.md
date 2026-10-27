@@ -9,7 +9,7 @@ Guidance for agents working in this repo.
 - Spec: [docs/superpowers/specs/2026-10-26-astro-rebuild-design.md](docs/superpowers/specs/2026-10-26-astro-rebuild-design.md)
 - Plan: [docs/superpowers/plans/2026-10-26-astro-rebuild.md](docs/superpowers/plans/2026-10-26-astro-rebuild.md)
 - Design artboards: `docs/superpowers/design/`
-- Hosting: Cloudflare Pages project `personal-blog` in the Setherd14 account `fd15b6bd9ab1cec50b0832c91d7cf53a` (zone bytemycache.com is in the same account). Pages, not Workers (Seth's standing decision). Pin `CLOUDFLARE_ACCOUNT_ID` inline on any wrangler command; never export it globally.
+- Hosting: Cloudflare Pages project `personal-blog` in the Setherd14 account `fd15b6bd9ab1cec50b0832c91d7cf53a` (zone bytemycache.com is in the same account). Pages, not Workers (Seth's standing decision). Pin `CLOUDFLARE_ACCOUNT_ID` inline on any wrangler command; never export it globally. `www` is a proxied `AAAA 100::` record plus a zone Redirect Rule ("www to apex", 301, path and query kept), added 2026-10-27.
 
 ## Commands
 
@@ -97,5 +97,4 @@ Tokens live in `src/styles/global.css` (`@theme`: colors with `-dark` pairs, fon
 
 - Masthead tagline and `SITE.description` wording: both are agent-drafted copy-gate text, not approved. Description is `Videos and posts on DIY electronics, smart home, homelab, DevOps and web. The store sells kits, cases and sensors from the videos.` Options: keep, drop the store sentence, or your own wording.
 - sethbrasile.com does not resolve yet, so the `/cv/` and `/hire/` redirects point nowhere live.
-- `www.bytemycache.com` has no DNS record. The spec wants `www` to apex via a Cloudflare Redirect Rule (dashboard action).
 - Privacy and cookies pages are rewritten for cookieless PostHog and the CRM contact form (contracts in `docs/marketing/authoring-contracts/`, review in `docs/marketing/authoring-reviews/`). Before merge: recheck the form claims against the code, check what Turnstile stores in the browser, and set both effective dates to the go-live date.
