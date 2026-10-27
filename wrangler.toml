@@ -8,9 +8,9 @@ compatibility_date = "2026-10-01"
 
 [vars]
 CRM_INGEST_URL = "https://crm.pricklypearmarketing.co/api/leads/ingest"
-# Empty until the CRM account is minted; fill in with the account key printed by
-# `db:onboard`. While empty the Function skips the CRM and emails via Resend.
-CRM_ACCOUNT_KEY = ""
+# The "Ingest key" printed by `db:onboard --slug bytemycache` in ppmc-crm. Not a
+# secret: it names the account; CRM_CLIENT_SECRET signs the request.
+CRM_ACCOUNT_KEY = "abNzC8pzTWPCGCXIG3Ednkn3AI7xbUV8"
 RESEND_FROM = "byteMyCache <noreply@notify.pricklypearmarketingco.com>"
 LEAD_FALLBACK_TO = "support@pricklypearmarketingco.com"
 NODE_VERSION = "22"
