@@ -1,0 +1,223 @@
+{
+  "contract": {
+    "version": "1.0.0",
+    "mode": "Authored",
+    "pageId": "bytemycache-cookies",
+    "authorityPack": {
+      "sources": [
+        {
+          "id": "D-option-a",
+          "kind": "seth-decision-2026-10-27",
+          "reference": "docs/superpowers/research/2026-10-27-privacy-analytics-standards.md#the-one-open-choice-how-to-get-s1-on-a-static-site"
+        },
+        {
+          "id": "F-cookieless",
+          "kind": "vendor-doc",
+          "reference": "https://posthog.com/docs/privacy/cookieless-tracking"
+        },
+        {
+          "id": "F-posthog-init",
+          "kind": "verified-code",
+          "reference": "src/components/Analytics.astro"
+        },
+        {
+          "id": "F-theme",
+          "kind": "verified-code",
+          "reference": "src/components/ThemeToggle.astro"
+        },
+        {
+          "id": "F-youtube",
+          "kind": "verified-code",
+          "reference": "src/components/YouTubeEmbed.astro"
+        },
+        {
+          "id": "F-amazon",
+          "kind": "verified-code",
+          "reference": "src/lib/site.ts#AFFILIATE_DISCLOSURE"
+        },
+        {
+          "id": "F-amazon-policy",
+          "kind": "program-terms",
+          "reference": "https://affiliate-program.amazon.com/help/node/topic/G5H3YSXJ42HGRU3G"
+        },
+        {
+          "id": "F-contact",
+          "kind": "existing-page",
+          "reference": "src/content/pages/privacy.md"
+        },
+        {
+          "id": "F-turnstile",
+          "kind": "planned-code-task-11",
+          "reference": "docs/superpowers/plans/2026-10-26-astro-rebuild.md#task-11 (browser storage to verify in Step 6)"
+        },
+        {
+          "id": "D-ghl-retired",
+          "kind": "seth-decision-2026-10-27",
+          "reference": "GoHighLevel retired; contact form into Seth's CRM (plan Task 11)"
+        }
+      ],
+      "prohibitedClaims": [
+        "The site collects no personal information or is anonymous",
+        "Any GDPR, CCPA or other compliance claim",
+        "A promise to delete or export a person's data",
+        "Analytics data is stored on our own servers",
+        "Ad-blockers stop the analytics",
+        "Do Not Track or any opt-out control the site does not have",
+        "Session recording, heatmaps, advertising or selling data",
+        "Approximate location from analytics (unverified in cookieless mode)"
+      ],
+      "constraints": [
+        "Keep the existing plain 'we' register",
+        "Keep separate /privacy/ and /cookies/ pages linked from the footer",
+        "One 'Effective date' line directly under the title on both pages, set to the go-live date",
+        "Analytics claims hold only while Analytics.astro runs cookieless_mode 'always' (pinned by analytics.test.ts)"
+      ]
+    },
+    "pageJob": {
+      "reader": "A byteMyCache visitor who clicked Cookies in the site footer",
+      "state": "They want to know what this site stores in their browser and whether they can clear or block it",
+      "action": "Decide whether to allow, clear or block the site's storage and the embeds' cookies, using their browser settings"
+    },
+    "genreEvidence": {
+      "basis": "funnel",
+      "sources": [
+        {
+          "reference": "src/components/Footer.astro footer links; reader intent inferred, not observed research",
+          "observedAt": "2026-10-27"
+        },
+        {
+          "reference": "potluck-planner src/app/(marketing)/privacy/page.tsx sections 4 and 8 (accepted PPMC disclosure pattern)",
+          "observedAt": "2026-10-27"
+        }
+      ],
+      "readerDecisions": [
+        "What is stored and why",
+        "Which storage comes from other companies, and when",
+        "How to clear or block it"
+      ],
+      "proofPatterns": [
+        "A named list of each storage item with its purpose"
+      ],
+      "notForegrounded": [
+        "Generic explanation of what cookies are"
+      ]
+    },
+    "questionSequence": [
+      {
+        "index": 1,
+        "question": "When did this policy last change?"
+      },
+      {
+        "index": 2,
+        "question": "What does byteMyCache itself store in my browser?"
+      },
+      {
+        "index": 3,
+        "question": "What do embedded services store, and when?"
+      },
+      {
+        "index": 4,
+        "question": "How do I clear or block it?"
+      }
+    ],
+    "argumentMap": [
+      {
+        "index": 1,
+        "questionIndex": 1,
+        "belief": "A returning reader can see when the policy last changed.",
+        "evidenceIds": [
+          "D-option-a"
+        ],
+        "lens": "site-function-value",
+        "surface": "effective-date"
+      },
+      {
+        "index": 2,
+        "questionIndex": 2,
+        "belief": "The reader knows byteMyCache sets no cookies of its own and stores one thing, their light/dark choice in local storage, and that analytics stores nothing on their device.",
+        "evidenceIds": [
+          "F-theme",
+          "F-cookieless",
+          "F-posthog-init"
+        ],
+        "lens": "reader-value",
+        "surface": "site-storage"
+      },
+      {
+        "index": 3,
+        "questionIndex": 3,
+        "belief": "The reader knows outside storage appears only when they use something: the YouTube player after they press play, Amazon after they follow an affiliate link, and Cloudflare's spam check on the contact form once they start filling it in (named only if Task 11 Step 6 finds it stores anything).",
+        "evidenceIds": [
+          "F-youtube",
+          "F-amazon",
+          "F-amazon-policy",
+          "F-turnstile"
+        ],
+        "lens": "reader-value",
+        "surface": "third-party-storage"
+      },
+      {
+        "index": 4,
+        "questionIndex": 4,
+        "belief": "The reader knows their browser settings clear or block all of it, that blocking storage only resets the theme to the default, and where to ask.",
+        "evidenceIds": [
+          "F-theme",
+          "F-contact"
+        ],
+        "lens": "site-function-value",
+        "surface": "control-and-contact"
+      }
+    ],
+    "maximalHonestPromise": "A visitor can see every item byteMyCache and its embeds store in their browser, why, and how to clear or block it.",
+    "signedThesis": "byteMyCache sets no cookies of its own and stores only your light/dark choice, analytics stores nothing on your device, and embedded services add their own cookies only when you use them.",
+    "deliberateOmissions": [
+      {
+        "section": "What cookies are, in general",
+        "reason": "Readers who open a cookies page know; padding."
+      },
+      {
+        "section": "Consent banner or preferences tool",
+        "reason": "The site has none and needs none under option A; describing one would be false."
+      },
+      {
+        "section": "Per-vendor cookie names for YouTube, Amazon, Cloudflare Turnstile",
+        "reason": "Unverified and changed by those vendors; their policies are the authority."
+      }
+    ],
+    "reviewPriority": [
+      "factual-legal",
+      "user-client",
+      "register",
+      "page-job-thesis",
+      "craft"
+    ],
+    "lensReview": [
+      {
+        "unit": "effective-date",
+        "lens": "site-function-value",
+        "rationale": "It dates the policy for a returning reader."
+      },
+      {
+        "unit": "site-storage",
+        "lens": "reader-value",
+        "rationale": "It names the single item and settles the analytics question, the page's core answer."
+      },
+      {
+        "unit": "third-party-storage",
+        "lens": "reader-value",
+        "rationale": "It tells the reader exactly when outside cookies appear, which they can then avoid."
+      },
+      {
+        "unit": "control-and-contact",
+        "lens": "site-function-value",
+        "rationale": "It gives the reader the controls that actually work and the contact route."
+      }
+    ]
+  },
+  "approval": {
+    "status": "approved",
+    "approver": "Seth Brasile (thesis and question order approved in session 2026-10-27; GoHighLevel row replaced by the CRM contact form per Seth the same day)",
+    "approvedAt": "2026-10-27T12:40:00-05:00",
+    "contractSha256": "4a2de66ffa4444ab7c680429275c6e42ba124f7f427def05243d3a8f55efe6d9"
+  }
+}

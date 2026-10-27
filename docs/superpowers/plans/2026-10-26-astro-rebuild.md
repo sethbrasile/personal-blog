@@ -723,7 +723,7 @@ Pages-only `wrangler.toml` with the four non-secret `[vars]` (`CRM_INGEST_URL`, 
 
 - [ ] **Step 4: Form component and contact page**
 
-`ContactForm.astro`: native inputs, `FormData`, a small inline script, the explicit Turnstile render; no React island (avoid adding `@astrojs/react` for one form). Replace `<BookMe />` in `contact.mdx` and delete `BookMe.astro`. Every human-facing string (labels, button, success and error text, the sentence that introduces the form in place of "book some time with me") goes through `page-authoring` and Seth's approval before commit.
+`ContactForm.astro`: native inputs, `FormData`, a small inline script, the explicit Turnstile render, triggered on the first focus of a form field so Cloudflare's check loads only when someone starts using the form (the signed cookies-page thesis depends on this); no React island (avoid adding `@astrojs/react` for one form). Replace `<BookMe />` in `contact.mdx` and delete `BookMe.astro`. Every human-facing string (labels, button, success and error text, the sentence that introduces the form in place of "book some time with me") goes through `page-authoring` and Seth's approval before commit.
 
 - [ ] **Step 5: CSP and tests**
 
