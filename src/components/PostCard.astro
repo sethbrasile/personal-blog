@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { postPath } from '@/lib/content';
+import { formatDate } from '@/lib/format';
+import TagList from './TagList.astro';
+
+interface Props {
+  entry: CollectionEntry<'posts'>;
+  /** 1-based position shown before the date (home list). */
+  number?: number;
+  /** Smaller title and tighter padding (More posts list). */
+  compact?: boolean;
+  showTags?: boolean;
+  showDescription?: boolean;
+}
+const { entry, number, compact = false, showTags = true, showDescription = false } = Astro.props;
+const date = formatDate(entry.data.date);
+const meta = number ? `${String(number).padStart(2, '0')} · ${date}` : date;
+---
+<li class="border-b border-rule dark:border-rule-dark">
+  <a
+    href={postPath(entry)}
+    class:list={['flex flex-col gap-[10px] !text-ink dark:!text-ink-dark', compact ? 'py-[22px]' : 'py-6']}
+  >
+    <span class="font-mono text-[13px] text-muted dark:text-muted-dark">{meta}</span>
+    <span
+      class:list={[
+        'font-display font-medium leading-[1.15] tracking-[-0.015em] [text-wrap:pretty]',
+        compact ? 'text-[24px]' : 'text-[26px]',
+      ]}>{entry.data.title}</span>
+    {showDescription && entry.data.description && (
+      <span class="text-[15px] leading-[1.5] text-secondary dark:text-secondary-dark">{entry.data.description}</span>
+    )}
+    {showTags && <TagList tags={entry.data.tags} variant="inline" />}
+  </a>
+</li>

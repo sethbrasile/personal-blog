@@ -4,7 +4,7 @@
 
 **Goal:** Replace the Hugo/PaperMod site with an Astro site that serves the same content at the same URLs, deployed from the existing Cloudflare Pages project.
 
-**Architecture:** Astro static output with three content collections (`posts`, `videos`, `pages`) under `src/content/`, a single base layout implementing the chosen "Maker Zine" design (tokens in one CSS file, light default plus dark mode), and no server code except the PostHog ingest Pages Function. A one-shot migration script converts the Hugo content tree, is run once, and is then deleted. A URL inventory test proves every URL from the live Hugo sitemap is either built or redirected.
+**Architecture:** Astro static output with three content collections (`posts`, `videos`, `pages`) under `src/content/`, a single base layout implementing the chosen "Maker Zine" design (tokens in one CSS file, light default plus dark mode), and no server code except the PostHog ingest Pages Function. *Amended 2026-10-27:* a second Pages Function, `functions/api/contact.ts`, sends the contact form to Seth's own CRM (Task 11). GoHighLevel is gone. A one-shot migration script converts the Hugo content tree, is run once, and is then deleted. A URL inventory test proves every URL from the live Hugo sitemap is either built or redirected.
 
 **Tech Stack:** Astro 7.4, TypeScript strict, Tailwind CSS 4 via `@tailwindcss/vite`, `@tailwindcss/typography`, `@astrojs/mdx`, `@astrojs/rss`, `@astrojs/sitemap`, `@astrojs/check`, Vitest, Cloudflare Pages (git integration, Pages Functions), PostHog, Husky + lint-staged + Prettier.
 
@@ -661,6 +661,8 @@ git push -u origin astro-rebuild
 
 Steps marked **(Seth)** are dashboard actions only Seth can do; the executor stops and asks at each one.
 
+Task 11 runs between Step 3 and Step 4: the merge waits for the contact form and for the privacy and cookies pages that describe it.
+
 - [ ] **Step 1 (Seth): Switch Pages build settings**
 
 In the Setherd14 Cloudflare account, Pages project `personal-blog`: framework preset Astro, build command `npm run build`, output directory `dist`, Node version `22` (env var `NODE_VERSION=22`). Production branch stays `main`.
@@ -678,7 +680,7 @@ Create project "byteMyCache" in the PPMC Clients org, paste the `phc_` token int
 
 - [ ] **Step 4: Merge**
 
-Merge the PR. Pages deploys `main` to bytemycache.com.
+Precondition: Task 11 Steps 1 to 6 and 8 are complete (production secrets set, CRM account key in `wrangler.toml`), and the privacy and cookies pages are approved by Seth with both effective dates set to the merge date. Merge the PR. Pages deploys `main` to bytemycache.com.
 
 - [ ] **Step 5: Verify live**
 
@@ -691,3 +693,50 @@ GitHub: rename `personal-blog` to `bytemycache`. Then `git remote set-url origin
 - [ ] **Step 7: Close out**
 
 Note in `CLAUDE.md` the live date. Next units of work, from the spec's deferred aims: subscribers and comments identity layer, store migration.
+
+---
+
+### Task 11: Replace the GoHighLevel booking widget with a contact form into Seth's CRM
+
+Added 2026-10-27. GoHighLevel is retired; Seth's own CRM (`ppmc-crm`) takes leads through its signed ingest endpoint. The GHL booking widget on `/contact/` already returns 404. The CRM has no booking feature, so the page offers a contact form, not a scheduler. Pattern: the `crm-contact-worker` skill (Pages Function, signed CRM ingest, direct-Resend fallback, Turnstile). Load that skill before Step 2 and follow its Security section. Runs before Task 10 Step 4.
+
+**Files:**
+- Create: `functions/api/contact.ts` (from the skill's `server-templates.md`), its unit test, `src/components/ContactForm.astro`, `wrangler.toml` (Pages only: `name`, `pages_build_output_dir = "dist"`, `compatibility_date`, `[vars]` for the four non-secret values)
+- Modify: `src/content/pages/contact.mdx`, `public/_headers` (CSP), `tests/pages.test.ts`, `tests/feeds.test.ts`, `package.json` (`zod` if not already a direct dependency), `CLAUDE.md`, `docs/marketing/authoring-contracts/{privacy,cookies}.json` and `authority-pack-privacy-cookies.md`
+- Delete: `src/components/BookMe.astro`
+
+**Interfaces:**
+- Consumes: the CRM ingest wire contract (`crm-contact-worker` `onboarding.md`); `SITE` constants.
+- Produces: `POST /api/contact` returning the skill's optimistic `200` response; a lead in the CRM with source `bytemycache.com contact form`.
+
+- [ ] **Step 1 (Seth): CRM account and keys**
+
+In `ppmc-crm`, run `pnpm -F @ppmc-crm/web db:onboard` for a byteMyCache account and keep the account key and derived `CRM_CLIENT_SECRET`. In the Setherd14 Cloudflare account, create a managed Turnstile widget for `bytemycache.com` and the `personal-blog-4u8.pages.dev` preview host. Choose the fallback recipient and the Resend sender (never seth@tenorcreative.com). Set the three secrets on the Pages project (production and preview): `CLOUDFLARE_ACCOUNT_ID=fd15b6bd9ab1cec50b0832c91d7cf53a npx wrangler pages secret put <NAME> --project-name personal-blog` for `CRM_CLIENT_SECRET`, `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`. Secrets never enter the repo.
+
+- [ ] **Step 2: Pages Function, test first**
+
+Copy the skill's server template to `functions/api/contact.ts`. `ALLOWED_ORIGINS`: `https://bytemycache.com`, `https://www.bytemycache.com`, and the `personal-blog-4u8.pages.dev` preview hosts. Fields: name, email, message (no phone, so no SMS consent text). Unit tests cover: bad origin is rejected, missing Turnstile token is rejected, a valid payload produces a correctly signed CRM request (HMAC-SHA256 over `${ts}.${body}`), CRM non-2xx triggers the fallback.
+
+- [ ] **Step 3: `wrangler.toml`**
+
+Pages-only `wrangler.toml` with the four non-secret `[vars]` (`CRM_INGEST_URL`, `CRM_ACCOUNT_KEY`, `RESEND_FROM`, `LEAD_FALLBACK_TO`) plus `NODE_VERSION = "22"`, because a Pages `wrangler.toml` overrides dashboard plain vars on every git build (the skill's Security section 5). No `main`, no Workers config. Confirm the next preview build still uses Node 22 and still serves `/ingest`.
+
+- [ ] **Step 4: Form component and contact page**
+
+`ContactForm.astro`: native inputs, `FormData`, a small inline script, the explicit Turnstile render, triggered on the first focus of a form field so Cloudflare's check loads only when someone starts using the form (the signed cookies-page thesis depends on this); no React island (avoid adding `@astrojs/react` for one form). Replace `<BookMe />` in `contact.mdx` and delete `BookMe.astro`. Every human-facing string (labels, button, success and error text, the sentence that introduces the form in place of "book some time with me") goes through `page-authoring` and Seth's approval before commit.
+
+- [ ] **Step 5: CSP and tests**
+
+`public/_headers`: remove `https://link.tenorcreative.com` from `script-src` and `frame-src`; add `https://challenges.cloudflare.com` to `script-src` and `frame-src`. Update `tests/feeds.test.ts` (CSP origins) and `tests/pages.test.ts` (contact page renders the form, posts to `/api/contact`, no `tenorcreative`). Add `/api/contact` to the inventory test's allowed non-page paths if it needs one.
+
+- [ ] **Step 6: Privacy and cookies authority**
+
+Replace `F-ghl` in the authority pack and both contracts with verified facts about the form: what it collects, that it goes to Seth's CRM (state where the CRM stores data, read from `ppmc-crm`), the Resend fallback, and Turnstile (check what Turnstile stores in the browser before the cookies page names it). Contracts stay unsigned until Seth approves the theses.
+
+- [ ] **Step 7: Verify on the live site after the merge**
+
+*Amended 2026-10-27 (Seth): no preview secrets; the form is tested on bytemycache.com right after Task 10 Step 4, as part of Task 10 Step 5. Preview builds show the form's error message on send.* On the live site, submit the form from a real browser (Turnstile blocks automated Chromium): the lead appears in the CRM with the message as its first activity; `npx wrangler pages deployment tail` (account pinned) shows a 200 from ingest. Then run `/security-review` on the branch (new secrets and a public write endpoint).
+
+- [ ] **Step 8: Commit and docs**
+
+`CLAUDE.md`: Analytics/Deploy sections gain the contact Function, the `wrangler.toml` vars rule and the three secret names; drop the GHL open question. Commit `feat: contact form into the CRM, retire the GoHighLevel widget`.

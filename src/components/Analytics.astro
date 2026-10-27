@@ -1,0 +1,124 @@
+---
+/**
+ * PostHog Web Analytics — PPMC standard, byteMyCache.
+ *
+ * - Loads the official snippet against the same-origin /ingest proxy
+ *   (functions/ingest/[[path]].ts), so nothing on the page talks to
+ *   *.posthog.com directly and CSP stays `connect-src 'self'`.
+ * - Cookieless for every visitor (cookieless_mode 'always'): no cookie, no
+ *   localStorage, so no consent banner is needed in any region (the audience
+ *   is not US-only). REQUIRES the PostHog project setting "Cookieless server
+ *   hash mode" on, or PostHog silently drops every event. Visitors are
+ *   counted by a server-side daily-salted hash, so cross-day uniques run high.
+ *   This site never calls identify(), so every event bills at the anonymous rate.
+ * - Session replay off. Autocapture on (gives outbound/link data for free).
+ * - Explicit conversion events, delegated once here:
+ *     contact_click  { channel: phone | sms | email }
+ *     outbound_click { host }
+ *   outbound_click covers store.bytemycache.com and amzn.to affiliate links.
+ *
+ * Renders nothing when POSTHOG_KEY is empty.
+ */
+import { POSTHOG_KEY, POSTHOG_PROD_HOST, POSTHOG_API_PATH } from '@/data/analytics';
+---
+
+{POSTHOG_KEY && <script is:inline define:vars={{ POSTHOG_KEY, POSTHOG_PROD_HOST, POSTHOG_API_PATH }}>
+  (function () {
+    if (location.hostname !== POSTHOG_PROD_HOST) return;
+
+    // Official posthog-js loader snippet (array.js), unmodified apart from
+    // formatting. It stubs the API so calls queue until the bundle loads.
+    !(function (t, e) {
+      var o, n, p, r;
+      e.__SV ||
+        ((window.posthog = e),
+        (e._i = []),
+        (e.init = function (i, s, a) {
+          function g(t, e) {
+            var o = e.split('.');
+            (2 == o.length && ((t = t[o[0]]), (e = o[1])),
+              (t[e] = function () {
+                t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+              }));
+          }
+          (((p = t.createElement('script')).type = 'text/javascript'),
+            (p.crossOrigin = 'anonymous'),
+            (p.async = !0),
+            (p.src = s.api_host.replace('.i.posthog.com', '-assets.i.posthog.com') + '/static/array.js'),
+            (r = t.getElementsByTagName('script')[0]).parentNode.insertBefore(p, r));
+          var u = e;
+          for (
+            void 0 !== a ? (u = e[a] = []) : (a = 'posthog'),
+              u.people = u.people || [],
+              u.toString = function (t) {
+                var e = 'posthog';
+                return ('posthog' !== a && (e += '.' + a), t || (e += ' (stub)'), e);
+              },
+              u.people.toString = function () {
+                return u.toString(1) + '.people (stub)';
+              },
+              o =
+                'init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric'.split(
+                  ' ',
+                ),
+              n = 0;
+            n < o.length;
+            n++
+          )
+            g(u, o[n]);
+          e._i.push([i, s, a]);
+        }),
+        (e.__SV = 1));
+    })(document, window.posthog || []);
+
+    posthog.init(POSTHOG_KEY, {
+      api_host: location.origin + POSTHOG_API_PATH,
+      ui_host: 'https://us.posthog.com',
+      defaults: '2026-05-30',
+      person_profiles: 'identified_only',
+      cookieless_mode: 'always',
+      mask_personal_data_properties: true,
+      disable_session_recording: true,
+      capture_pageview: true,
+      capture_pageleave: true,
+      autocapture: true,
+    });
+
+    // Conversion + outbound events. One delegated listener; fires before
+    // navigation, and posthog-js sends with sendBeacon on pagehide.
+    var contactChannel = function (a) {
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('tel:') === 0) return 'phone';
+      if (href.indexOf('sms:') === 0) return 'sms';
+      if (href.indexOf('mailto:') === 0) return 'email';
+      return null;
+    };
+    document.addEventListener(
+      'click',
+      function (ev) {
+        var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+        if (!a) return;
+        var channel = contactChannel(a);
+        if (channel) {
+          posthog.capture('contact_click', {
+            channel: channel,
+            href: a.getAttribute('href'),
+            text: (a.textContent || '').trim().slice(0, 80),
+          });
+          return;
+        }
+        try {
+          var u = new URL(a.href, location.href);
+          if (u.origin !== location.origin && /^https?:$/.test(u.protocol)) {
+            posthog.capture('outbound_click', {
+              host: u.hostname,
+              href: u.href,
+              text: (a.textContent || '').trim().slice(0, 80),
+            });
+          }
+        } catch (_) {}
+      },
+      true,
+    );
+  })();
+</script>}

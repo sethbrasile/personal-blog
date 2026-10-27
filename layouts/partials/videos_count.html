@@ -1,5 +1,0 @@
-<p>
-  {{with .Param "Ids"}}
-    {{ . | len }} Video{{cond (gt (. | len) 1) "s" ""}}
-  {{end}}
-</p>

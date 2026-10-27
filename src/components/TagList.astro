@@ -1,0 +1,22 @@
+---
+import { slugifyTag, tagPath } from '@/lib/content';
+
+interface Props {
+  tags: string[];
+  /** `chips` = linked outlined chips (post page); `inline` = plain text for use inside a card link. */
+  variant?: 'chips' | 'inline';
+}
+const { tags, variant = 'chips' } = Astro.props;
+const visible = tags.filter((t) => slugifyTag(t));
+---
+{visible.length > 0 && (variant === 'inline' ? (
+  <span class="text-sm text-muted dark:text-muted-dark">{visible.join(' · ')}</span>
+) : (
+  <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+    {visible.map((t) => (
+      <li>
+        <a href={tagPath(slugifyTag(t))} class="inline-flex min-h-8 items-center border border-ink px-3 font-mono text-[13px] !text-ink dark:border-ink-dark dark:!text-ink-dark">{t}</a>
+      </li>
+    ))}
+  </ul>
+))}

@@ -1,0 +1,317 @@
+{
+  "contract": {
+    "version": "1.0.0",
+    "mode": "Authored",
+    "pageId": "bytemycache-privacy",
+    "authorityPack": {
+      "sources": [
+        {
+          "id": "D-option-a",
+          "kind": "seth-decision-2026-10-27",
+          "reference": "docs/superpowers/research/2026-10-27-privacy-analytics-standards.md#the-one-open-choice-how-to-get-s1-on-a-static-site"
+        },
+        {
+          "id": "F-posthog-init",
+          "kind": "verified-code",
+          "reference": "src/components/Analytics.astro"
+        },
+        {
+          "id": "F-cookieless",
+          "kind": "vendor-doc",
+          "reference": "https://posthog.com/docs/privacy/cookieless-tracking"
+        },
+        {
+          "id": "F-proxy",
+          "kind": "verified-code",
+          "reference": "functions/ingest/[[path]].ts"
+        },
+        {
+          "id": "F-ip",
+          "kind": "standard",
+          "reference": "docs/superpowers/research/2026-10-27-privacy-analytics-standards.md#s4-ip-handling"
+        },
+        {
+          "id": "F-host",
+          "kind": "project-doc",
+          "reference": "CLAUDE.md#Deploy"
+        },
+        {
+          "id": "F-fonts",
+          "kind": "verified-code",
+          "reference": "src/layouts/BaseLayout.astro"
+        },
+        {
+          "id": "F-youtube",
+          "kind": "verified-code",
+          "reference": "src/components/YouTubeEmbed.astro"
+        },
+        {
+          "id": "F-amazon",
+          "kind": "verified-code",
+          "reference": "src/lib/site.ts#AFFILIATE_DISCLOSURE"
+        },
+        {
+          "id": "F-amazon-policy",
+          "kind": "program-terms",
+          "reference": "https://affiliate-program.amazon.com/help/node/topic/G5H3YSXJ42HGRU3G"
+        },
+        {
+          "id": "F-store",
+          "kind": "spec",
+          "reference": "docs/superpowers/specs/2026-10-26-astro-rebuild-design.md"
+        },
+        {
+          "id": "F-contact",
+          "kind": "existing-page",
+          "reference": "src/content/pages/privacy.md"
+        },
+        {
+          "id": "F-form",
+          "kind": "planned-code-task-11",
+          "reference": "docs/superpowers/plans/2026-10-26-astro-rebuild.md#task-11 (verify against functions/api/contact.ts and src/components/ContactForm.astro before final review)"
+        },
+        {
+          "id": "F-crm",
+          "kind": "project-doc",
+          "reference": "~/dev/ppmc-crm/CLAUDE.md (Seth's own CRM on Cloudflare, data in Neon Postgres)"
+        },
+        {
+          "id": "F-resend",
+          "kind": "skill",
+          "reference": "~/.claude/skills/crm-contact-worker/SKILL.md (direct-Resend fallback)"
+        },
+        {
+          "id": "F-turnstile",
+          "kind": "planned-code-task-11",
+          "reference": "docs/superpowers/plans/2026-10-26-astro-rebuild.md#task-11 (browser storage to verify in Step 6)"
+        },
+        {
+          "id": "D-ghl-retired",
+          "kind": "seth-decision-2026-10-27",
+          "reference": "GoHighLevel retired; contact form into Seth's CRM (plan Task 11)"
+        }
+      ],
+      "prohibitedClaims": [
+        "The site collects no personal information or is anonymous",
+        "Any GDPR, CCPA or other compliance claim",
+        "A promise to delete or export a person's data",
+        "Analytics data is stored on our own servers",
+        "Ad-blockers stop the analytics",
+        "Do Not Track or any opt-out control the site does not have",
+        "Session recording, heatmaps, advertising or selling data",
+        "Approximate location from analytics (unverified in cookieless mode)",
+        "Where the CRM database is located (Neon region unverified)"
+      ],
+      "constraints": [
+        "Keep the existing plain 'we' register",
+        "Keep separate /privacy/ and /cookies/ pages linked from the footer",
+        "One 'Effective date' line directly under the title on both pages, set to the go-live date",
+        "Analytics claims hold only while Analytics.astro runs cookieless_mode 'always' (pinned by analytics.test.ts)"
+      ]
+    },
+    "pageJob": {
+      "reader": "A viewer or reader of byteMyCache who clicked Privacy in the site footer",
+      "state": "They want to know whether the site tracks them and who else sees their visit, and have no inside knowledge of how the site is built",
+      "action": "Decide whether they are comfortable browsing, know what to avoid if not, and know where to ask"
+    },
+    "genreEvidence": {
+      "basis": "funnel",
+      "sources": [
+        {
+          "reference": "src/components/Footer.astro footer links; reader intent inferred, not observed research",
+          "observedAt": "2026-10-27"
+        },
+        {
+          "reference": "potluck-planner src/app/(marketing)/privacy/page.tsx sections 4 and 8 (accepted PPMC disclosure pattern)",
+          "observedAt": "2026-10-27"
+        }
+      ],
+      "readerDecisions": [
+        "Whether the site tracks visits and how much",
+        "Whether that is tied to them or sold",
+        "Which outside companies see their visit",
+        "Where to ask"
+      ],
+      "proofPatterns": [
+        "Naming the analytics tool, what it records and what it does not",
+        "Naming every provider with its one job",
+        "A plain contact route"
+      ],
+      "notForegrounded": [
+        "Internal proxy architecture",
+        "Legal boilerplate"
+      ]
+    },
+    "questionSequence": [
+      {
+        "index": 1,
+        "question": "When did this policy last change?"
+      },
+      {
+        "index": 2,
+        "question": "What does this site record when I visit?"
+      },
+      {
+        "index": 3,
+        "question": "Is that tied to me, and where does it go?"
+      },
+      {
+        "index": 4,
+        "question": "Which other companies see my visit?"
+      },
+      {
+        "index": 5,
+        "question": "What happens to a message I send?"
+      },
+      {
+        "index": 6,
+        "question": "Where do I ask about this?"
+      }
+    ],
+    "argumentMap": [
+      {
+        "index": 1,
+        "questionIndex": 1,
+        "belief": "A returning reader can see when the policy last changed.",
+        "evidenceIds": [
+          "D-option-a"
+        ],
+        "lens": "site-function-value",
+        "surface": "effective-date"
+      },
+      {
+        "index": 2,
+        "questionIndex": 2,
+        "belief": "The reader knows PostHog records the pages they view, the site that sent them, their browser and device type, and the links they click, and stores nothing on their device to do it.",
+        "evidenceIds": [
+          "F-posthog-init",
+          "F-cookieless"
+        ],
+        "lens": "reader-value",
+        "surface": "analytics"
+      },
+      {
+        "index": 3,
+        "questionIndex": 3,
+        "belief": "The reader understands PostHog receives their IP address, counts them under an ID that changes daily rather than their name, keeps the data in the United States, and that nothing is recorded as a replay, sold or used for ads.",
+        "evidenceIds": [
+          "F-cookieless",
+          "F-proxy",
+          "F-ip",
+          "F-posthog-init"
+        ],
+        "lens": "reader-value",
+        "surface": "analytics-handling"
+      },
+      {
+        "index": 4,
+        "questionIndex": 4,
+        "belief": "The reader knows each other service a visit can touch and its one job: Cloudflare hosts the site, Google serves the fonts and video thumbnails, YouTube plays a video only after they press play, Amazon sees affiliate-link clicks and may set its own cookies, and the store runs on Fourthwall.",
+        "evidenceIds": [
+          "F-host",
+          "F-fonts",
+          "F-youtube",
+          "F-amazon",
+          "F-amazon-policy",
+          "F-store"
+        ],
+        "lens": "reader-value",
+        "surface": "third-parties"
+      },
+      {
+        "index": 5,
+        "questionIndex": 5,
+        "belief": "The reader knows a message sent by email or the contact form (name, email address, message) goes into Seth's own CRM and is used only to reply, that the form is checked for spam by Cloudflare once they start filling it in, and that if the CRM is unreachable the form emails the message to Seth through Resend.",
+        "evidenceIds": [
+          "F-contact",
+          "F-form",
+          "F-crm",
+          "F-resend",
+          "F-turnstile",
+          "D-ghl-retired"
+        ],
+        "lens": "reader-value",
+        "surface": "direct-contact"
+      },
+      {
+        "index": 6,
+        "questionIndex": 6,
+        "belief": "The reader can find what the site stores in their browser on the cookies page and ask anything at support@bytemycache.com.",
+        "evidenceIds": [
+          "F-contact"
+        ],
+        "lens": "site-function-value",
+        "surface": "limits-and-contact"
+      }
+    ],
+    "maximalHonestPromise": "A visitor can see exactly what byteMyCache records, that analytics stores nothing on their device, and every outside service a visit touches, with nothing overstated.",
+    "signedThesis": "byteMyCache counts visits with PostHog without storing anything on your device or tying them to your name, and names every outside service your visit touches so you can decide for yourself.",
+    "deliberateOmissions": [
+      {
+        "section": "Legal-rights list (GDPR/CCPA request rights)",
+        "reason": "No verified request process; analytics data is not linked to a name, so promised access or deletion would be an unsupported claim. Questions route to the contact address."
+      },
+      {
+        "section": "'Your privacy is important to us' opener",
+        "reason": "Generic padding."
+      },
+      {
+        "section": "How the /ingest proxy works",
+        "reason": "Internal machinery; the reader needs the outcome."
+      },
+      {
+        "section": "Approximate location",
+        "reason": "GeoIP enrichment in cookieless mode is unverified; add after a test event confirms it."
+      },
+      {
+        "section": "Children's privacy section",
+        "reason": "No authority or evidence the site targets children; boilerplate."
+      }
+    ],
+    "reviewPriority": [
+      "factual-legal",
+      "user-client",
+      "register",
+      "page-job-thesis",
+      "craft"
+    ],
+    "lensReview": [
+      {
+        "unit": "effective-date",
+        "lens": "site-function-value",
+        "rationale": "It dates the policy for a returning reader."
+      },
+      {
+        "unit": "analytics",
+        "lens": "reader-value",
+        "rationale": "It answers the reader's first question with the actual scope of tracking."
+      },
+      {
+        "unit": "analytics-handling",
+        "lens": "reader-value",
+        "rationale": "It resolves whether the record identifies them or travels further, without overstating anonymity."
+      },
+      {
+        "unit": "third-parties",
+        "lens": "reader-value",
+        "rationale": "It names every outside party a reader could otherwise discover only by inspecting traffic, and meets Amazon's disclosure requirement."
+      },
+      {
+        "unit": "direct-contact",
+        "lens": "reader-value",
+        "rationale": "It covers the one case where the reader hands over identifying information, and every service that message touches."
+      },
+      {
+        "unit": "limits-and-contact",
+        "lens": "site-function-value",
+        "rationale": "It routes the reader to the cookies page and the contact address."
+      }
+    ]
+  },
+  "approval": {
+    "status": "approved",
+    "approver": "Seth Brasile (thesis and question order approved in session 2026-10-27; GoHighLevel row replaced by the CRM contact form per Seth the same day)",
+    "approvedAt": "2026-10-27T12:40:00-05:00",
+    "contractSha256": "c7ff8bcfd43d0cbe5174a572623d233a2a4c6c4c29e4f16874bd976ca16104ed"
+  }
+}

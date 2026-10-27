@@ -1,0 +1,52 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  /** Overrides the YouTube-hosted thumbnail (main video only). */
+  thumbnail?: string;
+  /** `lg` = full-width player, `sm` = card in the extras grid. */
+  size?: 'lg' | 'sm';
+}
+const { id, title, thumbnail, size = 'lg' } = Astro.props;
+const src = thumbnail ?? `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const playBox =
+  size === 'lg'
+    ? 'bottom-4 left-4 h-14 w-14 sm:bottom-8 sm:left-8 sm:h-20 sm:w-20'
+    : 'bottom-3 left-3 h-11 w-11';
+const playIcon = size === 'lg' ? 'h-6 w-6 sm:h-8 sm:w-8' : 'h-5 w-5';
+---
+<div data-yt-embed data-id={id} data-title={title} class="relative block aspect-video overflow-hidden bg-ink dark:bg-ink-dark">
+  <button type="button" data-yt-play aria-label={`Play: ${title}`} class="absolute inset-0 m-0 block h-full w-full cursor-pointer border-0 bg-transparent p-0 focus-visible:outline-offset-[-4px]">
+    <img src={src} alt="" width="480" height="360" loading={size === 'lg' ? 'eager' : 'lazy'} fetchpriority={size === 'lg' ? 'high' : undefined} decoding="async" class="block aspect-video w-full object-cover" />
+    <span aria-hidden="true" class:list={['absolute flex items-center justify-center bg-ground dark:bg-ground-dark', playBox]}>
+      <svg viewBox="0 0 24 24" class:list={['fill-ink dark:fill-ink-dark', playIcon]}><path d="M8 5v14l11-7z" /></svg>
+    </span>
+  </button>
+  <noscript>
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${id}`}
+      title={title}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      referrerpolicy="strict-origin-when-cross-origin"
+      class="absolute inset-0 z-10 h-full w-full border-0 bg-ink"
+    ></iframe>
+  </noscript>
+</div>
+<script>
+  // One delegated handler serves every facade on the page; each swaps in its own iframe.
+  document.addEventListener('click', (event) => {
+    const button = (event.target as Element | null)?.closest<HTMLButtonElement>('[data-yt-play]');
+    const root = button?.closest<HTMLElement>('[data-yt-embed]');
+    if (!button || !root || !root.dataset.id) return;
+    const frame = document.createElement('iframe');
+    frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(root.dataset.id)}?autoplay=1`;
+    frame.title = root.dataset.title ?? '';
+    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.className = 'absolute inset-0 h-full w-full border-0';
+    button.replaceWith(frame);
+    frame.focus();
+  });
+</script>

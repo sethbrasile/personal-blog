@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { videoPath } from '@/lib/content';
+import { formatDate } from '@/lib/format';
+
+interface Props {
+  entry: CollectionEntry<'videos'>;
+}
+const { entry } = Astro.props;
+const { title, date, youtubeId, thumbnail } = entry.data;
+const src = thumbnail ?? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
+---
+<li class="list-none">
+  <a href={videoPath(entry)} class="flex flex-col gap-[10px] !text-ink dark:!text-ink-dark">
+    <span class="relative block overflow-hidden bg-ink dark:bg-ink-dark">
+      <img src={src} alt="" width="480" height="360" loading="lazy" decoding="async" class="block aspect-video w-full object-cover" />
+      <span aria-hidden="true" class="absolute bottom-3 left-3 flex h-11 w-11 items-center justify-center bg-ground dark:bg-ground-dark">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 fill-ink dark:fill-ink-dark"><path d="M8 5v14l11-7z" /></svg>
+      </span>
+    </span>
+    <span class="font-mono text-[13px] text-muted dark:text-muted-dark">{formatDate(date)}</span>
+    <span class="font-display text-[24px] font-medium leading-[1.15] tracking-[-0.015em] [text-wrap:pretty]">{title}</span>
+  </a>
+</li>
