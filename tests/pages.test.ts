@@ -95,6 +95,14 @@ describe('pages', () => {
     expect(read('dist/about/index.html')).not.toContain('strugglebuss');
     expect(read(part(2))).not.toContain('<!--');
   });
+  test('about page links the other projects as followed anchors', () => {
+    const html = read('dist/about/index.html');
+    for (const href of ['https://graphicteesco.com/', 'https://potluck-planner.com/', 'https://cathodeaudio.com/']) {
+      const tag = html.match(new RegExp(`<a [^>]*href="${href}"[^>]*>`));
+      expect(tag, href).not.toBeNull();
+      expect(tag![0]).not.toMatch(/nofollow|sponsored|ugc/);
+    }
+  });
   test('post note renders above the body', () => {
     const html = read('dist/posts/email-is-stupid/index.html');
     expect(html).toContain('Note: This article was written on a muuuuch older blog');
