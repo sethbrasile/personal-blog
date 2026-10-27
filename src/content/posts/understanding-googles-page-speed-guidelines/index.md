@@ -1,6 +1,6 @@
 ---
 title: Understanding Googles Page Speed Guidelines
-description: "How I reached 98/100 on PageSpeed Insights back in 2014 by inlining critical CSS and loading stylesheets, fonts and scripts after the page renders."
+description: "How I finally beat the 'Prioritize Visible Content' warning in 2014 and got PageSpeed Insights to 98/100 on mobile and desktop, and what I changed."
 date: '2014-08-16T15:54:37-05:00'
 draft: false
 author: Seth Brasile

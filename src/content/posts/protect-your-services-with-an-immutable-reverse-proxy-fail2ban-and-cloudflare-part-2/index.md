@@ -1,6 +1,6 @@
 ---
 title: Protect Your Services with an Immutable Reverse Proxy, Fail2Ban, and Cloudflare (Part 2)
-description: "Part 2 is the build: write a Butane config, install Fedora CoreOS in a VM, and run a SWAG reverse proxy with a wildcard cert through Cloudflare DNS."
+description: "Part 2 gets hands-on. I'll walk you through building an immutable reverse proxy on Fedora CoreOS, from an empty VM to a running proxy."
 date: '2024-10-18T10:33:05-05:00'
 draft: false
 author: Seth Brasile

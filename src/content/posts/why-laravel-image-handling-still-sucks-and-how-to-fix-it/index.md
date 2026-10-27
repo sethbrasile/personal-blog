@@ -1,6 +1,6 @@
 ---
 title: Why Laravel Image Handling Still Sucks and How to Fix It
-description: "Stop routing image uploads through your server. Have Laravel issue a pre-signed URL and let the browser upload straight to Cloudflare R2 or any S3 bucket."
+description: "Many PHP apps still push every image upload through the server, costing you bandwidth, security and scale. Here's a better way to do it in Laravel."
 date: '2025-03-06T10:31:55-06:00'
 draft: false
 author: Seth Brasile

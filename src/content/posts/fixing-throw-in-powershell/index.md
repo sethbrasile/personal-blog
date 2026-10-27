@@ -1,6 +1,6 @@
 ---
 title: Fixing Throw in Powershell
-description: "PowerShell's Throw keeps going when the caller sets -ErrorAction SilentlyContinue. Put a Return after every Throw so your function really stops."
+description: "PowerShell's Throw doesn't always stop your function. It depends on how the caller runs it. I'll show you why, and how to make sure it really stops."
 date: '2023-02-03T12:09:50-06:00'
 draft: false
 author: Seth Brasile

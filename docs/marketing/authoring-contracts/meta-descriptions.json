@@ -99,7 +99,7 @@
         {
           "id": "operator:instruction",
           "kind": "user-decision",
-          "reference": "Seth in chat 2026-10-27: the agent writes the missing descriptions ('that's your writing, get on it'); best-for-SEO is the goal"
+          "reference": "Seth in chat 2026-10-27: the agent writes the missing descriptions ('that's your writing, get on it'); best-for-SEO is the goal; 2026-10-27 follow-up: descriptions must tease ('I'll show you how to be sure your function really...'), not spoil each post"
         }
       ],
       "prohibitedClaims": [
@@ -114,7 +114,8 @@
         "Roughly 110-160 characters so Google shows it untruncated; a single sentence or two short ones",
         "Reads correctly in all four places it renders: search snippet, social preview, RSS item, and the post-card blurb on /posts/ and tag pages",
         "Seth's register: plain, direct, first person allowed, no hype words, no marketing CTA",
-        "Do not edit migrated post bodies (R14); the change is frontmatter only, plus a description prop on the two list routes"
+        "Do not edit migrated post bodies (R14); the change is frontmatter only, plus a description prop on the two list routes",
+        "Tease, do not spoil: name the problem and promise what the post shows, but never give away the answer, fix, number or list itself (Seth, 2026-10-27)"
       ]
     },
     "pageJob": {
@@ -178,7 +179,7 @@
       {
         "index": 2,
         "questionIndex": 2,
-        "belief": "The reader knows what kind of payoff the page offers, stated no stronger than the page delivers.",
+        "belief": "The reader knows what kind of payoff the page offers and wants it, without the description handing it over.",
         "evidenceIds": [
           "operator:instruction"
         ],
@@ -196,8 +197,8 @@
         "surface": "description-qualifier"
       }
     ],
-    "maximalHonestPromise": "Each description tells the reader exactly what the page covers and what they will get from it, with nothing the page does not deliver.",
-    "signedThesis": "A specific, honest one-line preview in Seth's plain voice gets the right readers to click and lets the wrong ones skip.",
+    "maximalHonestPromise": "Each description tells the reader exactly what problem the page tackles and what it will show them, with nothing the page does not deliver.",
+    "signedThesis": "A specific, honest one-line teaser in Seth's plain voice gets the right readers to click and lets the wrong ones skip.",
     "deliberateOmissions": [
       {
         "section": "Keyword or tag lists",
@@ -243,8 +244,8 @@
   },
   "approval": {
     "status": "approved",
-    "approver": "Seth Brasile (chat, 2026-10-27: 'Approve, show me first')",
-    "approvedAt": "2026-10-27T21:55:00Z",
-    "contractSha256": "cbeaca8f1a524de80360bb4b51c2f2ba58a935086b34cba140a9e8b1931434a7"
+    "approver": "Seth Brasile (chat, 2026-10-27: tease, don't spoil)",
+    "approvedAt": "2026-10-27T22:20:00Z",
+    "contractSha256": "9444307b13936dde5b565e14ae9a62718241ad12b3460c86d9a6d01abbfb04ba"
   }
 }

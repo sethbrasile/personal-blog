@@ -1,6 +1,6 @@
 ---
 title: Some Great Mac Apps to Check Out
-description: "Five Mac apps I picked up recently: Swish for window gestures, Shottr for screenshots, Raycast for search, Lunar for displays, Clop for compression."
+description: "Five small Mac apps I started using recently that make window management, screenshots, search, external displays and big files less of a hassle."
 date: '2025-02-05T17:19:43-06:00'
 draft: false
 author: Seth Brasile
