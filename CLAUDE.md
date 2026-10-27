@@ -53,6 +53,7 @@ How to:
 
 - `src/data/analytics.ts`: `POSTHOG_KEY` (public client token, committed on purpose). It is `''` until Seth creates the PostHog project; empty means no snippet ships at all.
 - `src/components/Analytics.astro`: loads the snippet only when `location.hostname` is `bytemycache.com` (previews and dev stay out), against the same-origin `/ingest`.
+- PostHog runs cookieless for every visitor (`cookieless_mode: 'always'`): nothing on the device, no consent banner in any region, replay off. The privacy and cookies pages depend on this; `analytics.test.ts` pins it. **The PostHog project setting "Cookieless server hash mode" must stay on**, or PostHog silently drops every event. Background: `docs/superpowers/research/2026-10-27-privacy-analytics-standards.md`.
 - `functions/ingest/[[path]].ts`: Pages Function reverse proxy to PostHog (static assets host vs API host). The only server code in the repo.
 - `src/components/analytics.test.ts` is key-aware: with an empty key it asserts no PostHog code in the build; with a key it asserts the snippet, host gate and `/ingest`.
 

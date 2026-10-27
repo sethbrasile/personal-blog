@@ -5,8 +5,12 @@
  * - Loads the official snippet against the same-origin /ingest proxy
  *   (functions/ingest/[[path]].ts), so nothing on the page talks to
  *   *.posthog.com directly and CSP stays `connect-src 'self'`.
- * - Cookies on (no consent banner). This site never calls identify(), so
- *   every event bills at the anonymous rate.
+ * - Cookieless for every visitor (cookieless_mode 'always'): no cookie, no
+ *   localStorage, so no consent banner is needed in any region (the audience
+ *   is not US-only). REQUIRES the PostHog project setting "Cookieless server
+ *   hash mode" on, or PostHog silently drops every event. Visitors are
+ *   counted by a server-side daily-salted hash, so cross-day uniques run high.
+ *   This site never calls identify(), so every event bills at the anonymous rate.
  * - Session replay off. Autocapture on (gives outbound/link data for free).
  * - Explicit conversion events, delegated once here:
  *     contact_click  { channel: phone | sms | email }
@@ -72,6 +76,8 @@ import { POSTHOG_KEY, POSTHOG_PROD_HOST, POSTHOG_API_PATH } from '@/data/analyti
       ui_host: 'https://us.posthog.com',
       defaults: '2026-05-30',
       person_profiles: 'identified_only',
+      cookieless_mode: 'always',
+      mask_personal_data_properties: true,
       disable_session_recording: true,
       capture_pageview: true,
       capture_pageleave: true,
