@@ -9,12 +9,21 @@ interface Props {
   title: string;
   description?: string;
   canonical?: string;
-  noindex?: boolean;
+  /** 'follow' keeps the page out of the index but lets crawlers follow its links (tag lists). */
+  noindex?: boolean | 'follow';
   ogImage?: string;
   headerVariant?: 'masthead' | 'compact';
   ogType?: 'website' | 'article';
 }
-const { title, description, canonical, noindex = false, ogImage, headerVariant = 'compact', ogType = 'website' } = Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  noindex = false,
+  ogImage,
+  headerVariant = 'compact',
+  ogType = 'website',
+} = Astro.props;
 const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
 const url = canonical ?? new URL(Astro.url.pathname, SITE.url).href;
 const image = new URL(ogImage ?? '/bytemycachelogo.png', SITE.url).href;
@@ -22,6 +31,7 @@ const hasDescription = typeof description === 'string' && description.trim() !==
 const fonts =
   'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap';
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,7 +40,7 @@ const fonts =
     <title>{fullTitle}</title>
     {hasDescription && <meta name="description" content={description} />}
     {!noindex && <link rel="canonical" href={url} />}
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex && <meta name="robots" content={noindex === 'follow' ? 'noindex, follow' : 'noindex, nofollow'} />}
     <script is:inline>
       (function () {
         try {

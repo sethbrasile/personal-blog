@@ -165,6 +165,12 @@ describe('pages', () => {
     expect(read('dist/about/index.html')).toContain('rel="canonical"');
     expect(read('dist/about/index.html')).not.toContain('noindex');
   });
+  test('tag pages are noindex but let crawlers follow their links', () => {
+    for (const f of ['dist/tags/index.html', 'dist/tags/homelab/index.html', 'dist/tags/diy/index.html']) {
+      expect(read(f), f).toContain('name="robots" content="noindex, follow"');
+      expect(read(f), f).not.toContain('rel="canonical"');
+    }
+  });
 });
 
 test('homepod post og:image is its processed cover, not the logo fallback', () => {

@@ -39,6 +39,7 @@ How to:
 - **Store products** (the three-product band on the video page and home): `products` on the video, `{label, url}` pointing at store.bytemycache.com product URLs in the form `https://store.bytemycache.com/en-usd/products/<slug>` (the bare `/products/<slug>` form 404s; `tests/videos.test.ts` checks it).
 - **Affiliate links**: `mentioned` on the video. The Amazon affiliate disclosure (`AFFILIATE_DISCLOSURE` in `src/lib/site.ts`) is rendered automatically with that list.
 - **draft vs unlisted**: `draft: true` is excluded from production builds entirely (shown in `astro dev`). `unlisted: true` is built and reachable by URL but left out of lists, tags and RSS, and gets `noindex`. The sitemap exclusion is manual: add its full URL (e.g. `https://bytemycache.com/<path>/`) to `UNLISTED_PATHS` in `src/lib/sitemap.mjs`.
+- **Tag pages** (`/tags/` and every `/tags/<tag>/`) are `noindex, follow` (`noindex="follow"` on `BaseLayout`) and filtered out of the sitemap: they are thin lists, mostly one post each. Index a tag only once it is a real topic hub with its own intro.
 - Markdown runs through Astro 7's default Satteri processor. A local mdast plugin (`src/lib/mdast-strip-comments.mjs`) strips HTML comments (Hugo never rendered raw HTML). Shiki `langAlias` maps `basH` and `Powershell` (set in `astro.config.mjs`). Migrated bodies are byte-identical to the Hugo originals (R14); do not reformat them (`.prettierignore` covers them).
 - New site chrome or page text is copy: it goes through `page-authoring` (the repo has a deploy target).
 
@@ -90,7 +91,7 @@ Tokens live in `src/styles/global.css` (`@theme`: colors with `-dark` pairs, fon
 - `slugifyTag` drops `#`, `+`, `~` unlike Hugo's urlize (no current tag is affected). Tag names render as stored (`IT`, `smart home`); normalisation is deferred.
 - No post currently sets `series` in frontmatter, so the series prev/next nav (`Previous · Part N`) is untested by the build.
 - Inline-code background `#e3e7ea` and the store band hexes are literals, not tokens.
-- `/posts/`, `/videos/`, `/tags/` and tag pages render no meta description.
+- `/posts/` and `/videos/` render no meta description.
 
 ## Open questions for Seth
 
