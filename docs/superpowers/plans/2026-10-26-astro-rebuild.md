@@ -680,7 +680,7 @@ Create project "byteMyCache" in the PPMC Clients org, paste the `phc_` token int
 
 - [ ] **Step 4: Merge**
 
-Precondition: Task 11 is complete and the privacy and cookies pages are rewritten and approved by Seth. Merge the PR. Pages deploys `main` to bytemycache.com.
+Precondition: Task 11 Steps 1 to 6 and 8 are complete (production secrets set, CRM account key in `wrangler.toml`), and the privacy and cookies pages are approved by Seth with both effective dates set to the merge date. Merge the PR. Pages deploys `main` to bytemycache.com.
 
 - [ ] **Step 5: Verify live**
 
@@ -733,9 +733,9 @@ Pages-only `wrangler.toml` with the four non-secret `[vars]` (`CRM_INGEST_URL`, 
 
 Replace `F-ghl` in the authority pack and both contracts with verified facts about the form: what it collects, that it goes to Seth's CRM (state where the CRM stores data, read from `ppmc-crm`), the Resend fallback, and Turnstile (check what Turnstile stores in the browser before the cookies page names it). Contracts stay unsigned until Seth approves the theses.
 
-- [ ] **Step 7: Verify on the preview**
+- [ ] **Step 7: Verify on the live site after the merge**
 
-Push; on the preview, submit the form from a real browser (Turnstile blocks automated Chromium): the lead appears in the CRM with the message as its first activity; `npx wrangler pages deployment tail` (account pinned) shows a 200 from ingest. Then run `/security-review` on the branch (new secrets and a public write endpoint).
+*Amended 2026-10-27 (Seth): no preview secrets; the form is tested on bytemycache.com right after Task 10 Step 4, as part of Task 10 Step 5. Preview builds show the form's error message on send.* On the live site, submit the form from a real browser (Turnstile blocks automated Chromium): the lead appears in the CRM with the message as its first activity; `npx wrangler pages deployment tail` (account pinned) shows a 200 from ingest. Then run `/security-review` on the branch (new secrets and a public write endpoint).
 
 - [ ] **Step 8: Commit and docs**
 

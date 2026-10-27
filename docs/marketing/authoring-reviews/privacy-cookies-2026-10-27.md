@@ -40,8 +40,8 @@ Claims checked against: `src/components/Analytics.astro`, `functions/ingest/[[pa
 
 ## Priority findings
 
-- **P1 (factual-legal, open):** the contact-form claims describe Task 11 as planned. Re-check them against `functions/api/contact.ts` and `ContactForm.astro` once those exist; the draft digest changes if they differ.
-- **P2 (factual-legal, open):** what Turnstile stores in the browser is unverified. If it stores anything, add it to the cookies list (draft change, re-review).
+- **P1 (factual-legal, closed 2026-10-27):** checked against `ContactForm.astro` (fields name, email, message; Turnstile loads on first `focusin`) and `functions/api/contact.ts` / `_lib/resend-fallback.ts` (CRM first, Resend fallback). The draft matches; no change. Original note: the contact-form claims describe Task 11 as planned. Re-check them against `functions/api/contact.ts` and `ContactForm.astro` once those exist; the draft digest changes if they differ.
+- **P2 (factual-legal, open, moved to after the merge by Seth's decision to skip preview secrets):** what Turnstile stores in the browser is unverified. If it stores anything, add it to the cookies list (draft change, re-review).
 - **P3 (factual-legal, open):** the effective date must equal the go-live date. Set it at merge on both pages and re-review.
 - **P4 (factual-legal, corrected in the draft):** the signed privacy contract's direct-contact belief says an email also goes into the CRM. It doesn't; email lands in the inbox, and the draft says so. The contract wording is wrong, not the page; fixing it in a later Revision contract is open for Seth.
 - **P5 (craft, corrected):** removed an opening sentence that described the page instead of saying anything, and replaced "record your screen or your session" with "make recordings of your visit".
